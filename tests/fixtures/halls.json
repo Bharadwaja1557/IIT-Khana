@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Hall 14",
+    "type": "Boys",
+    "location": "Near VH 2"
+  },
+  {
+    "id": 6,
+    "name": "Hall 11",
+    "type": "Boys",
+    "location": "Hall 11"
+  },
+  {
+    "id": 5,
+    "name": "Hall 8",
+    "type": "Boys",
+    "location": "Hall 8"
+  },
+  {
+    "id": 4,
+    "name": "Hall 7",
+    "type": "Boys",
+    "location": "Hall 7"
+  },
+  {
+    "id": 8,
+    "name": "Hall 5",
+    "type": "Co-ed",
+    "location": "Hall 5"
+  },
+  {
+    "id": 9,
+    "name": "Hall 2",
+    "type": "Co-ed",
+    "location": "Hall 2"
+  }
+]

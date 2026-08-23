@@ -1,0 +1,82 @@
+[
+  {
+    "hall": "Hall 11",
+    "hallId": 6,
+    "dayOfWeek": "Tuesday",
+    "mealType": "Dinner",
+    "description": "(Aloo Baigan Light Gravy, Mix Dal)",
+    "extras": "Fish Tikka (Non-Veg)\nAloo Tikki Chaat\nChenna",
+    "id": 1329,
+    "lastUpdated": "2026-07-19T17:45:50.321Z"
+  },
+  {
+    "hall": "Hall 11",
+    "hallId": 6,
+    "dayOfWeek": "Wednesday",
+    "mealType": "Lunch",
+    "description": "Aloo Parwal Gravy / Aaloo Soyabeen Gravy, Aloo Bhujiya, Chana Dal, Chhanch",
+    "extras": "Dahi Katla (Non-Veg)\nMushroom Paneer Dry\nShahi Tukda",
+    "id": 1331,
+    "lastUpdated": "2026-07-19T17:45:50.321Z"
+  },
+  {
+    "hall": "Hall 14",
+    "hallId": 1,
+    "dayOfWeek": "Sunday",
+    "mealType": "Dinner",
+    "description": "Kadhai Paneer / Paneer Butter Masala Or Chicken Kali Mirch (Non-Veg), Arhar Dal, Pulao, Butter Naan, Tandoori Roti, Gulab Jamun",
+    "extras": null,
+    "id": 1554,
+    "lastUpdated": "2026-08-06T07:50:00.568Z"
+  },
+  {
+    "hall": "Hall 2",
+    "hallId": 9,
+    "dayOfWeek": "Monday",
+    "mealType": "Lunch",
+    "description": "Red Masoor, Mix-Veg, Chhach",
+    "extras": "Chicken Lolipop (Non-Veg), Paneer Butter Masala",
+    "id": 1388,
+    "lastUpdated": "2026-08-03T07:50:11.166Z"
+  },
+  {
+    "hall": "Hall 2",
+    "hallId": 9,
+    "dayOfWeek": "Saturday",
+    "mealType": "Breakfast",
+    "description": "Poha, Jalebi, Aloo Bhujiya, Curd",
+    "extras": null,
+    "id": 1402,
+    "lastUpdated": "2026-08-03T07:50:11.166Z"
+  },
+  {
+    "hall": "Hall 5",
+    "hallId": 8,
+    "dayOfWeek": "Friday",
+    "mealType": "Lunch",
+    "description": "Black Chana Gravy, Cabbage-Carrot-Matar, Boondi Raita/Curd, Nimbu Pani",
+    "extras": "Saag Chicken (Non-Veg), Paneer 65, Kalakand",
+    "id": 1484,
+    "lastUpdated": "2026-08-04T07:42:37.660Z"
+  },
+  {
+    "hall": "Hall 7",
+    "hallId": 4,
+    "dayOfWeek": "Monday",
+    "mealType": "Lunch",
+    "description": "Arhar Dal Tadka, Aloo Simla, Jeera-Rice, Fruits/Curd/ Boondi Raita, Green Chatney, Chapati (Plain & Deshi Ghee), Plain-Rice",
+    "extras": "Mustard Fish (Non-Veg), Veg Kabab",
+    "id": 1409,
+    "lastUpdated": "2026-08-03T07:50:29.141Z"
+  },
+  {
+    "hall": "Hall 8",
+    "hallId": 5,
+    "dayOfWeek": "Thursday",
+    "mealType": "Breakfast",
+    "description": "(Ajwain Poori / Roti, Matar (Yellow) Sabzi, Halwa)",
+    "extras": null,
+    "id": 1354,
+    "lastUpdated": "2026-07-22T18:47:44.418Z"
+  }
+]

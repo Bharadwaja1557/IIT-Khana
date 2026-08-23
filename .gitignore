@@ -1,5 +1,6 @@
 # Personal working notes — never commit
 .notes/
+CLAUDE.md
 
 # Secrets
 .env
