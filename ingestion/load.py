@@ -9,6 +9,7 @@ from pathlib import Path
 
 from . import source
 from .parse import DAYS, MEALS, build_clusters, normalize, split_items
+from .tagger import tag
 
 SCHEMA = Path(__file__).resolve().parent.parent / "db" / "schema.sql"
 
@@ -120,9 +121,12 @@ def ingest(conn: sqlite3.Connection, halls: list[dict], weekly: dict[int, list[d
             """INSERT INTO menu_item
                  (hall_id, day_of_week, meal, item_raw, item_normalized,
                   item_canonical, tags, is_extra, position, source_row_id, last_updated)
-               VALUES (?,?,?,?,?,?,NULL,?,?,?,?)""",
+               VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
+            # tag() reads item_raw, NOT the normalized form: normalization strips
+            # parentheticals, and that is where "(Non-Veg)" and the egg in
+            # "Banana Shake (Instead Of Milk, Banana And Egg)" live.
             [(i.hall_id, i.day_of_week, i.meal, i.item_raw, i.item_normalized,
-              canon.get(i.item_normalized, i.item_normalized),
+              canon.get(i.item_normalized, i.item_normalized), tag(i.item_raw),
               i.is_extra, i.position, i.source_row_id, i.last_updated) for i in items],
         )
         conn.executemany(
@@ -151,7 +155,8 @@ def coverage_report(conn: sqlite3.Connection) -> str:
     n_norm = cur.execute("SELECT COUNT(DISTINCT item_normalized) FROM menu_item").fetchone()[0]
     n_canon = cur.execute("SELECT COUNT(DISTINCT item_canonical) FROM menu_item").fetchone()[0]
     n_extra = cur.execute("SELECT COUNT(*) FROM menu_item WHERE is_extra=1").fetchone()[0]
-    untagged = cur.execute("SELECT COUNT(*) FROM menu_item WHERE tags IS NULL").fetchone()[0]
+    tagdist = dict(cur.execute(
+        "SELECT tags, COUNT(*) FROM menu_item GROUP BY tags ORDER BY 2 DESC").fetchall())
 
     lines = [
         "",
@@ -171,7 +176,7 @@ def coverage_report(conn: sqlite3.Connection) -> str:
         f"    extras             {n_extra}",
         f"  distinct normalized  {n_norm}",
         f"  distinct canonical   {n_canon}   (clustering merged {n_norm - n_canon})",
-        f"  untagged items       {untagged}   (tagger lands in Phase 1 C2)",
+        "  tags                 " + ", ".join(f"{k}={v}" for k, v in tagdist.items()),
     ]
 
     if total != expected:

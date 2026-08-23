@@ -51,9 +51,22 @@ def test_no_date_or_serving_window_columns(db):
     assert "serving_window" not in cols
 
 
-def test_tags_are_null_until_c2(db):
-    n = db.execute("SELECT COUNT(*) FROM menu_item WHERE tags IS NOT NULL").fetchone()[0]
-    assert n == 0, "tagger is Phase 1 C2; nothing may pre-fill tags"
+def test_every_item_is_tagged(db):
+    """Phase 1 C2: tags are populated at ingest from item_raw."""
+    n = db.execute("SELECT COUNT(*) FROM menu_item WHERE tags IS NULL").fetchone()[0]
+    assert n == 0
+    bad = db.execute(
+        "SELECT DISTINCT tags FROM menu_item "
+        "WHERE tags NOT IN ('veg','egg','nonveg','unclear')").fetchall()
+    assert bad == []
+
+
+def test_tags_are_derived_from_raw_not_normalized(db):
+    """The (Non-Veg) marker lives in a parenthetical that normalization strips."""
+    row = db.execute(
+        "SELECT tags FROM menu_item WHERE item_raw = 'Chicken Lolipop (Non-Veg)'"
+    ).fetchone()
+    assert row is not None and row[0] == "nonveg"
 
 
 def test_items_carry_provenance(db):

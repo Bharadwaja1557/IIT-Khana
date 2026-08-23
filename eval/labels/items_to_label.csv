@@ -1,151 +1,151 @@
 item,count,stratum,example_raw,label
-curd,36,weighted,Curd,
-sambhar,27,weighted,Sambhar,
-arhar dal,21,weighted,Arhar Dal,
-nariyal chutney,17,weighted,Nariyal Chutney,
-fruits,15,weighted,Fruits,
-jeera rice,15,weighted,Jeera Rice,
-fruit,14,weighted,Fruit,
-boondi raita,13,weighted,Boondi Raita,
-chana dal,13,weighted,Chana Dal,
-plain rice,13,weighted,Plain Rice,
-rajma,12,weighted,Rajma,
-chicken biryani,11,weighted,Chicken Biryani (Non-Veg),
-egg curry,10,weighted,Egg Curry,
-poha,10,weighted,Poha,
-rasna,10,weighted,Rasna,
-tomato chutney,9,weighted,Tomato Chutney,
-french fries,8,weighted,French Fries,
-honey chilli potato,8,weighted,Honey Chilli Potato,
-mix veg,8,weighted,Mix Veg,
-nimbu pani,8,weighted,Nimbu Pani,
-roohafza,8,weighted,Roohafza,
-chilli paneer,7,weighted,Chilli Paneer,
-mix dal,7,weighted,Mix Dal,
-poori,7,weighted,Poori,
-uttapam,7,weighted,Uttapam,
-crispy corn,6,weighted,Crispy Corn,
-dahi vada,6,weighted,Dahi Vada,
-halwa,6,weighted,Halwa,
-moong dal halwa,6,weighted,Moong Dal Halwa,
-sewai,6,weighted,Sewai,
-milk cake,5,weighted,Milk Cake,
-paneer tikka,5,weighted,Paneer Tikka,
-veg cutlet,5,weighted,Veg Cutlet,
-boondi laddu,4,weighted,Boondi Laddu,
-chana daal,4,weighted,Chana Daal,
-chicken curry,4,weighted,Chicken Curry (Non-Veg),
-kulcha,4,weighted,Kulcha,
-peanuts and chana,4,weighted,Peanuts And Chana,
-puri,4,weighted,Puri,
-vada pav,4,weighted,Vada Pav,
-veg dal,4,weighted,Veg Dal,
-veg kofta,4,weighted,Veg Kofta,
-assorted sharbat,3,weighted,Assorted Sharbat,
-chicken lolipop,3,weighted,Chicken Lolipop (Non-Veg),
-curd rice,3,weighted,Curd Rice,
-fried chillies,3,weighted,Fried Chillies,
-jeera aloo,3,weighted,Jeera Aloo,
-kathi roll,3,weighted,Kathi Roll,
-lauki jeera,3,weighted,Lauki Jeera,
-red masoor dal,3,weighted,Red Masoor Dal,
-spring roll,3,weighted,Spring Roll,
-aloo bhurji,2,weighted,Aloo Bhurji,
-chicken tikka masala,2,weighted,Chicken Tikka Masala (Non-Veg),
-dahi jalebi,2,weighted,Dahi - Jalebi,
-dahi kebab,2,weighted,Dahi Kebab,
-egg roll,2,weighted,Egg Roll,
-fruit raita,2,weighted,Fruit Raita,
-fryums,2,weighted,Fryums,
-ghee roast chicken,2,weighted,Ghee Roast Chicken (Non-Veg),
-kara chutney,2,weighted,Kara Chutney,
-tomato chatney,2,weighted,Tomato Chatney,
-upma,2,weighted,Upma,
-veg raita,2,weighted,Veg Raita,
-vinegar pyaaz,2,weighted,Vinegar-Pyaaz,
-aaloo soyabeen gravy,1,weighted,Aaloo Soyabeen Gravy,
-aampanna,1,weighted,Aampanna,
-achaari aloo,1,weighted,Achaari Aloo,
-achari kaddu,1,tail,Achari Kaddu,
-aloo bharta,1,tail,Aloo Bharta,
-aloo cabbage matar dry,1,tail,Aloo Cabbage Matar Dry,
-aloo chokha,1,tail,Aloo Chokha,
-aloo soya,1,tail,Aloo Soya,
-amritsari chhole,1,tail,Amritsari Chhole,
-amritsari chola,1,tail,Amritsari Chola,
-arbi,1,tail,Arbi,
-arbi dry and kali masoor daal,1,tail,Arbi Dry And Kali Masoor Daal,
-arhar dal fry,1,tail,Arhar Dal Fry,
-bagara rice,1,weighted,Bagara Rice,
-basanti pulav,1,tail,Basanti Pulav,
-besan bhujiya,1,weighted,Besan Bhujiya),
-besan moong dal chilla,1,tail,Besan & Moong Dal Chilla,
-boota dalma,1,tail,Boota Dalma,
-bread malai sandwich,1,tail,Bread Malai Sandwich,
-bundi raita,1,tail,Bundi Raita,
-chaat,1,weighted,Chaat,
-chana daal tadka,1,weighted,Chana Daal Tadka,
-chana dal fry,1,weighted,Chana Dal Fry,
-chandrakala,1,weighted,Chandrakala,
-chicken,1,tail,Chicken (Non-Veg),
-chicken fry,1,tail,Chicken Fry (Non-Veg),
-chicken ghee roasted,1,tail,Chicken Ghee Roasted (Non-Veg),
-chicken momos,1,weighted,Chicken Momos (Non-Veg),
-chicken paratha,1,tail,Chicken Paratha (Non-Veg),
-chicken roasted,1,tail,Chicken Roasted(Non-Veg),
-chilli cheese toast,1,tail,Chilli Cheese Toast,
-chutney alternate kachori,1,tail,Chutney Alternate: Kachori,
-dahi gujhiya,1,weighted,Dahi Gujhiya,
-fried and roasted papad,1,weighted,Fried And Roasted Papad,
-fried chicken strips,1,weighted,Fried Chicken Strips (Non-Veg),
-ghati chutney,1,weighted,Ghati Chutney,
-green chutney sauce,1,tail,Green Chutney Sauce,
-indori poha with sev,1,tail,Indori Poha With Sev,
-italian red sauce pasta,1,tail,Italian Red Sauce Pasta,
-kachodi,1,weighted,Kachodi,
-kadhal paneer,1,tail,Kadhal Paneer,
-kaju katli,1,tail,Kaju Katli,
-kali mirch chicken tandoori tandoori chicken,1,tail,Kali Mirch Chicken Tandoori (Non-Veg) Tandoori Chicken (Non-Veg),
-kali urad dal,1,weighted,Kali Urad Dal,
-khasta kachori chhole pudina raita,1,weighted,Khasta Kachori Chhole Pudina Raita,
-laccha pyaaz,1,weighted,Laccha Pyaaz,
-lauki,1,weighted,Lauki,
-lauki chana,1,weighted,Lauki Chana,
-manchurian,1,tail,Manchurian,
-matar musroom,1,weighted,Matar Musroom,
-meetha samosa,1,tail,Meetha Samosa,
-mirchi pakoda,1,tail,Mirchi Pakoda,
-mix fruit raita,1,tail,Mix-Fruit Raita,
-mix veg moong daal,1,weighted,Mix-Veg Moong Daal,
-mixed,1,weighted,Mixed),
-mixed veg sabji,1,weighted,Mixed-veg Sabji,
-momos,1,weighted,Momos,
-mustard fish,1,weighted,Mustard Fish (Non-Veg),
-mutton bhuna masala,1,tail,Mutton Bhuna Masala (Non-Veg),
-mutton kosha,1,tail,Mutton Kosha (Non-Veg),
-pabda fish,1,weighted,Pabda Fish (Non-Veg),
-paneer biryani,1,weighted,Paneer Biryani,
-panta bhaat,1,tail,Panta Bhaat,
-pawral sabji,1,weighted,Pawral Sabji (a),
-pindi chhole,1,tail,Pindi Chhole,
-pindi chola,1,weighted,Pindi Chola,
-punugulu nariyal chutney,1,tail,Punugulu Nariyal Chutney,
-pyaz hari,1,tail,Pyaz Hari,
-pyaz paratha,1,weighted,Pyaz Paratha,
-razma,1,tail,Razma,
-sahi lassi,1,tail,Sahi Lassi,
-sahi toast,1,tail,Sahi Toast,
-seasonal fruit,1,tail,Seasonal Fruit,
-sonth chutney,1,tail,Sonth Chutney,
-sooji halwa,1,weighted,Sooji Halwa,
-soyabean chaap gravy,1,tail,Soyabean Chaap Gravy,
-spcl dosa,1,tail,Spcl Dosa,
-stuff gulab jamun,1,tail,Stuff Gulab Jamun,
-tari poha,1,weighted,Tari Poha,
-urad daal tadka,1,tail,Urad Daal Tadka,
-urad dal chhilka,1,weighted,Urad-Dal Chhilka,
-veg chowmein,1,tail,Veg Chowmein,
-veg jalferzi,1,tail,Veg Jalferzi,
-veg kohlapuri,1,weighted,Veg Kohlapuri,
-veg mayo sandwich,1,weighted,Veg-Mayo Sandwich (b),
-vermicelli,1,tail,Vermicelli,
+curd,36,weighted,Curd,veg
+sambhar,27,weighted,Sambhar,veg
+arhar dal,21,weighted,Arhar Dal,veg
+nariyal chutney,17,weighted,Nariyal Chutney,veg
+fruits,15,weighted,Fruits,veg
+jeera rice,15,weighted,Jeera Rice,veg
+fruit,14,weighted,Fruit,veg
+boondi raita,13,weighted,Boondi Raita,veg
+chana dal,13,weighted,Chana Dal,veg
+plain rice,13,weighted,Plain Rice,veg
+rajma,12,weighted,Rajma,veg
+chicken biryani,11,weighted,Chicken Biryani (Non-Veg),nonveg
+egg curry,10,weighted,Egg Curry,egg
+poha,10,weighted,Poha,veg
+rasna,10,weighted,Rasna,veg
+tomato chutney,9,weighted,Tomato Chutney,veg
+french fries,8,weighted,French Fries,veg
+honey chilli potato,8,weighted,Honey Chilli Potato,veg
+mix veg,8,weighted,Mix Veg,veg
+nimbu pani,8,weighted,Nimbu Pani,veg
+roohafza,8,weighted,Roohafza,veg
+chilli paneer,7,weighted,Chilli Paneer,veg
+mix dal,7,weighted,Mix Dal,veg
+poori,7,weighted,Poori,veg
+uttapam,7,weighted,Uttapam,veg
+crispy corn,6,weighted,Crispy Corn,veg
+dahi vada,6,weighted,Dahi Vada,veg
+halwa,6,weighted,Halwa,veg
+moong dal halwa,6,weighted,Moong Dal Halwa,veg
+sewai,6,weighted,Sewai,veg
+milk cake,5,weighted,Milk Cake,veg
+paneer tikka,5,weighted,Paneer Tikka,veg
+veg cutlet,5,weighted,Veg Cutlet,veg
+boondi laddu,4,weighted,Boondi Laddu,veg
+chana daal,4,weighted,Chana Daal,veg
+chicken curry,4,weighted,Chicken Curry (Non-Veg),nonveg
+kulcha,4,weighted,Kulcha,veg
+peanuts and chana,4,weighted,Peanuts And Chana,veg
+puri,4,weighted,Puri,veg
+vada pav,4,weighted,Vada Pav,veg
+veg dal,4,weighted,Veg Dal,veg
+veg kofta,4,weighted,Veg Kofta,veg
+assorted sharbat,3,weighted,Assorted Sharbat,veg
+chicken lolipop,3,weighted,Chicken Lolipop (Non-Veg),nonveg
+curd rice,3,weighted,Curd Rice,veg
+fried chillies,3,weighted,Fried Chillies,veg
+jeera aloo,3,weighted,Jeera Aloo,veg
+kathi roll,3,weighted,Kathi Roll,veg
+lauki jeera,3,weighted,Lauki Jeera,veg
+red masoor dal,3,weighted,Red Masoor Dal,veg
+spring roll,3,weighted,Spring Roll,veg
+aloo bhurji,2,weighted,Aloo Bhurji,veg
+chicken tikka masala,2,weighted,Chicken Tikka Masala (Non-Veg),nonveg
+dahi jalebi,2,weighted,Dahi - Jalebi,veg
+dahi kebab,2,weighted,Dahi Kebab,veg
+egg roll,2,weighted,Egg Roll,egg
+fruit raita,2,weighted,Fruit Raita,veg
+fryums,2,weighted,Fryums,veg
+ghee roast chicken,2,weighted,Ghee Roast Chicken (Non-Veg),nonveg
+kara chutney,2,weighted,Kara Chutney,veg
+tomato chatney,2,weighted,Tomato Chatney,veg
+upma,2,weighted,Upma,veg
+veg raita,2,weighted,Veg Raita,veg
+vinegar pyaaz,2,weighted,Vinegar-Pyaaz,veg
+aaloo soyabeen gravy,1,weighted,Aaloo Soyabeen Gravy,veg
+aampanna,1,weighted,Aampanna,veg
+achaari aloo,1,weighted,Achaari Aloo,veg
+achari kaddu,1,tail,Achari Kaddu,veg
+aloo bharta,1,tail,Aloo Bharta,veg
+aloo cabbage matar dry,1,tail,Aloo Cabbage Matar Dry,veg
+aloo chokha,1,tail,Aloo Chokha,veg
+aloo soya,1,tail,Aloo Soya,veg
+amritsari chhole,1,tail,Amritsari Chhole,veg
+amritsari chola,1,tail,Amritsari Chola,veg
+arbi,1,tail,Arbi,veg
+arbi dry and kali masoor daal,1,tail,Arbi Dry And Kali Masoor Daal,veg
+arhar dal fry,1,tail,Arhar Dal Fry,veg
+bagara rice,1,weighted,Bagara Rice,veg
+basanti pulav,1,tail,Basanti Pulav,veg
+besan bhujiya,1,weighted,Besan Bhujiya),veg
+besan moong dal chilla,1,tail,Besan & Moong Dal Chilla,veg
+boota dalma,1,tail,Boota Dalma,veg
+bread malai sandwich,1,tail,Bread Malai Sandwich,veg
+bundi raita,1,tail,Bundi Raita,veg
+chaat,1,weighted,Chaat,veg
+chana daal tadka,1,weighted,Chana Daal Tadka,veg
+chana dal fry,1,weighted,Chana Dal Fry,veg
+chandrakala,1,weighted,Chandrakala,veg
+chicken,1,tail,Chicken (Non-Veg),nonveg
+chicken fry,1,tail,Chicken Fry (Non-Veg),nonveg
+chicken ghee roasted,1,tail,Chicken Ghee Roasted (Non-Veg),nonveg
+chicken momos,1,weighted,Chicken Momos (Non-Veg),nonveg
+chicken paratha,1,tail,Chicken Paratha (Non-Veg),nonveg
+chicken roasted,1,tail,Chicken Roasted(Non-Veg),nonveg
+chilli cheese toast,1,tail,Chilli Cheese Toast,veg
+chutney alternate kachori,1,tail,Chutney Alternate: Kachori,veg
+dahi gujhiya,1,weighted,Dahi Gujhiya,veg
+fried and roasted papad,1,weighted,Fried And Roasted Papad,veg
+fried chicken strips,1,weighted,Fried Chicken Strips (Non-Veg),nonveg
+ghati chutney,1,weighted,Ghati Chutney,veg
+green chutney sauce,1,tail,Green Chutney Sauce,veg
+indori poha with sev,1,tail,Indori Poha With Sev,veg
+italian red sauce pasta,1,tail,Italian Red Sauce Pasta,veg
+kachodi,1,weighted,Kachodi,veg
+kadhal paneer,1,tail,Kadhal Paneer,veg
+kaju katli,1,tail,Kaju Katli,veg
+kali mirch chicken tandoori tandoori chicken,1,tail,Kali Mirch Chicken Tandoori (Non-Veg) Tandoori Chicken (Non-Veg),nonveg
+kali urad dal,1,weighted,Kali Urad Dal,veg
+khasta kachori chhole pudina raita,1,weighted,Khasta Kachori Chhole Pudina Raita,veg
+laccha pyaaz,1,weighted,Laccha Pyaaz,veg
+lauki,1,weighted,Lauki,veg
+lauki chana,1,weighted,Lauki Chana,veg
+manchurian,1,tail,Manchurian,veg
+matar musroom,1,weighted,Matar Musroom,veg
+meetha samosa,1,tail,Meetha Samosa,veg
+mirchi pakoda,1,tail,Mirchi Pakoda,veg
+mix fruit raita,1,tail,Mix-Fruit Raita,veg
+mix veg moong daal,1,weighted,Mix-Veg Moong Daal,veg
+mixed,1,weighted,Mixed),veg
+mixed veg sabji,1,weighted,Mixed-veg Sabji,veg
+momos,1,weighted,Momos,veg
+mustard fish,1,weighted,Mustard Fish (Non-Veg),nonveg
+mutton bhuna masala,1,tail,Mutton Bhuna Masala (Non-Veg),nonveg
+mutton kosha,1,tail,Mutton Kosha (Non-Veg),nonveg
+pabda fish,1,weighted,Pabda Fish (Non-Veg),nonveg
+paneer biryani,1,weighted,Paneer Biryani,veg
+panta bhaat,1,tail,Panta Bhaat,veg
+pawral sabji,1,weighted,Pawral Sabji (a),veg
+pindi chhole,1,tail,Pindi Chhole,veg
+pindi chola,1,weighted,Pindi Chola,veg
+punugulu nariyal chutney,1,tail,Punugulu Nariyal Chutney,veg
+pyaz hari,1,tail,Pyaz Hari,veg
+pyaz paratha,1,weighted,Pyaz Paratha,veg
+razma,1,tail,Razma,veg
+sahi lassi,1,tail,Sahi Lassi,veg
+sahi toast,1,tail,Sahi Toast,veg
+seasonal fruit,1,tail,Seasonal Fruit,veg
+sonth chutney,1,tail,Sonth Chutney,veg
+sooji halwa,1,weighted,Sooji Halwa,veg
+soyabean chaap gravy,1,tail,Soyabean Chaap Gravy,veg
+spcl dosa,1,tail,Spcl Dosa,veg
+stuff gulab jamun,1,tail,Stuff Gulab Jamun,veg
+tari poha,1,weighted,Tari Poha,veg
+urad daal tadka,1,tail,Urad Daal Tadka,veg
+urad dal chhilka,1,weighted,Urad-Dal Chhilka,veg
+veg chowmein,1,tail,Veg Chowmein,veg
+veg jalferzi,1,tail,Veg Jalferzi,veg
+veg kohlapuri,1,weighted,Veg Kohlapuri,veg
+veg mayo sandwich,1,weighted,Veg-Mayo Sandwich (b),veg
+vermicelli,1,tail,Vermicelli,veg

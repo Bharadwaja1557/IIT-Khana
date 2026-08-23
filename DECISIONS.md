@@ -724,6 +724,150 @@ freezes the benchmark; noted here so it is not forgotten.
 
 Python. Dependencies are added per phase with a stated reason, never
 speculatively. Phase 0 committed to `httpx`, `python-dotenv`, `pytest`.
-**Phase 1 added nothing** — parsing, normalisation, fuzzy clustering and storage
-are all stdlib (`sqlite3`, `difflib`, `re`, `csv`). See D6 for what is
+**Phase 1 added nothing** — parsing, normalisation, fuzzy clustering, the diet
+tagger and storage are all stdlib (`sqlite3`, `difflib`, `re`, `csv`). See D6 for what is
 deliberately absent.
+
+---
+
+## D20. The tagger's error ceiling on tag-filtered questions
+
+**Decision.** Diet tags (`veg` / `egg` / `nonveg` / `unclear`) are derived from
+item text by a rule/keyword tagger (`ingestion/tagger.py`), populated at ingest.
+Its measured error rate is a **hard ceiling on every tag-filtered benchmark
+question, regardless of retrieval architecture.** No router, no embedding model
+and no amount of prompt engineering can answer "which halls have chicken
+tonight" more accurately than the tags underneath it.
+
+### The numbers
+
+Measured against 150 hand labels covering 534 mentions. One evaluation run; the
+single subsequent code change left the eval output byte-identical (see below).
+
+    evaluation                      n  accuracy   abstain  majority
+    mention-level (all)           534     98.9%      1.1%     91.4%
+    type-level (all)              150     97.3%      2.7%     87.3%
+    marked subset                  17    100.0%      0.0%    100.0%
+    unmarked subset               133     97.0%      3.0%     98.5%
+    unmarked, mention-weighted    500     98.8%      1.2%     97.6%
+
+Per class (type-level), and the confusion matrix with `unclear` retained as a
+predicted class with an empty gold row:
+
+    class      precision   recall     F1   support
+    veg           100.0%    96.9%  98.4%       131
+    egg           100.0%   100.0% 100.0%         2
+    nonveg        100.0%   100.0% 100.0%        17
+    unclear         0.0%      n/a    n/a         0
+
+                    veg      egg   nonveg  unclear    total
+    veg             127        0        0        4      131
+    egg               0        2        0        0        2
+    nonveg            0        0       17        0       17
+    unclear           0        0        0        0        0
+
+**The stated ceiling is the unmarked-subset figure: 97.0% type-level
+(98.8% mention-weighted).** Marked items are not a test — the marker is
+authoritative and scoring 100% on them measures nothing.
+
+### Two things that must be said with that number
+
+**1. The tagger loses to the majority baseline on the honest subset.** 97.0%
+against 98.5% for always answering "veg". Every one of its four errors is an
+**abstention**, not a wrong tag — but abstentions are scored as errors, and
+against a gold set that is 98.5% one class, any abstention is a net loss. This
+is reported rather than hidden. Abstention is still the right default (D2 in
+this decision), but the accuracy column does not reward it.
+
+**2. The 97.0% figure does not bound the case we actually care about.** All 17
+non-veg items in the label set carry an explicit marker; **not one unmarked
+item is non-veg**. So the unmarked subset measures only "avoid false non-veg on
+vegetarian food", which is trivial when the answer is always veg. It does not
+measure **non-veg recall on unmarked text** — the thing a chicken query depends
+on. That case exists and the sample missed all of it:
+
+    menu_item rows                    1903
+      tagged nonveg                    195  (10.2%)
+        marked upstream                184  (94% of non-veg)
+        inferred from text, unmarked    11  (6%)   <- accuracy UNMEASURED
+
+    Butter Chicken, Chilli Chicken, Chicken Kali Mirch, Chicken Kasha,
+    Chicken Lollypop, Chicken Malai Tikka, Mughlai Chicken, Tandoori Chicken,
+    Fish Finger, Katla Kaila, Katla
+
+**Exposure is bounded (11 of 1903 rows); accuracy on them is not.** Any
+published result on a non-veg question inherits this unquantified risk. Closing
+it needs a targeted label pass over unmarked protein-bearing strings, not a
+larger random sample — a random sample of this corpus will keep drawing veg.
+
+### Abstention
+
+The tagger emits `unclear` rather than guessing on genuinely ambiguous dish
+names. A wrong tag silently corrupts a query answer; an abstention is visible.
+Corpus-wide abstention rate: **35 of 1903 rows (1.8%)** — dominated by bare
+`Pulao`, `Hakka Noodles`, `Bombay Sandwich`, `Burger`, `Noodles`, `Kathi Roll`,
+`Kolkatta Biryani`, `Cutlet`, `Momos`, `Manchurian`. Abstention rate is always
+reported **separately** from accuracy so the two are never conflated.
+
+Full corpus distribution: veg 1651 (86.8%), nonveg 195 (10.2%),
+unclear 35 (1.8%), egg 22 (1.2%).
+
+### One iteration, and why it was not eval-set tuning
+
+**Iterations: 1.** The change came from the cluster-consistency check, not from
+inspecting eval errors. That check revealed upstream writes `Egg Curry
+(Non-Veg)`, `Egg Biryani (Non-Veg)`, `Egg Roll (Non-Veg)` — its marker means
+"not vegetarian" in a two-class sense. Checking the marker first collapsed
+`egg` into `nonveg` for exactly the dishes needing the distinction, so egg is
+now checked **before** the marker and after named proteins. (`murgh` was added
+to the protein lexicon in the same pass; `\bmurg\b` does not match "Murgh".)
+
+**The eval output before and after is byte-identical** — the label set contains
+`egg curry` with `example_raw = "Egg Curry"` (unmarked) and is structurally
+blind to the bug. 5 database rows changed tag; 0 evaluation rows changed. The
+reported numbers are the first honest run's numbers.
+
+### Cluster consistency (D17 validation)
+
+Against hand labels: **0 clusters contain members with conflicting gold labels.**
+A positive result for D17 — but only 7 of 776 clusters had two or more labelled
+members, so the check has very little power and rules out little.
+
+Widened to predicted tags across all 776 clusters: 5 conflicts before the fix,
+**2 after**, and both remaining are genuine upstream variation rather than bad
+merges — one hall's `Banana Shake` contains egg and another's does not; one
+hall's `Kathi Roll` is marked non-veg and another's is not.
+
+---
+
+## D21. Ground-truth provenance and its limits
+
+**Recorded so that any published tagger number carries its caveats.**
+
+Labels were produced by **a single annotator with direct familiarity with IITK
+mess food**. Consequences, all stated rather than implied:
+
+- **No inter-annotator agreement figure exists**, and none can be computed
+  retrospectively. Every accuracy number in D20 is measured against one
+  person's judgement.
+- **Zero items were marked `unclear`.** On review the annotator confirmed every
+  item was resolvable — but **partly from domain familiarity rather than from
+  string evidence alone**. Only 11% of the sample carried an explicit diet
+  marker, so 89% was resolved by inference that a string-only tagger cannot
+  reproduce.
+- Therefore **tagger errors on such items reflect a genuine limitation of the
+  rule-based approach for this deployment, not a labelling defect.** When the
+  tagger abstains on `Kathi Roll` and the annotator knows the hall serves the
+  vegetarian one, both are behaving correctly given what each can see. The gap
+  is real and is a property of the method, not a mistake by either party.
+
+**Consequence for the benchmark.** The ground truth encodes IITK-specific priors
+unavailable to any system that reads only the corpus. Results should be read as
+"how well can a string-only method reproduce an informed local judgement", not
+as "how well does the system know the truth". This is consistent with D16: the
+benchmark measures faithfulness to the corpus, and here the ground truth sits
+slightly *outside* the corpus.
+
+**Not rejected, but noted for a later phase:** a second annotator on the same
+150 items would produce an agreement figure and would show whether the
+zero-`unclear` result is a property of the vocabulary or of the annotator.
