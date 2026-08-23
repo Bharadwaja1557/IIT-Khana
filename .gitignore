@@ -1,0 +1,20 @@
+# Personal working notes — never commit
+.notes/
+
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Local data
+*.db
+*.sqlite
+*.sqlite3
+data/raw/
+data/cache/

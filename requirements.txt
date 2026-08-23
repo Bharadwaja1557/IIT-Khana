@@ -1,0 +1,16 @@
+# Phase 0: only what we know we need. Add per phase, with a reason.
+
+# HTTP client for ingestion from the campusmess.in JSON API.
+httpx==0.28.1
+
+# Config loading from .env.
+python-dotenv==1.0.1
+
+# Tests.
+pytest==8.3.4
+
+# NOTE: sqlite3 is in the Python stdlib — no dependency needed.
+# NOTE: no vector DB here, on purpose. See DECISIONS.md, "Storage".
+#       The corpus is 294 menu rows / ~1,600 item mentions. A flat cosine
+#       scan over a numpy array is sufficient; that dependency lands in
+#       Phase 3, when the retrieval path is actually built.
