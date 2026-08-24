@@ -964,3 +964,378 @@ slightly *outside* the corpus.
 **Not rejected, but noted for a later phase:** a second annotator on the same
 150 items would produce an agreement figure and would show whether the
 zero-`unclear` result is a property of the vocabulary or of the annotator.
+
+---
+
+## D22. Chunking: one chunk per (hall, day, meal)
+
+**Decision.** 294 chunks, one per slot. Each carries hall name, hall type,
+location, day, meal, the base menu, and the extras, as readable text:
+
+    Hall 12 (Boys hall, Near MT Section) — Wednesday Dinner
+    Menu: Kadhai Paneer, Egg Curry, Panchratan Dal
+    Extras: White Sauce Pasta, Besan Halwa, Mutton Rogan Josh (Non-Veg)
+
+**Alternatives rejected.**
+
+*Per-item chunks (1,903).* Each item its own vector. Rejected because it
+destroys the context that makes a chunk answerable — a vector for
+`"Paneer Pasanda"` carries no hall, day or meal, so the citation cannot be
+mapped back and D8's lookup and comparison questions become unanswerable without
+a join the baseline is not allowed to do. It also multiplies the corpus 6.5x for
+a corpus whose whole point is that it is small. **See D25 — Phase 2 produced
+evidence this trade-off is worth re-testing as an ablation.**
+
+*Per-hall-day chunks (98).* Breakfast, lunch and dinner in one chunk. Rejected
+because every D8 question filters on meal, and merging three meals into one
+vector guarantees the wrong-meal retrievals we already see at slot granularity
+(Q2 retrieved `hall-4__friday__breakfast` at 0.802, above every correct chunk —
+merging would make that worse, not better).
+
+**Fairness constraints on chunk content**, because a rigged strawman would make
+the whole comparison worthless:
+
+- Hall metadata is **included**. Without it D8 category 7 is unanswerable by
+  construction.
+- Item text is `item_raw`, **verbatim** — so upstream's `(Non-Veg)` markers are
+  visible to the baseline. Stripping them would cripple it on the questions that
+  matter most.
+- The Phase 1 **derived diet tags are excluded**. Those are the structured path's
+  enrichment; handing a derived column to a "naive" baseline would flatter it
+  rather than test it.
+
+---
+
+## D23. Vector storage: a numpy matrix, not FAISS or sqlite-vec
+
+**Decision.** `db/chunks.npy` (294 x 384 float32, 451 KB) plus
+`db/chunks.meta.json`, beside `db/khana.db`. Exact flat cosine scan.
+
+**This deviates from the Phase 2 brief**, which said "FAISS or sqlite-vec, not a
+server", so the reasoning is recorded rather than assumed.
+
+At n=294 an exact scan is ~0.1 ms and is **strictly more accurate** than any
+approximate index — FAISS's value is approximation, which at this scale buys
+nothing and costs recall. Vectors are L2-normalised by the model (verified: norms
+are exactly 1.0), so cosine similarity is a single `vecs @ q` dot product. The
+brief's real constraints — persisted next to the SQLite DB, no server — are both
+met, and `requirements.txt` already predicted this in Phase 0 ("a flat cosine
+scan over a numpy array is sufficient").
+
+Confirmed by the author: keep numpy. Swapping in FAISS later is ~10 lines.
+
+---
+
+## D24. Embeddings and the LLM provider seam
+
+**Embedding model: BAAI/bge-small-en-v1.5 via `fastembed`.**
+
+`sentence-transformers` is the obvious route and pulls torch (~2 GB). `fastembed`
+runs the same model on onnxruntime with no torch: measured total venv **236 MB**.
+Same model the brief asked for, at a tenth of the footprint.
+
+bge-v1.5 is trained **asymmetrically** — queries take an instruction prefix,
+documents do not:
+
+    QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
+
+Applied to queries only. Omitting it measurably degrades retrieval, and a fair
+baseline uses the model as its authors intended.
+
+**LLM: Gemini, behind an `LLM` ABC.** `GeminiLLM`, `AnthropicLLM` and `EchoLLM`
+all implement one two-method interface, so adding a provider is one class rather
+than a refactor. All generation settings (`MAX_TOKENS`, retry policy) live in
+`rag/llm.py` and nowhere else, because Phase 3 compares three systems on tokens
+and latency and those numbers are only comparable if every system calls the model
+identically.
+
+**`gemini-2.5-flash` is dead for new API keys** — it still appears in
+`models.list()` but returns `404 ... no longer available to new users. Please
+update your code to use models/gemini-3.6-flash`. `gemini-3.7-flash` returned
+`503 high demand`. Pinned to **`gemini-3.6-flash`**, the replacement the API
+itself names.
+
+**Retry:** 429/503/5xx, 6 attempts, `2^n` seconds with full jitter capped at 64 s,
+honouring `retry-after` when present. Needed because free-tier Gemini has
+per-minute and per-day caps and Phase 3 will run ~300 queries.
+
+**Thinking tokens are reported separately from completion tokens.** Gemini 3.x
+thinks by default; across the Phase 2 smoke test thinking averaged **582
+tokens/query against 108 completion tokens — 5.4x the visible answer**. Folding
+them into `completion_tokens` would understate cost fivefold. Thinking is left at
+the model default rather than disabled, so that Phase 3 can hold the setting
+constant across all three systems; the requirement is that the number is
+**visible**, not that it is zero.
+
+---
+
+## D25. Per-item vs per-slot chunking is a Phase 5 ablation
+
+**Recorded because Phase 2 produced a mechanism, not just a suspicion.**
+
+`hall-10__tuesday__dinner` serves `Paneer Pasanda` and ranks **47** for "how many
+halls serve paneer at dinner on Tuesday" — outside any plausible k. The chunk:
+
+    Menu: Kulcha, Chole, Veg Dal
+    Extras: Kerala Style Chicken Curry (Non-Veg), Boiled Chicken (Non-Veg),
+            Paneer Pasanda, Kesar Milk
+
+Two chicken dishes dominate the embedding. The same chunk ranks **5th** for the
+chicken-negation query. A chunk's position tracks its **dominant term**, not
+whether it contains the queried item.
+
+Ranks of all 8 gold chunks for that question, with whether the chunk also carries
+non-veg text:
+
+    rank  1  no    hall-6     rank  4  no    hall-13
+    rank  2  no    hall-2     rank  5  no    hall-9
+    rank  3  YES   hall-14    rank  7  no    hall-5
+    rank 19  YES   gh-1       rank 47  YES   hall-10
+
+**Suggestive, not deterministic** — both badly-ranked gold chunks carry competing
+non-veg content, but `hall-14` does too and still ranks 3rd. The supportable
+claim is weaker: *a chunk holding many competing dishes is at risk of being
+pulled away from any one of them*, and per-slot chunking makes that risk
+structural by forcing 4–10 dishes into a single vector.
+
+**Ablation:** per-item (1,903 chunks) vs per-slot (294), same model, same k, same
+D8 questions. Expected trade — per-item should fix dilution but lose the slot
+context that makes lookup and comparison easy. This is why D22's rejection of
+per-item chunking is worth re-testing rather than assuming.
+
+---
+
+## D26. Model pinning, and the tier finding
+
+**Decision.** The evaluated model is pinned to the exact string:
+
+    gemini-3.6-flash          version 3.6-flash-07-2026
+    input limit  1,048,576 tokens
+    output limit    65,536 tokens
+
+Set in `.env` as `GEMINI_MODEL` and defaulted in `rag/llm.py`.
+
+### `gemini-3.6-flash` is a PREVIEW model — three consequences
+
+1. **Billing may be enabled by default.** Preview models frequently are not
+   covered by the free tier.
+2. **Rate limits are more restrictive** than for GA models. The backoff in D24
+   (429/503, six attempts, jittered `2^n` to 64 s) is load-bearing for Phase 3's
+   ~300 queries, not decorative.
+3. **Google deprecates previews with two weeks' notice.** This model can
+   disappear mid-project, exactly as `gemini-2.5-flash` already did (D24: still
+   listed by `models.list()`, returns 404 for new keys).
+
+### Tier: the key is NOT on the free tier
+
+**Checked rather than assumed.** A live request returns:
+
+    X-Gemini-Service-Tier: standard
+
+`standard` is Google's label for the paid, pay-as-you-go tier; a free-tier key
+reports `free`. **So this key is billing-enabled, and Phase 3's ~300 queries will
+incur real charges.**
+
+Flagged because Gemini was chosen partly on the expectation of a free tier with
+no per-token cost. The header is the only programmatic signal available — the
+API exposes no billing endpoint — so **confirm in Google AI Studio / Cloud
+Console before running Phase 3**, and note that Phase 2's smoke test already
+consumed billable tokens (7 queries: 2,976 prompt + 758 completion + 4,074
+thinking).
+
+**Resolved in D29:** the `standard` header reflects the Cloud project's billing
+state, not the author's Google AI Pro subscription — consumer subscription and
+developer API are separate products, and API quotas are per-Cloud-project. Cost
+is **not a blocker**: ~$4 per full three-system run. No provider change.
+
+Cost is small at this corpus size but must be stated rather than assumed away.
+The long-context baseline is the expensive one: the whole corpus measures
+**17,147 tokens** (294 chunks, 47,710 chars — D12 estimated ~25k, so the estimate
+was high), or **1.6% of the 1M context window**. It fits comfortably, but it is
+17k prompt tokens on *every* long-context query versus ~425 for naive RAG.
+
+### Methodology: one model string for the whole table
+
+**All three Phase 3 systems — naive RAG, long-context stuffing, and the
+structured router — must be evaluated on the same model string.** Accuracy,
+tokens, and latency are only comparable if the generator is held constant; a
+table with two models in it compares models, not architectures.
+
+**If the model changes mid-evaluation, the entire results table is rerun, not
+patched.** Splicing rows generated by two different models — or two different
+preview snapshots of the "same" model — produces a table that looks coherent and
+is not. Given consequence 3 above this is a live risk, so the rule is recorded
+before it is needed. The pinned version string `3.6-flash-07-2026` is recorded so
+a silent snapshot change is detectable.
+
+---
+
+## D27. Temporal resolution is SHARED preprocessing, not a router feature
+
+**Decision.** Resolving "today" / "tonight" / "tomorrow" to a concrete
+`(day_of_week, meal)` happens **before** the query reaches any system, and the
+result is made available **identically** to naive RAG, long-context stuffing, and
+the structured router.
+
+**Why this matters more than it looks.**
+
+Phase 2 measured the temporal question (D8 Q5, *"Which mess has chicken for
+dinner tonight?"*) at **0/5 gold chunks retrieved at every k up to 40, and 0/14
+slot coverage**. The generator then answered about Friday and Thursday without
+ever noting it could not resolve the day — nothing in the prompt carried today's
+date, so it had nothing to resolve it with.
+
+If Phase 4 gives the router a temporal resolver and the baseline never gets the
+date, **the router wins the temporal category because it was told the day and the
+baseline was not.** That measures the experimental setup, not the architecture —
+precisely the kind of rigged comparison D16 and the Phase 2 fairness constraints
+(D22) exist to prevent. It would be the single easiest finding for a sceptical
+reader to dismantle, and they would be right to.
+
+**What the honest test is.** With the day resolved and handed to every system
+equally, the temporal category measures whether each system can **use** a
+resolved day. That is a real and open question, and retrieval may still lose it:
+a query embedding carries only a weak day signal, so even
+`"...for dinner on Tuesday"` competes against every other Tuesday-dinner-adjacent
+chunk rather than filtering to them. Phase 2 already showed this at slot
+granularity — Q2 retrieved `hall-4__friday__breakfast` at 0.802, outranking every
+correct chunk. A SQL `WHERE day_of_week = 'Tuesday'` does not have that problem.
+
+So the router may well still win the category. The difference is that it would
+then be winning on **architecture** rather than on **information the baseline was
+denied**, and that is the only version of the result worth publishing.
+
+**Consequence for Phase 2's numbers.** The baseline as built has **no date
+injection**. Its Phase 2 smoke-test results are therefore a pipeline check, not
+benchmark inputs. **The Phase 2 baseline must be re-run with date injection
+before its Phase 3 numbers are taken.** Q5's current answer in particular is not
+a valid baseline datapoint — it is a measurement of a missing prompt field.
+
+**Rejected:** *letting each system resolve dates itself.* It moves a shared
+preprocessing step inside the thing being compared, so any difference in
+resolver quality contaminates the architecture comparison. Resolution is a solved
+problem and not what this project is measuring.
+
+---
+
+## D28. Context caching is the strongest rebuttal to D12, and is met head-on
+
+**The objection, stated at full strength.** D12 added the long-context baseline
+because a sceptic will ask why not just stuff all 294 rows into the prompt. The
+sharper form of that question is: *the corpus prompt is byte-identical on every
+query, so cache it — cached input bills at roughly 10% of base rate, and your
+cost advantage evaporates.*
+
+**That objection is largely correct, and the results table must not imply
+otherwise.**
+
+The 17,147-token corpus prompt is a near-ideal caching candidate: fixed content,
+no per-query variation, reused across the whole benchmark. Gemini supports this
+directly — `client.caches` (`create` / `get` / `list` / `update` / `delete`) is
+present in the pinned SDK, and cache usage is **measurable at runtime** via
+`usage_metadata.cached_content_token_count` and `cache_tokens_details`, so Phase
+3 can report observed cache behaviour rather than assert it.
+
+### Phase 3 reports the long-context baseline THREE ways
+
+1. **Uncached token cost** — what it costs with no caching.
+2. **Cached-cost equivalent** — the same run priced at the cached input rate.
+3. **p50 latency** — wall clock, which caching does not change.
+
+### What caching does and does not close
+
+Per-query input, measured (`gemini-3.6-flash`, $1.50/M input):
+
+    naive RAG            ~425 tokens    $0.00064 / query
+    long-context      17,147 tokens     $0.0257  / query   uncached   40x
+    long-context, cached input          $0.0026  / query   cached      4x
+
+**Caching collapses most of the cost gap — 40x down to 4x — but not all of it.**
+Stating "4x" rather than "parity" matters: the remaining gap is real but small
+enough that cost alone is not a winning argument.
+
+**Caching does nothing for latency.** The 17,147 tokens are still *processed* on
+every query; caching avoids re-billing them, not re-reading them. **And it does
+nothing for accuracy** — a cached wrong answer is still wrong.
+
+### The defensible claim, narrowed
+
+D12 as originally written implied a cost advantage that caching largely erases.
+The honest, narrower claim:
+
+> **Caching closes the cost gap. The accuracy and latency gaps are
+> architectural.**
+
+The results table must be read that way, and the write-up must say it in those
+words rather than letting a cost column imply an advantage a sceptic can delete
+with one API call. If the router's case rests on cost, it does not have a case;
+its case has to rest on accuracy and latency.
+
+**Two confounds Phase 3 must control for**, both to be verified at the time
+rather than assumed now:
+
+- **Implicit caching.** Gemini may cache repeated prefixes automatically for some
+  models. If so, the "uncached" column is not actually uncached and must be
+  labelled from the observed `cached_content_token_count`, not from intent.
+- **Explicit-cache overheads.** Explicit caches carry a storage cost per
+  token-hour and a minimum cacheable size. Both need checking against current
+  pricing before the cached-cost column is quoted, since at 17k tokens the
+  minimum-size threshold is the one most likely to bite.
+
+---
+
+## D29. Two-model strategy: cheap for iteration, pinned for the table
+
+**Decision.**
+
+| Use | Model |
+|---|---|
+| Development, dry runs, harness debugging, question authoring | a **free-tier Flash-Lite** model (candidates present in `models.list()`: `gemini-3.5-flash-lite`, `gemini-3.1-flash-lite`, `gemini-flash-lite-latest`) |
+| **The final Phase 3 results table** | the pinned **`gemini-3.6-flash`** / `3.6-flash-07-2026`, all three systems, one run |
+
+Iteration should not be paid for. The table should not be cheap.
+
+**Why the final table is NOT run on Flash-Lite.**
+
+Phase 2's headline finding — the generator hallucinated nothing across seven
+questions, produced zero invented citations, and twice rejected retrieved chunks
+as off-slot unprompted — is **a property of the model, not of RAG.** That
+distinction is load-bearing for the whole project:
+
+- The Phase 2 conclusion was *"the baseline's failures are retrieval failures,
+  not generation failures,"* which is what makes it a fair strawman.
+- **On a weaker model, naive RAG may fail for generation reasons instead** —
+  fabricating halls it never retrieved, or citing excerpts that do not exist.
+- The headline result would then be partly an artifact of model choice, and a
+  reader could not tell which failures were architectural and which were the
+  generator being weak.
+
+Long-context needle-finding is likewise model-dependent — a weaker model may lose
+facts inside a 17k-token prompt that a stronger one retains. That risk is
+**smaller** here, since 17,147 tokens is only 1.6% of the 1M window and well
+clear of the region where long-context degradation usually appears, but it is not
+zero.
+
+**If quota or cost later forces the final table onto Flash-Lite**, the Phase 2
+smoke test is **re-run on that model first** to check whether the
+no-hallucination property still holds. **Do not inherit the finding silently.**
+If it does not hold, that is itself a reportable result — it would mean the
+fairness of the baseline depends on generator strength, which is worth a row in
+the write-up rather than a silent footnote.
+
+This sits alongside D26's rule that the whole table is rerun rather than patched
+if the model changes mid-evaluation. The two together: **one model for the table,
+and any change to it invalidates the table rather than a row of it.**
+
+### Tier question from D26, resolved
+
+The `X-Gemini-Service-Tier: standard` header is explained: **a Google AI Pro
+consumer subscription does not affect developer API quotas.** The consumer
+subscription and the developer API are separate products, and API limits are
+per-Cloud-project. So the header reflects the Cloud project's billing state, not
+the subscription.
+
+**Cost is not a blocker** — approximately **$4 per full three-system run** at
+$1.50/$7.50 per million, less if a discounted rate applies. No provider change.
+Recorded so the number is on the record rather than rediscovered later; the
+dominant term is the long-context arm's 17,147 prompt tokens per query (D28).

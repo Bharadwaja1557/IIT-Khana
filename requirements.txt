@@ -1,16 +1,24 @@
-# Phase 0: only what we know we need. Add per phase, with a reason.
+# Only what we know we need. Added per phase, with a reason.
 
+# --- Phase 0/1: ingestion ---
 # HTTP client for ingestion from the campusmess.in JSON API.
 httpx==0.28.1
-
 # Config loading from .env.
-python-dotenv==1.0.1
-
+python-dotenv==1.2.3
 # Tests.
-pytest==8.3.4
+pytest==9.1.1
+
+# --- Phase 2: naive RAG baseline ---
+# Embeddings: BAAI/bge-small-en-v1.5 on onnxruntime. Deliberately NOT
+# sentence-transformers, which pulls torch (~2GB) for the same model.
+# Measured venv with fastembed: 236MB. See DECISIONS.md D24.
+fastembed==0.8.0
+# Flat cosine scan over a 294x384 matrix. No vector DB — see DECISIONS.md D23.
+numpy==2.5.2
+# LLM provider. The LLM ABC in rag/llm.py keeps this swappable (D24).
+google-genai==2.19.0
+# Second provider implementation, kept as proof the seam works.
+anthropic==1.0.0
 
 # NOTE: sqlite3 is in the Python stdlib — no dependency needed.
-# NOTE: no vector DB here, on purpose. See DECISIONS.md, "Storage".
-#       The corpus is 294 menu rows / ~1,600 item mentions. A flat cosine
-#       scan over a numpy array is sufficient; that dependency lands in
-#       Phase 3, when the retrieval path is actually built.
+# NOTE: still no vector DB, no Qdrant, no server. 294 chunks fit in 451KB.
