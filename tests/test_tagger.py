@@ -131,3 +131,31 @@ def test_unsignalled_items_default_to_veg(raw):
 def test_empty_input_does_not_crash():
     assert tag("") == "veg"
     assert tag(None) == "veg"
+
+
+# ------------------------------------------- typo tolerance, veg qualifiers only
+
+
+def test_misspelt_veg_qualifier_still_resolves():
+    """Upstream hand-transcribes; "Vegetgable Pulav" should not abstain."""
+    assert tag("Vegetgable Pulav") == "veg"
+    assert tag("Seasonal Vegetables") == "veg"
+
+
+@pytest.mark.parametrize("raw,expected", [
+    ("Kaju Katli", "veg"),                    # 'katli' ~ katla
+    ("Kheera Raita", "veg"),                  # 'kheera' ~ kheema
+    ("Kala Chana Curry", "veg"),              # 'kala'   ~ katla
+    ("Malai Cham Cham", "veg"),               # 'cham'   ~ ham
+    ("Besan And Moong Dal Chila", "veg"),     # 'and' ~ anda, 'chila' ~ hilsa
+])
+def test_protein_lexicon_is_never_fuzzy_matched(raw, expected):
+    """Fuzzy-matching proteins would label these sweets and vegetables as meat.
+    Proteins stay exact-match permanently — see the comment in tagger.py."""
+    assert tag(raw) == expected
+
+
+def test_fuzzy_qualifier_does_not_cross_diet_lines():
+    """D17: 'veg' and 'egg' are one edit apart, so short tokens stay exact."""
+    assert tag("Egg Roll") == "egg"
+    assert tag("Veg Roll") == "veg"

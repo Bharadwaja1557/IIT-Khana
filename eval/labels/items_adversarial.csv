@@ -1,0 +1,92 @@
+item,count,stratum,example_raw,label
+butter chicken,7,A_unmarked_nonveg,Butter Chicken,nonveg
+chilli chicken,7,A_unmarked_nonveg,Chilli Chicken,nonveg
+fish finger,5,A_unmarked_nonveg,Fish Finger (a),nonveg
+chicken kali mirch,4,A_unmarked_nonveg,Chicken Kali Mirch,nonveg
+chicken malai tikka,4,A_unmarked_nonveg,Chicken Malai Tikka (a),nonveg
+tandoori chicken,2,A_unmarked_nonveg,Tandoori Chicken (a),nonveg
+chicken kasha,1,A_unmarked_nonveg,Chicken Kasha (a),nonveg
+chicken lollypop,1,A_unmarked_nonveg,Chicken Lollypop (a),nonveg
+katla,1,A_unmarked_nonveg,Katla),nonveg
+katla kaila,1,A_unmarked_nonveg,Katla Kaila,nonveg
+mughlai chicken,1,A_unmarked_nonveg,Mughlai Chicken (a),nonveg
+basanti pulao,4,B_unclear,Basanti Pulao,veg
+hakka noodles,4,B_unclear,Hakka Noodles,veg
+kathi roll,3,B_unclear,Kathi Roll,veg
+bombay sandwich,2,B_unclear,Bombay Sandwich,veg
+burger,2,B_unclear,Burger,veg
+noodles,2,B_unclear,Noodles,veg
+pulao,2,B_unclear,Pulao,veg
+basanti pulav,1,B_unclear,Basanti Pulav,veg
+bomay sandwich,1,B_unclear,Bomay Sandwich,veg
+bombay style sandwich,1,B_unclear,Bombay-style Sandwich,veg
+chilli chowmein,1,B_unclear,Chilli Chowmein,veg
+cutlet,1,B_unclear,Cutlet,veg
+grilled pizza sandwich,1,B_unclear,Grilled Pizza Sandwich,veg
+kolkatta biryani,1,B_unclear,Kolkatta Biryani,nonveg
+manchurian,1,B_unclear,Manchurian,veg
+manchurian fried rice,1,B_unclear,Manchurian Fried Rice,veg
+manchurian gravy,1,B_unclear,Manchurian Gravy,veg
+momos,1,B_unclear,Momos,veg
+pesta roll,1,B_unclear,Pesta Roll (a),veg
+pulao rice,1,B_unclear,Pulao Rice,veg
+samosa chaat manchurian fried rice,1,B_unclear,Samosa Chaat Manchurian Fried Rice,veg
+sandwich,1,B_unclear,"Sandwich (W2, W4) (Alternate)",veg
+tawa pulao,1,B_unclear,Tawa Pulao,veg
+veg biryani,8,C_form_probe,Veg Biryani,veg
+paneer do pyaza,6,C_form_probe,Paneer Do Pyaza,veg
+paneer kathi roll,5,C_form_probe,Paneer Kathi Roll,veg
+paneer tikka,5,C_form_probe,Paneer Tikka,veg
+paneer tikka masala,5,C_form_probe,Paneer Tikka Masala,veg
+veg cutlet,5,C_form_probe,Veg Cutlet,veg
+veg kofta,4,C_form_probe,Veg Kofta,veg
+veg pulao,4,C_form_probe,Veg Pulao,veg
+fried rice,3,C_form_probe,Fried Rice,veg
+matar pulao,3,C_form_probe,Matar Pulao,veg
+paneer 65,3,C_form_probe,Paneer 65,veg
+spring roll,3,C_form_probe,Spring Roll,veg
+veg sandwich,3,C_form_probe,Veg Sandwich,veg
+aloo sandwich,2,C_form_probe,Aloo Sandwich,veg
+dahi kebab,2,C_form_probe,Dahi Kebab,veg
+paneer cutlet,2,C_form_probe,Paneer Cutlet,veg
+paneer korma,2,C_form_probe,Paneer Korma,veg
+paneer roll,2,C_form_probe,Paneer Roll,veg
+veg fried rice,2,C_form_probe,Veg Fried Rice,veg
+veg korma,2,C_form_probe,Veg Korma,veg
+veg manchurian,2,C_form_probe,Veg Manchurian,veg
+aloo tikki burgers,1,C_form_probe,Aloo Tikki Burgers,veg
+bhindi do pyaza,1,C_form_probe,Bhindi Do Pyaza,veg
+bombay veg sandwich,1,C_form_probe,Bombay & Veg Sandwich,veg
+bread malai sandwich,1,C_form_probe,Bread Malai Sandwich,veg
+cheese cigar roll,1,C_form_probe,Cheese Cigar Roll,veg
+dahi kabab,1,C_form_probe,Dahi Kabab,veg
+hakka noodles paneer chilli combo,1,C_form_probe,Hakka Noodles+Paneer Chilli (2Pc) Combo,veg
+hakka veg chowmein,1,C_form_probe,Hakka Veg Chowmein,veg
+hara bhara kabab,1,C_form_probe,Hara Bhara Kabab,veg
+hara bhara kebab,1,C_form_probe,Hara Bhara Kebab (b),veg
+lauki kofta,1,C_form_probe,Lauki Kofta,veg
+malai kofta,1,C_form_probe,Malai Kofta,veg
+malai roll,1,C_form_probe,Malai Roll,veg
+malai sandwich,1,C_form_probe,Malai Sandwich,veg
+moong daal zeera pyaaz pulao,1,C_form_probe,Moong Daal Zeera Pyaaz Pulao,veg
+nargisi kofta curry,1,C_form_probe,Nargisi Kofta Curry,egg
+paneer biryani,1,C_form_probe,Paneer Biryani,veg
+paneer momos,1,C_form_probe,Paneer Momos,veg
+paneer pulao,1,C_form_probe,Paneer Pulao,veg
+paneer tikka cheese roll,1,C_form_probe,Paneer Tikka Cheese Roll,veg
+soyabean masoor pulao,1,C_form_probe,Soyabean-Masoor Pulao,veg
+suji ka halwa tomato fried rice,1,C_form_probe,Suji Ka Halwa Tomato Fried Rice,veg
+veg and mayo sandwich,1,C_form_probe,Veg And Mayo Sandwich,veg
+veg biryani with pudeena chutney,1,C_form_probe,Veg- Biryani With Pudeena Chutney,veg
+veg cutlet sweet phirni,1,C_form_probe,Veg Cutlet (2 Pc). Sweet: Phirni,veg
+veg fried rice with pudina chutney,1,C_form_probe,Veg Fried Rice With Pudina Chutney,veg
+veg hyderabadi biryani,1,C_form_probe,Veg Hyderabadi Biryani,veg
+veg kabab,1,C_form_probe,Veg Kabab,veg
+veg kabab paratha,1,C_form_probe,Veg Kabab Paratha,veg
+veg mayo sandwich,1,C_form_probe,Veg-Mayo Sandwich (b),veg
+veg seekh kabab,1,C_form_probe,Veg Seekh Kabab,veg
+veg soup,1,C_form_probe,Veg Soup,veg
+vegetable biryani,1,C_form_probe,Vegetable Biryani,veg
+vegetable pulao,1,C_form_probe,Vegetable Pulao,veg
+vegetable pulav,1,C_form_probe,Vegetable Pulav,veg
+vegetgable pulav,1,C_form_probe,Vegetgable Pulav,veg

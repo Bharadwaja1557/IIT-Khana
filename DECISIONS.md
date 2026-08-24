@@ -734,15 +734,109 @@ deliberately absent.
 
 **Decision.** Diet tags (`veg` / `egg` / `nonveg` / `unclear`) are derived from
 item text by a rule/keyword tagger (`ingestion/tagger.py`), populated at ingest.
-Its measured error rate is a **hard ceiling on every tag-filtered benchmark
-question, regardless of retrieval architecture.** No router, no embedding model
-and no amount of prompt engineering can answer "which halls have chicken
-tonight" more accurately than the tags underneath it.
+Its error rate is a **hard ceiling on every tag-filtered benchmark question,
+regardless of retrieval architecture.** No router, no embedding model and no
+amount of prompt engineering can answer "which halls have chicken tonight" more
+accurately than the tags underneath it.
 
-### The numbers
+### The headline metric is per-class precision and recall, NOT accuracy
 
-Measured against 150 hand labels covering 534 mentions. One evaluation run; the
-single subsequent code change left the eval output byte-identical (see below).
+**Superseded framing.** An earlier version of this decision quoted overall
+accuracy on the unmarked subset (97.0%) as the ceiling, and noted that the
+majority-class baseline beat it (98.5%). That framing was wrong, and it was
+wrong in a way that flattered a useless classifier.
+
+The corpus is 86.8% veg. On a distribution that skewed, accuracy is
+near-uninformative: **"always answer veg" scores 98.5% on the unmarked subset
+and has exactly zero non-veg recall.** Every chicken question returns zero
+halls. It is a perfect score at the only job that does not matter, and total
+failure at the only job that does.
+
+So the headline is **per-class precision and recall**, and specifically:
+
+> **The stated ceiling on tag-filtered questions is the tagger's ability to
+> infer "this is meat" from a string carrying no `(Non-Veg)` marker.**
+
+Accuracy is demoted to a footnote and should not be quoted as a headline result.
+
+That quantity was intended to be expressed as non-veg recall on unmarked text.
+C3 measured it and found the recall denominator is 1, so it is reported as
+**precision plus bounded exposure** instead of a recall percentage. The next
+section gives the numbers and the reasoning.
+
+### The ceiling, as measured by the C3 adversarial pass
+
+The random 150 could not measure this (all 17 of its non-veg labels were
+marked; the unmarked subset had n=0 non-veg). C3 built a deliberately
+adversarial sample of 91 items — `eval/labels/items_adversarial.csv`, scored
+separately by `scripts/eval_adversarial.py`, **never pooled with the random
+150** — to reach the 0.6% of rows that random sampling cannot.
+
+    bucket                                    n    gold
+    A  unmarked, tagger said nonveg          11    nonveg=11
+    B  tagger abstained (unclear)            23    veg=22, nonveg=1
+    C  unmarked, tagger said veg,            57    veg=56, egg=1
+       ambiguous dish form
+
+**Result 1 — precision on unmarked non-veg assertions: 100% (11/11), zero false
+positives.** When the tagger asserts "this is meat" from text alone, with no
+marker to lean on, it has not yet been wrong. This is a genuine measured number.
+
+**Result 2 — non-veg recall: NOT ESTIMABLE.** Buckets B and C were selected
+independently of what the tagger predicted, so they are the only valid recall
+probe. Across all 80 of them the pass found **exactly one** true non-veg item:
+
+    [MISSED, pred=unclear]  'Kolkatta Biryani'  x1 row
+
+A denominator of 1 does not support a recall percentage. Quoting "0%" from n=1
+would be worse than useless, so it is not quoted. **The ceiling is stated as
+bounded exposure instead:**
+
+> Of the 12 unmarked non-veg rows now known to exist in the corpus, the tagger
+> tags 11 `nonveg` and **abstains** on the 12th. Zero are silently mislabelled
+> as veg. Unmarked non-veg is **12 of 1903 rows = 0.63%**.
+
+This is a near-census of the plausible hiding places rather than a sample
+estimate, and it is deliberately not written as a recall figure — the numerator
+of any such figure would include bucket A, which was selected by the tagger's
+own predictions and is therefore circular for recall.
+
+**Result 3 — bucket C returned zero non-veg, and that is the finding.** 57
+items selected purely on ambiguous dish form (`biryani`, `pulao`, `roll`,
+`kofta`, `do pyaza`, `fried rice`, `soup`, ... chosen independently of the
+tagger's own vocabulary), and not one hid meat. **Unmarked non-veg in this
+corpus is confined to items the tagger already catches.** That is a real result
+about the corpus, not a failed experiment, and no further probe is warranted.
+
+**The one silent error in 91 items.** `Nargisi Kofta Curry` is gold `egg`;
+the tagger said `veg`. Nargisi kofta is built around a boiled egg, which is
+recoverable only from culinary knowledge — the string contains no egg word.
+This is D21 territory: a genuine limitation of a string-only method, not a rule
+that should be patched in. Per-class over the adversarial set, **marked
+biased-sample, context only, not generalization figures**:
+
+    class      precision    recall   gold n   pred n
+    veg            98.2%     71.8%       78       57
+    egg              n/a      0.0%        1        0
+    nonveg        100.0%     91.7%       12       11
+    unclear         0.0%       n/a        0       23
+
+Of 24 disagreements, **23 are abstentions and 1 is a wrong tag.** The tagger's
+failure mode is visible uncertainty, not silent corruption — including on the
+one non-veg it missed, where it abstained rather than asserting veg. That is the
+behaviour D20 was designed for, and it held under adversarial sampling.
+
+**Residual risk, stated rather than closed.** An unmarked non-veg item whose
+name contains neither a lexicon protein nor an ambiguous dish form (a bare
+`Kosha Mangsho`, say) would be missed by the tagger *and* by this probe. Nothing
+in C3 rules that out. Exposure is bounded by the 0.63% figure only for the
+hiding places actually searched. Not pursued further: at this corpus size the
+measurement changes no downstream decision.
+
+### Footnote: accuracy figures, retained for completeness
+
+Measured against 150 random hand labels covering 534 mentions. Not the headline;
+see above for why.
 
     evaluation                      n  accuracy   abstain  majority
     mention-level (all)           534     98.9%      1.1%     91.4%
@@ -766,66 +860,65 @@ predicted class with an empty gold row:
     nonveg            0        0       17        0       17
     unclear           0        0        0        0        0
 
-**The stated ceiling is the unmarked-subset figure: 97.0% type-level
-(98.8% mention-weighted).** Marked items are not a test — the marker is
-authoritative and scoring 100% on them measures nothing.
-
-### Two things that must be said with that number
-
-**1. The tagger loses to the majority baseline on the honest subset.** 97.0%
-against 98.5% for always answering "veg". Every one of its four errors is an
-**abstention**, not a wrong tag — but abstentions are scored as errors, and
-against a gold set that is 98.5% one class, any abstention is a net loss. This
-is reported rather than hidden. Abstention is still the right default (D2 in
-this decision), but the accuracy column does not reward it.
-
-**2. The 97.0% figure does not bound the case we actually care about.** All 17
-non-veg items in the label set carry an explicit marker; **not one unmarked
-item is non-veg**. So the unmarked subset measures only "avoid false non-veg on
-vegetarian food", which is trivial when the answer is always veg. It does not
-measure **non-veg recall on unmarked text** — the thing a chicken query depends
-on. That case exists and the sample missed all of it:
-
-    menu_item rows                    1903
-      tagged nonveg                    195  (10.2%)
-        marked upstream                184  (94% of non-veg)
-        inferred from text, unmarked    11  (6%)   <- accuracy UNMEASURED
-
-    Butter Chicken, Chilli Chicken, Chicken Kali Mirch, Chicken Kasha,
-    Chicken Lollypop, Chicken Malai Tikka, Mughlai Chicken, Tandoori Chicken,
-    Fish Finger, Katla Kaila, Katla
-
-**Exposure is bounded (11 of 1903 rows); accuracy on them is not.** Any
-published result on a non-veg question inherits this unquantified risk. Closing
-it needs a targeted label pass over unmarked protein-bearing strings, not a
-larger random sample — a random sample of this corpus will keep drawing veg.
+Read these with the caveat that `nonveg` precision/recall of 100% is measured
+entirely on marked items and therefore measures regex matching, not inference.
 
 ### Abstention
 
 The tagger emits `unclear` rather than guessing on genuinely ambiguous dish
 names. A wrong tag silently corrupts a query answer; an abstention is visible.
-Corpus-wide abstention rate: **35 of 1903 rows (1.8%)** — dominated by bare
+Corpus-wide abstention rate: **34 of 1903 rows (1.8%)** — dominated by bare
 `Pulao`, `Hakka Noodles`, `Bombay Sandwich`, `Burger`, `Noodles`, `Kathi Roll`,
 `Kolkatta Biryani`, `Cutlet`, `Momos`, `Manchurian`. Abstention rate is always
 reported **separately** from accuracy so the two are never conflated.
 
-Full corpus distribution: veg 1651 (86.8%), nonveg 195 (10.2%),
-unclear 35 (1.8%), egg 22 (1.2%).
+Full corpus distribution: veg 1652 (86.8%), nonveg 195 (10.2%),
+unclear 34 (1.8%), egg 22 (1.2%).
 
-### One iteration, and why it was not eval-set tuning
+### Change protocol: inspection-driven fixes are permitted, tuning is not
 
-**Iterations: 1.** The change came from the cluster-consistency check, not from
-inspecting eval errors. That check revealed upstream writes `Egg Curry
-(Non-Veg)`, `Egg Biryani (Non-Veg)`, `Egg Roll (Non-Veg)` — its marker means
-"not vegetarian" in a two-class sense. Checking the marker first collapsed
-`egg` into `nonveg` for exactly the dishes needing the distinction, so egg is
-now checked **before** the marker and after named proteins. (`murgh` was added
-to the protein lexicon in the same pass; `\bmurg\b` does not match "Murgh".)
+A fix found by **inspecting the corpus or the rules** is permitted. A fix found
+by **looking at eval errors** is tuning and is not. The test is procedural and
+is applied every time:
 
-**The eval output before and after is byte-identical** — the label set contains
-`egg curry` with `example_raw = "Egg Curry"` (unmarked) and is structurally
-blind to the bug. 5 database rows changed tag; 0 evaluation rows changed. The
-reported numbers are the first honest run's numbers.
+> Run the eval before and after. If the output is byte-identical, the change was
+> not tuning. If it changed, report both numbers and name the rows that moved.
+
+Applied three times so far:
+
+1. **Egg before marker** (C2). Found by the cluster-consistency check. Upstream
+   writes `Egg Curry (Non-Veg)`; its marker means "not vegetarian" two-class, so
+   checking it first collapsed `egg` into `nonveg`. Egg now precedes the marker,
+   after named proteins. Eval **byte-identical**; 5 DB rows changed, 0 eval rows.
+2. **`murgh` added to the protein lexicon** (C2). Same scan; `\bmurg\b` does
+   not match "Murgh". Eval **byte-identical**.
+3. **Fuzzy tolerance on veg qualifiers** (C3). Found by a near-miss scan over
+   all 572 corpus tokens. `Vegetgable Pulav` abstained on a transcription typo.
+   Eval **byte-identical**; **1 DB row changed** (`unclear` -> `veg`).
+
+### Fuzzy matching applies to veg qualifiers ONLY, permanently
+
+The same near-miss scan run against the **protein/egg** lexicon returns 8 hits
+at ratio >= 0.80, and 6 are catastrophic:
+
+    'katli'  ~ katla   -> "Kaju Katli" (a sweet)          would become nonveg
+    'kheera' ~ kheema  -> "Kheera Raita" (cucumber)       would become nonveg
+    'kala'   ~ katla   -> "Kala Chana Curry"              would become nonveg
+    'cham'   ~ ham     -> "Malai Cham Cham" (a sweet)     would become nonveg
+    'and'    ~ anda    -> "Besan And Moong Dal Chila"     would become egg
+    'chila'  ~ hilsa   -> "Besan And Moong Dal Chila"     would become nonveg
+
+The 2 genuine hits (`kalia`, `kaila` ~ katla) occur only in `Katla Kalia`,
+`Rohu Kalia`, `Katla Kaila` — each of which **already contains an exact protein
+token**. So fuzzy protein matching gains nothing and would label sweets and
+vegetables as meat.
+
+**Proteins stay exact-match permanently.** Two guards enforce this: tokens
+shorter than 6 characters are exact-only (`veg` and `egg` are one edit apart,
+per D17), and any token matching the protein or egg lexicon is excluded from
+fuzzy qualifier matching entirely. Direction of error also matters — a loose veg
+qualifier can only move an item from `unclear` to `veg`, never manufacture a
+non-veg claim. Pinned by `test_protein_lexicon_is_never_fuzzy_matched`.
 
 ### Cluster consistency (D17 validation)
 
@@ -833,9 +926,9 @@ Against hand labels: **0 clusters contain members with conflicting gold labels.*
 A positive result for D17 — but only 7 of 776 clusters had two or more labelled
 members, so the check has very little power and rules out little.
 
-Widened to predicted tags across all 776 clusters: 5 conflicts before the fix,
-**2 after**, and both remaining are genuine upstream variation rather than bad
-merges — one hall's `Banana Shake` contains egg and another's does not; one
+Widened to predicted tags across all 776 clusters: 5 conflicts before the egg
+fix, **2 after**, and both remaining are genuine upstream variation rather than
+bad merges — one hall's `Banana Shake` contains egg and another's does not; one
 hall's `Kathi Roll` is marked non-veg and another's is not.
 
 ---

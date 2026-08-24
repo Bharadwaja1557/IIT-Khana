@@ -29,6 +29,7 @@ Design principles, fixed BEFORE looking at label performance:
 from __future__ import annotations
 
 import re
+from difflib import SequenceMatcher
 
 TAGS = ("veg", "egg", "nonveg", "unclear")
 
@@ -58,7 +59,7 @@ _AMBIGUOUS = re.compile(
     r")\b", re.I)
 
 # Qualifiers that resolve an ambiguous head to vegetarian.
-_VEG_QUALIFIER = re.compile(
+_VEG_QUALIFIER_RE = re.compile(
     r"\b("
     r"veg|vegetable|vegetarian|paneer|tofu|soya|soyabean|soyabeen|mushroom|"
     r"aloo|alu|aaloo|potato|corn|cheese|dahi|curd|malai|gobi|cabbage|"
@@ -67,6 +68,57 @@ _VEG_QUALIFIER = re.compile(
     r"badam|sattu|pyaz|pyaaz|onion|tomato|imli|pudina|mint|hara|sev|"
     r"noodle veg|crispy corn"
     r")\b", re.I)
+
+# Fuzzy spelling tolerance, VEG QUALIFIERS ONLY.
+#
+# Upstream text is hand-transcribed and misspells qualifiers ("Vegetgable
+# Pulav"), which makes an otherwise resolvable item abstain.
+#
+# This tolerance is deliberately NOT applied to the protein/egg lexicon. An
+# inspection scan of all 572 corpus tokens against that lexicon at ratio >= 0.80
+# returns 8 hits, and 6 of them are catastrophic:
+#
+#     'katli' ~ katla   -> "Kaju Katli" (a sweet)              would be nonveg
+#     'kheera' ~ kheema -> "Kheera Raita" (cucumber)           would be nonveg
+#     'kala' ~ katla    -> "Kala Chana Curry"                  would be nonveg
+#     'cham' ~ ham      -> "Malai Cham Cham" (a sweet)         would be nonveg
+#     'and' ~ anda      -> "Besan And Moong Dal Chila"         would be egg
+#     'chila' ~ hilsa   -> "Besan And Moong Dal Chila"         would be nonveg
+#
+# The 2 genuine hits ('kalia', 'kaila' ~ katla) appear only in "Katla Kalia",
+# "Rohu Kalia", "Katla Kaila" — every one of which already contains an exact
+# protein token. So fuzzy protein matching gains nothing and would label sweets
+# and vegetables as meat. Proteins stay exact-match, permanently.
+#
+# Direction of error also matters: a loose veg qualifier can only move an item
+# from `unclear` to `veg`, never manufacture a non-veg claim.
+_FUZZY_MIN_LEN = 6      # short tokens stay exact: 'veg'/'egg' are one edit apart
+_FUZZY_RATIO = 0.90
+
+_VEG_QUALIFIER_TOKENS = frozenset("""
+veg vegetable vegetarian paneer tofu soya soyabean soyabeen mushroom aloo alu
+aaloo potato corn cheese dahi curd malai gobi cabbage matar mattar peas chana
+chole chhole dal daal moong besan sooji suji atta aata maida spring palak methi
+kathal jackfruit banana kaju badam sattu pyaz pyaaz onion tomato imli pudina
+mint hara sev
+""".split())
+
+
+def _has_veg_qualifier(s: str) -> bool:
+    if _VEG_QUALIFIER_RE.search(s):
+        return True
+    for tok in re.findall(r"[a-z]+", s.lower()):
+        if len(tok) < _FUZZY_MIN_LEN:
+            continue
+        # D17: never let a fuzzy match cross a diet line.
+        if _NONVEG.search(tok) or _EGG.search(tok):
+            continue
+        for q in _VEG_QUALIFIER_TOKENS:
+            if len(q) < _FUZZY_MIN_LEN:
+                continue
+            if SequenceMatcher(None, tok, q).ratio() >= _FUZZY_RATIO:
+                return True
+    return False
 
 
 def tag(raw: str) -> str:
@@ -102,7 +154,7 @@ def tag(raw: str) -> str:
         return "veg"
 
     # 4. Ambiguous dish with nothing to disambiguate it -> abstain.
-    if _AMBIGUOUS.search(s) and not _VEG_QUALIFIER.search(s):
+    if _AMBIGUOUS.search(s) and not _has_veg_qualifier(s):
         return "unclear"
 
     # 5. Default.
