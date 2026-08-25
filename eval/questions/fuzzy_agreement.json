@@ -1,0 +1,272 @@
+{
+  "n_compared": 9,
+  "exact_match": 5,
+  "exact_rate": 0.5555555555555556,
+  "mean_f1": 0.9540123456790125,
+  "skipped": [
+    "fuzzy-006"
+  ],
+  "rows": [
+    {
+      "id": "fuzzy-001",
+      "concept": "south-indian breakfast",
+      "slot": "Sat/Bre",
+      "human": [
+        "GH 1",
+        "Hall 11",
+        "Hall 4",
+        "Hall 6",
+        "Hall 7",
+        "Hall 8",
+        "Hall 9"
+      ],
+      "machine": [
+        "GH 1",
+        "Hall 11",
+        "Hall 4",
+        "Hall 6",
+        "Hall 7",
+        "Hall 8",
+        "Hall 9"
+      ],
+      "n_h": 7,
+      "n_m": 7,
+      "exact": true,
+      "f1": 1.0,
+      "machine_only": [],
+      "human_only": []
+    },
+    {
+      "id": "fuzzy-002",
+      "concept": "something sweet",
+      "slot": "Mon/Din",
+      "human": [
+        "Hall 10",
+        "Hall 12",
+        "Hall 14",
+        "Hall 4",
+        "Hall 5",
+        "Hall 6",
+        "Hall 7",
+        "Hall 8",
+        "Hall 9"
+      ],
+      "machine": [
+        "Hall 10",
+        "Hall 12",
+        "Hall 14",
+        "Hall 4",
+        "Hall 7",
+        "Hall 8",
+        "Hall 9"
+      ],
+      "n_h": 9,
+      "n_m": 7,
+      "exact": false,
+      "f1": 0.8750000000000001,
+      "machine_only": [],
+      "human_only": [
+        "Hall 5",
+        "Hall 6"
+      ]
+    },
+    {
+      "id": "fuzzy-003",
+      "concept": "indo-chinese",
+      "slot": "Thu/Din",
+      "human": [
+        "GH 1",
+        "Hall 13",
+        "Hall 2",
+        "Hall 4",
+        "Hall 5",
+        "Hall 6",
+        "Hall 9"
+      ],
+      "machine": [
+        "GH 1",
+        "Hall 13",
+        "Hall 2",
+        "Hall 4",
+        "Hall 5",
+        "Hall 6",
+        "Hall 9"
+      ],
+      "n_h": 7,
+      "n_m": 7,
+      "exact": true,
+      "f1": 1.0,
+      "machine_only": [],
+      "human_only": []
+    },
+    {
+      "id": "fuzzy-004",
+      "concept": "deep-fried snack",
+      "slot": "Fri/Bre",
+      "human": [
+        "Hall 10",
+        "Hall 14",
+        "Hall 2",
+        "Hall 3",
+        "Hall 5",
+        "Hall 8",
+        "Hall 9"
+      ],
+      "machine": [
+        "Hall 10",
+        "Hall 14",
+        "Hall 2",
+        "Hall 3",
+        "Hall 5",
+        "Hall 8",
+        "Hall 9"
+      ],
+      "n_h": 7,
+      "n_m": 7,
+      "exact": true,
+      "f1": 1.0,
+      "machine_only": [],
+      "human_only": []
+    },
+    {
+      "id": "fuzzy-005",
+      "concept": "light meal",
+      "slot": "Sun/Din",
+      "human": [
+        "GH 1",
+        "Hall 10",
+        "Hall 12",
+        "Hall 13",
+        "Hall 2",
+        "Hall 8",
+        "Hall 9"
+      ],
+      "machine": [
+        "GH 1",
+        "Hall 10",
+        "Hall 12",
+        "Hall 13",
+        "Hall 2",
+        "Hall 8",
+        "Hall 9"
+      ],
+      "n_h": 7,
+      "n_m": 7,
+      "exact": true,
+      "f1": 1.0,
+      "machine_only": [],
+      "human_only": []
+    },
+    {
+      "id": "fuzzy-007",
+      "concept": "protein-heavy",
+      "slot": "Wed/Bre",
+      "human": [
+        "GH 1",
+        "Hall 10",
+        "Hall 12",
+        "Hall 6",
+        "Hall 9"
+      ],
+      "machine": [
+        "GH 1",
+        "Hall 10",
+        "Hall 6",
+        "Hall 9"
+      ],
+      "n_h": 5,
+      "n_m": 4,
+      "exact": false,
+      "f1": 0.888888888888889,
+      "machine_only": [],
+      "human_only": [
+        "Hall 12"
+      ]
+    },
+    {
+      "id": "fuzzy-008",
+      "concept": "western",
+      "slot": "Fri/Din",
+      "human": [
+        "GH 1",
+        "Hall 10",
+        "Hall 13",
+        "Hall 8"
+      ],
+      "machine": [
+        "GH 1",
+        "Hall 10",
+        "Hall 13",
+        "Hall 14",
+        "Hall 8"
+      ],
+      "n_h": 4,
+      "n_m": 5,
+      "exact": false,
+      "f1": 0.888888888888889,
+      "machine_only": [
+        "Hall 14"
+      ],
+      "human_only": []
+    },
+    {
+      "id": "fuzzy-009",
+      "concept": "north-indian gravy",
+      "slot": "Sun/Lun",
+      "human": [
+        "GH 1",
+        "Hall 10",
+        "Hall 12",
+        "Hall 4",
+        "Hall 5",
+        "Hall 6",
+        "Hall 8",
+        "Hall 9"
+      ],
+      "machine": [
+        "GH 1",
+        "Hall 10",
+        "Hall 12",
+        "Hall 5",
+        "Hall 6",
+        "Hall 8",
+        "Hall 9"
+      ],
+      "n_h": 8,
+      "n_m": 7,
+      "exact": false,
+      "f1": 0.9333333333333333,
+      "machine_only": [],
+      "human_only": [
+        "Hall 4"
+      ]
+    },
+    {
+      "id": "fuzzy-010",
+      "concept": "comfort carbs",
+      "slot": "Thu/Lun",
+      "human": [
+        "Hall 10",
+        "Hall 11",
+        "Hall 13",
+        "Hall 3",
+        "Hall 5",
+        "Hall 8"
+      ],
+      "machine": [
+        "Hall 10",
+        "Hall 11",
+        "Hall 13",
+        "Hall 3",
+        "Hall 5",
+        "Hall 8"
+      ],
+      "n_h": 6,
+      "n_m": 6,
+      "exact": true,
+      "f1": 1.0,
+      "machine_only": [],
+      "human_only": []
+    }
+  ]
+}

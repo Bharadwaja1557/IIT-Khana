@@ -1,0 +1,1257 @@
+{
+  "set": "fuzzy_candidates",
+  "scored": false,
+  "STATUS": "AWAITING_HAND_LABEL \u2014 gold intentionally null",
+  "as_of": "2026-08-25",
+  "questions": [
+    {
+      "id": "cand-fuzzy-001",
+      "category": "fuzzy_semantic",
+      "q": "Which halls do a South-Indian style breakfast on Saturday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Saturday",
+        "meal": "Breakfast"
+      },
+      "predicate": {
+        "kind": "semantic",
+        "value": "south-indian breakfast",
+        "heuristic_keywords": [
+          "dosa",
+          "idli",
+          "uttapam",
+          "vada",
+          "sambhar",
+          "upma",
+          "pongal",
+          "coconut chutney",
+          "nariyal chutney",
+          "medu"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": null,
+        "STATUS": "AWAITING_HAND_LABEL"
+      },
+      "candidate_gold": {
+        "halls": [
+          "GH 1",
+          "Hall 11",
+          "Hall 4",
+          "Hall 6",
+          "Hall 7",
+          "Hall 8",
+          "Hall 9"
+        ],
+        "n": 7,
+        "evidence": {
+          "GH 1": [
+            {
+              "item": "Dosa (Masala",
+              "matched": [
+                "dosa"
+              ]
+            },
+            {
+              "item": "Paneer Dosa (Extra)",
+              "matched": [
+                "dosa"
+              ]
+            },
+            {
+              "item": "Coconut Chutney",
+              "matched": [
+                "coconut chutney"
+              ]
+            }
+          ],
+          "Hall 11": [
+            {
+              "item": "Masala and Onion Dosa",
+              "matched": [
+                "dosa"
+              ]
+            },
+            {
+              "item": "Sambhar",
+              "matched": [
+                "sambhar"
+              ]
+            },
+            {
+              "item": "Coconut Chutney",
+              "matched": [
+                "coconut chutney"
+              ]
+            }
+          ],
+          "Hall 4": [
+            {
+              "item": "Dosa (Plain",
+              "matched": [
+                "dosa"
+              ]
+            },
+            {
+              "item": "Nariyal Chutney",
+              "matched": [
+                "nariyal chutney"
+              ]
+            }
+          ],
+          "Hall 6": [
+            {
+              "item": "Masala Dosa",
+              "matched": [
+                "dosa"
+              ]
+            },
+            {
+              "item": "Mysore Masala Dosa",
+              "matched": [
+                "dosa"
+              ]
+            },
+            {
+              "item": "Sambhar",
+              "matched": [
+                "sambhar"
+              ]
+            },
+            {
+              "item": "Nariyal Chutney",
+              "matched": [
+                "nariyal chutney"
+              ]
+            }
+          ],
+          "Hall 7": [
+            {
+              "item": "Masala-Dosa",
+              "matched": [
+                "dosa"
+              ]
+            },
+            {
+              "item": "Onion Dosa",
+              "matched": [
+                "dosa"
+              ]
+            },
+            {
+              "item": "With Sambhar & Coconut Chutney",
+              "matched": [
+                "sambhar",
+                "coconut chutney"
+              ]
+            }
+          ],
+          "Hall 8": [
+            {
+              "item": "Dosa",
+              "matched": [
+                "dosa"
+              ]
+            },
+            {
+              "item": "Spcl Dosa",
+              "matched": [
+                "dosa"
+              ]
+            },
+            {
+              "item": "Nariyal Chutney",
+              "matched": [
+                "nariyal chutney"
+              ]
+            },
+            {
+              "item": "Sambhar",
+              "matched": [
+                "sambhar"
+              ]
+            }
+          ],
+          "Hall 9": [
+            {
+              "item": "Dosa",
+              "matched": [
+                "dosa"
+              ]
+            },
+            {
+              "item": "Sambhar",
+              "matched": [
+                "sambhar"
+              ]
+            }
+          ]
+        },
+        "WARNING": "machine-proposed by keyword heuristic, NOT a label. Requires human confirmation. The predicate does not exist in the corpus, so no SQL can settle it."
+      },
+      "sql": "N/A \u2014 predicate absent from corpus; see candidate_gold",
+      "sql_params": [],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 7,
+        "passed": true,
+        "note": "gate evaluated on the CANDIDATE set; must be re-checked against the human label"
+      }
+    },
+    {
+      "id": "cand-fuzzy-002",
+      "category": "fuzzy_semantic",
+      "q": "Which halls have a proper dessert at dinner on Monday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Monday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "semantic",
+        "value": "something sweet",
+        "heuristic_keywords": [
+          "halwa",
+          "jalebi",
+          "gulab jamun",
+          "kheer",
+          "rabdi",
+          "ice cream",
+          "custard",
+          "laddu",
+          "barfi",
+          "sewai",
+          "shahi tukda",
+          "milk cake",
+          "kalakand",
+          "rasmalai",
+          "chandrakala",
+          "gujhiya",
+          "malpua",
+          "sandesh",
+          "phirni",
+          "cake",
+          "brownie",
+          "sweet"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": null,
+        "STATUS": "AWAITING_HAND_LABEL"
+      },
+      "candidate_gold": {
+        "halls": [
+          "Hall 10",
+          "Hall 12",
+          "Hall 14",
+          "Hall 4",
+          "Hall 7",
+          "Hall 8",
+          "Hall 9"
+        ],
+        "n": 7,
+        "evidence": {
+          "Hall 10": [
+            {
+              "item": "Gulab Jamun",
+              "matched": [
+                "gulab jamun"
+              ]
+            },
+            {
+              "item": "Dudh Barfi (once a month)",
+              "matched": [
+                "barfi"
+              ]
+            }
+          ],
+          "Hall 12": [
+            {
+              "item": "Rabdi Malpua",
+              "matched": [
+                "rabdi",
+                "malpua"
+              ]
+            }
+          ],
+          "Hall 14": [
+            {
+              "item": "Coconut Dry Gulab Jamun",
+              "matched": [
+                "gulab jamun"
+              ]
+            }
+          ],
+          "Hall 4": [
+            {
+              "item": "Sooji Halwa",
+              "matched": [
+                "halwa"
+              ]
+            }
+          ],
+          "Hall 7": [
+            {
+              "item": "Imrati Rabdi",
+              "matched": [
+                "rabdi"
+              ]
+            }
+          ],
+          "Hall 8": [
+            {
+              "item": "Rabdi Jalebi",
+              "matched": [
+                "jalebi",
+                "rabdi"
+              ]
+            },
+            {
+              "item": "Phirni",
+              "matched": [
+                "phirni"
+              ]
+            }
+          ],
+          "Hall 9": [
+            {
+              "item": "Sewai",
+              "matched": [
+                "sewai"
+              ]
+            },
+            {
+              "item": "Kheer",
+              "matched": [
+                "kheer"
+              ]
+            }
+          ]
+        },
+        "WARNING": "machine-proposed by keyword heuristic, NOT a label. Requires human confirmation. The predicate does not exist in the corpus, so no SQL can settle it."
+      },
+      "sql": "N/A \u2014 predicate absent from corpus; see candidate_gold",
+      "sql_params": [],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 7,
+        "passed": true,
+        "note": "gate evaluated on the CANDIDATE set; must be re-checked against the human label"
+      }
+    },
+    {
+      "id": "cand-fuzzy-003",
+      "category": "fuzzy_semantic",
+      "q": "Which messes have Indo-Chinese food at dinner on Thursday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Thursday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "semantic",
+        "value": "indo-chinese",
+        "heuristic_keywords": [
+          "manchurian",
+          "noodles",
+          "chowmein",
+          "hakka",
+          "schezwan",
+          "chilli paneer",
+          "chilli chicken",
+          "honey chilli",
+          "spring roll",
+          "momo",
+          "fried rice",
+          "chilli potato"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": null,
+        "STATUS": "AWAITING_HAND_LABEL"
+      },
+      "candidate_gold": {
+        "halls": [
+          "GH 1",
+          "Hall 13",
+          "Hall 2",
+          "Hall 4",
+          "Hall 5",
+          "Hall 6",
+          "Hall 9"
+        ],
+        "n": 7,
+        "evidence": {
+          "GH 1": [
+            {
+              "item": "Veg Fried Rice",
+              "matched": [
+                "fried rice"
+              ]
+            },
+            {
+              "item": "Veg Manchurian",
+              "matched": [
+                "manchurian"
+              ]
+            },
+            {
+              "item": "Chilli Paneer",
+              "matched": [
+                "chilli paneer"
+              ]
+            }
+          ],
+          "Hall 13": [
+            {
+              "item": "Fried Rice",
+              "matched": [
+                "fried rice"
+              ]
+            }
+          ],
+          "Hall 2": [
+            {
+              "item": "Honey Chilli Potato",
+              "matched": [
+                "honey chilli",
+                "chilli potato"
+              ]
+            }
+          ],
+          "Hall 4": [
+            {
+              "item": "Chilli Chicken (Non-Veg)",
+              "matched": [
+                "chilli chicken"
+              ]
+            }
+          ],
+          "Hall 5": [
+            {
+              "item": "Chilli Chicken Dry (Non-Veg)",
+              "matched": [
+                "chilli chicken"
+              ]
+            }
+          ],
+          "Hall 6": [
+            {
+              "item": "Paneer Momos",
+              "matched": [
+                "momo"
+              ]
+            },
+            {
+              "item": "Chicken Momos (Non-Veg)",
+              "matched": [
+                "momo"
+              ]
+            }
+          ],
+          "Hall 9": [
+            {
+              "item": "Samosa Chaat Manchurian Fried Rice",
+              "matched": [
+                "manchurian",
+                "fried rice"
+              ]
+            }
+          ]
+        },
+        "WARNING": "machine-proposed by keyword heuristic, NOT a label. Requires human confirmation. The predicate does not exist in the corpus, so no SQL can settle it."
+      },
+      "sql": "N/A \u2014 predicate absent from corpus; see candidate_gold",
+      "sql_params": [],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 7,
+        "passed": true,
+        "note": "gate evaluated on the CANDIDATE set; must be re-checked against the human label"
+      }
+    },
+    {
+      "id": "cand-fuzzy-004",
+      "category": "fuzzy_semantic",
+      "q": "Which halls have something deep-fried and snacky at breakfast on Friday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Friday",
+        "meal": "Breakfast"
+      },
+      "predicate": {
+        "kind": "semantic",
+        "value": "deep-fried snack",
+        "heuristic_keywords": [
+          "pakoda",
+          "pakora",
+          "samosa",
+          "kachori",
+          "french fries",
+          "fries",
+          "bhujia",
+          "vada",
+          "tikki",
+          "cutlet",
+          "finger",
+          "nugget",
+          "puri",
+          "poori",
+          "fritter",
+          "chips",
+          "papad"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": null,
+        "STATUS": "AWAITING_HAND_LABEL"
+      },
+      "candidate_gold": {
+        "halls": [
+          "Hall 10",
+          "Hall 14",
+          "Hall 2",
+          "Hall 3",
+          "Hall 5",
+          "Hall 8",
+          "Hall 9"
+        ],
+        "n": 7,
+        "evidence": {
+          "Hall 10": [
+            {
+              "item": "Poori (Aata, Maida)",
+              "matched": [
+                "poori"
+              ]
+            },
+            {
+              "item": "Poori (Aata, Maida)",
+              "matched": [
+                "poori"
+              ]
+            }
+          ],
+          "Hall 14": [
+            {
+              "item": "Poori",
+              "matched": [
+                "poori"
+              ]
+            }
+          ],
+          "Hall 2": [
+            {
+              "item": "Veg Cutlet",
+              "matched": [
+                "cutlet"
+              ]
+            }
+          ],
+          "Hall 3": [
+            {
+              "item": "Samosa",
+              "matched": [
+                "samosa"
+              ]
+            }
+          ],
+          "Hall 5": [
+            {
+              "item": "Mendu Vada (2-Pc)",
+              "matched": [
+                "vada"
+              ]
+            }
+          ],
+          "Hall 8": [
+            {
+              "item": "Aloo Green Matar Bhujia",
+              "matched": [
+                "bhujia"
+              ]
+            }
+          ],
+          "Hall 9": [
+            {
+              "item": "Khasta Kachori Chhole Pudina Raita",
+              "matched": [
+                "kachori"
+              ]
+            }
+          ]
+        },
+        "WARNING": "machine-proposed by keyword heuristic, NOT a label. Requires human confirmation. The predicate does not exist in the corpus, so no SQL can settle it."
+      },
+      "sql": "N/A \u2014 predicate absent from corpus; see candidate_gold",
+      "sql_params": [],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 7,
+        "passed": true,
+        "note": "gate evaluated on the CANDIDATE set; must be re-checked against the human label"
+      }
+    },
+    {
+      "id": "cand-fuzzy-005",
+      "category": "fuzzy_semantic",
+      "q": "Which halls have a light, non-heavy dinner on Sunday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Sunday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "semantic",
+        "value": "light meal",
+        "heuristic_keywords": [
+          "khichdi",
+          "dalia",
+          "soup",
+          "salad",
+          "curd",
+          "raita",
+          "fruit",
+          "steamed",
+          "boiled",
+          "upma",
+          "poha",
+          "idli"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": null,
+        "STATUS": "AWAITING_HAND_LABEL"
+      },
+      "candidate_gold": {
+        "halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 12",
+          "Hall 13",
+          "Hall 2",
+          "Hall 8",
+          "Hall 9"
+        ],
+        "n": 7,
+        "evidence": {
+          "GH 1": [
+            {
+              "item": "Veg Raita",
+              "matched": [
+                "raita"
+              ]
+            }
+          ],
+          "Hall 10": [
+            {
+              "item": "Khichdi (b)",
+              "matched": [
+                "khichdi"
+              ]
+            },
+            {
+              "item": "Raita",
+              "matched": [
+                "raita"
+              ]
+            }
+          ],
+          "Hall 12": [
+            {
+              "item": "Kachumber Salad",
+              "matched": [
+                "salad"
+              ]
+            }
+          ],
+          "Hall 13": [
+            {
+              "item": "Cabbage Salad",
+              "matched": [
+                "salad"
+              ]
+            }
+          ],
+          "Hall 2": [
+            {
+              "item": "Kuchumber Salad",
+              "matched": [
+                "salad"
+              ]
+            }
+          ],
+          "Hall 8": [
+            {
+              "item": "Dry Fruit Laddu",
+              "matched": [
+                "fruit"
+              ]
+            },
+            {
+              "item": "Fruit Custard",
+              "matched": [
+                "fruit"
+              ]
+            }
+          ],
+          "Hall 9": [
+            {
+              "item": "Fruit Custard",
+              "matched": [
+                "fruit"
+              ]
+            }
+          ]
+        },
+        "WARNING": "machine-proposed by keyword heuristic, NOT a label. Requires human confirmation. The predicate does not exist in the corpus, so no SQL can settle it."
+      },
+      "sql": "N/A \u2014 predicate absent from corpus; see candidate_gold",
+      "sql_params": [],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 7,
+        "passed": true,
+        "note": "gate evaluated on the CANDIDATE set; must be re-checked against the human label"
+      }
+    },
+    {
+      "id": "cand-fuzzy-006",
+      "category": "fuzzy_semantic",
+      "q": "Which halls are doing street-food style items at dinner on Tuesday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "semantic",
+        "value": "street food",
+        "heuristic_keywords": [
+          "chaat",
+          "vada pav",
+          "pav bhaji",
+          "tikki",
+          "golgappa",
+          "pani puri",
+          "bhel",
+          "dahi puri",
+          "kathi roll",
+          "momo",
+          "chowmein",
+          "sev puri",
+          "samosa",
+          "kachori",
+          "chole bhature"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": null,
+        "STATUS": "AWAITING_HAND_LABEL"
+      },
+      "candidate_gold": {
+        "halls": [
+          "Hall 11",
+          "Hall 13",
+          "Hall 2",
+          "Hall 4",
+          "Hall 5",
+          "Hall 7"
+        ],
+        "n": 6,
+        "evidence": {
+          "Hall 11": [
+            {
+              "item": "Aloo Tikki Chaat",
+              "matched": [
+                "chaat",
+                "tikki"
+              ]
+            }
+          ],
+          "Hall 13": [
+            {
+              "item": "Paneer Kathi Roll",
+              "matched": [
+                "kathi roll"
+              ]
+            }
+          ],
+          "Hall 2": [
+            {
+              "item": "Paneer Kathi Roll",
+              "matched": [
+                "kathi roll"
+              ]
+            }
+          ],
+          "Hall 4": [
+            {
+              "item": "Pani Puri",
+              "matched": [
+                "pani puri"
+              ]
+            }
+          ],
+          "Hall 5": [
+            {
+              "item": "Aloo Tikki",
+              "matched": [
+                "tikki"
+              ]
+            }
+          ],
+          "Hall 7": [
+            {
+              "item": "Poori (Aata, Palak, Dal Kachori)",
+              "matched": [
+                "kachori"
+              ]
+            }
+          ]
+        },
+        "WARNING": "machine-proposed by keyword heuristic, NOT a label. Requires human confirmation. The predicate does not exist in the corpus, so no SQL can settle it."
+      },
+      "sql": "N/A \u2014 predicate absent from corpus; see candidate_gold",
+      "sql_params": [],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 6,
+        "passed": true,
+        "note": "gate evaluated on the CANDIDATE set; must be re-checked against the human label"
+      }
+    },
+    {
+      "id": "cand-fuzzy-007",
+      "category": "fuzzy_semantic",
+      "q": "Which halls have a protein-heavy breakfast on Wednesday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Wednesday",
+        "meal": "Breakfast"
+      },
+      "predicate": {
+        "kind": "semantic",
+        "value": "protein-heavy",
+        "heuristic_keywords": [
+          "chicken",
+          "mutton",
+          "fish",
+          "egg",
+          "paneer",
+          "soya",
+          "chaap",
+          "rajma",
+          "chana",
+          "chole",
+          "dal"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": null,
+        "STATUS": "AWAITING_HAND_LABEL"
+      },
+      "candidate_gold": {
+        "halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 6",
+          "Hall 9"
+        ],
+        "n": 4,
+        "evidence": {
+          "GH 1": [
+            {
+              "item": "Peanuts And Chana",
+              "matched": [
+                "chana"
+              ]
+            }
+          ],
+          "Hall 10": [
+            {
+              "item": "Dal Paratha",
+              "matched": [
+                "dal"
+              ]
+            }
+          ],
+          "Hall 6": [
+            {
+              "item": "Chana",
+              "matched": [
+                "chana"
+              ]
+            }
+          ],
+          "Hall 9": [
+            {
+              "item": "Halwa Chana Puri",
+              "matched": [
+                "chana"
+              ]
+            }
+          ]
+        },
+        "WARNING": "machine-proposed by keyword heuristic, NOT a label. Requires human confirmation. The predicate does not exist in the corpus, so no SQL can settle it."
+      },
+      "sql": "N/A \u2014 predicate absent from corpus; see candidate_gold",
+      "sql_params": [],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 4,
+        "passed": true,
+        "note": "gate evaluated on the CANDIDATE set; must be re-checked against the human label"
+      }
+    },
+    {
+      "id": "cand-fuzzy-008",
+      "category": "fuzzy_semantic",
+      "q": "Which halls have a Western or continental option at dinner on Friday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Friday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "semantic",
+        "value": "western",
+        "heuristic_keywords": [
+          "pasta",
+          "pizza",
+          "sandwich",
+          "burger",
+          "fries",
+          "garlic bread",
+          "white sauce",
+          "red sauce",
+          "cheese",
+          "toast",
+          "mayo",
+          "salad"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": null,
+        "STATUS": "AWAITING_HAND_LABEL"
+      },
+      "candidate_gold": {
+        "halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 13",
+          "Hall 14",
+          "Hall 8"
+        ],
+        "n": 5,
+        "evidence": {
+          "GH 1": [
+            {
+              "item": "Chilli Cheese Toast",
+              "matched": [
+                "cheese",
+                "toast"
+              ]
+            }
+          ],
+          "Hall 10": [
+            {
+              "item": "Tossed Salad",
+              "matched": [
+                "salad"
+              ]
+            }
+          ],
+          "Hall 13": [
+            {
+              "item": "French Fries",
+              "matched": [
+                "fries"
+              ]
+            }
+          ],
+          "Hall 14": [
+            {
+              "item": "Bread Malai Sandwich",
+              "matched": [
+                "sandwich"
+              ]
+            }
+          ],
+          "Hall 8": [
+            {
+              "item": "French Fries (One Time)",
+              "matched": [
+                "fries"
+              ]
+            },
+            {
+              "item": "Salad (Extra Corn)",
+              "matched": [
+                "salad"
+              ]
+            }
+          ]
+        },
+        "WARNING": "machine-proposed by keyword heuristic, NOT a label. Requires human confirmation. The predicate does not exist in the corpus, so no SQL can settle it."
+      },
+      "sql": "N/A \u2014 predicate absent from corpus; see candidate_gold",
+      "sql_params": [],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 5,
+        "passed": true,
+        "note": "gate evaluated on the CANDIDATE set; must be re-checked against the human label"
+      }
+    },
+    {
+      "id": "cand-fuzzy-009",
+      "category": "fuzzy_semantic",
+      "q": "Which halls have a rich North-Indian gravy dish at lunch on Sunday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Sunday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "semantic",
+        "value": "north-indian gravy",
+        "heuristic_keywords": [
+          "butter masala",
+          "kadhai",
+          "handi",
+          "korma",
+          "kofta",
+          "makhani",
+          "do pyaza",
+          "rogan josh",
+          "bhuna",
+          "lababdar",
+          "shahi",
+          "pasanda",
+          "kohlapuri",
+          "jalfrezi",
+          "tikka masala"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": null,
+        "STATUS": "AWAITING_HAND_LABEL"
+      },
+      "candidate_gold": {
+        "halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 12",
+          "Hall 5",
+          "Hall 6",
+          "Hall 8",
+          "Hall 9"
+        ],
+        "n": 7,
+        "evidence": {
+          "GH 1": [
+            {
+              "item": "Handi Paneer",
+              "matched": [
+                "handi"
+              ]
+            }
+          ],
+          "Hall 10": [
+            {
+              "item": "Mutton Rogan Josh (b) (Non-Veg)",
+              "matched": [
+                "rogan josh"
+              ]
+            },
+            {
+              "item": "Shahi Paneer",
+              "matched": [
+                "shahi"
+              ]
+            }
+          ],
+          "Hall 12": [
+            {
+              "item": "Veg Kofta",
+              "matched": [
+                "kofta"
+              ]
+            }
+          ],
+          "Hall 5": [
+            {
+              "item": "Chicken Korma (Non-Veg)",
+              "matched": [
+                "korma"
+              ]
+            }
+          ],
+          "Hall 6": [
+            {
+              "item": "Handi Paneer",
+              "matched": [
+                "handi"
+              ]
+            },
+            {
+              "item": "Paneer Lababdar",
+              "matched": [
+                "lababdar"
+              ]
+            }
+          ],
+          "Hall 8": [
+            {
+              "item": "Shahi Tukda",
+              "matched": [
+                "shahi"
+              ]
+            }
+          ],
+          "Hall 9": [
+            {
+              "item": "Paneer Do Pyaza",
+              "matched": [
+                "do pyaza"
+              ]
+            }
+          ]
+        },
+        "WARNING": "machine-proposed by keyword heuristic, NOT a label. Requires human confirmation. The predicate does not exist in the corpus, so no SQL can settle it."
+      },
+      "sql": "N/A \u2014 predicate absent from corpus; see candidate_gold",
+      "sql_params": [],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 7,
+        "passed": true,
+        "note": "gate evaluated on the CANDIDATE set; must be re-checked against the human label"
+      }
+    },
+    {
+      "id": "cand-fuzzy-010",
+      "category": "fuzzy_semantic",
+      "q": "Which halls have proper comfort-food carbs at lunch on Thursday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Thursday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "semantic",
+        "value": "comfort carbs",
+        "heuristic_keywords": [
+          "paratha",
+          "puri",
+          "poori",
+          "kulcha",
+          "naan",
+          "bhature",
+          "khichdi",
+          "biryani",
+          "pulao",
+          "fried rice",
+          "litti"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": null,
+        "STATUS": "AWAITING_HAND_LABEL"
+      },
+      "candidate_gold": {
+        "halls": [
+          "Hall 10",
+          "Hall 11",
+          "Hall 13",
+          "Hall 3",
+          "Hall 5",
+          "Hall 8"
+        ],
+        "n": 6,
+        "evidence": {
+          "Hall 10": [
+            {
+              "item": "Veg Biryani",
+              "matched": [
+                "biryani"
+              ]
+            }
+          ],
+          "Hall 11": [
+            {
+              "item": "Veg Biryani",
+              "matched": [
+                "biryani"
+              ]
+            }
+          ],
+          "Hall 13": [
+            {
+              "item": "Paneer Paratha",
+              "matched": [
+                "paratha"
+              ]
+            },
+            {
+              "item": "Aloo Paratha",
+              "matched": [
+                "paratha"
+              ]
+            },
+            {
+              "item": "Mix-Veg Paratha",
+              "matched": [
+                "paratha"
+              ]
+            }
+          ],
+          "Hall 3": [
+            {
+              "item": "Veg Biryani",
+              "matched": [
+                "biryani"
+              ]
+            }
+          ],
+          "Hall 5": [
+            {
+              "item": "Chholey-Bhature",
+              "matched": [
+                "bhature"
+              ]
+            }
+          ],
+          "Hall 8": [
+            {
+              "item": "Veg Kabab Paratha",
+              "matched": [
+                "paratha"
+              ]
+            }
+          ]
+        },
+        "WARNING": "machine-proposed by keyword heuristic, NOT a label. Requires human confirmation. The predicate does not exist in the corpus, so no SQL can settle it."
+      },
+      "sql": "N/A \u2014 predicate absent from corpus; see candidate_gold",
+      "sql_params": [],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 6,
+        "passed": true,
+        "note": "gate evaluated on the CANDIDATE set; must be re-checked against the human label"
+      }
+    }
+  ]
+}

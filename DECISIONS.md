@@ -1339,3 +1339,343 @@ the subscription.
 $1.50/$7.50 per million, less if a discounted rate applies. No provider change.
 Recorded so the number is on the record rather than rediscovered later; the
 dominant term is the long-context arm's 17,147 prompt tokens per query (D28).
+
+---
+
+## D30. Known corpus limitation: the parenthesised-group splitter artifact
+
+**Decision.** The Phase 1 item splitter breaks a parenthesised alternatives group
+across its inner comma. Source `(Handi Paneer, Matar Paneer)` becomes two rows,
+`'(Handi Paneer'` and `'Matar Paneer)'`.
+
+**Scope: 22 of 1,903 items (1.2%).** Other instances:
+
+    Hall 8  Mon Dinner    '(Chicken Do Pyaza (Non-Veg) - 2pc'  /  'Egg Curry)'
+    Hall 8  Wed Breakfast '(Idli-Vada'  /  'Sewai Upma)'
+    Hall 8  Fri Dinner    '(Gulab Jamun'
+
+**The parser is NOT fixed.** Fixing it would change item counts, cluster counts
+and the tagger's corpus-wide tag distribution — every number Phase 1 reported and
+D20/D21 depend on would be invalidated to correct a 1.2% issue. The cure is worse
+than the disease.
+
+**Why it cannot differentially advantage any system.** All three systems read
+chunks built from the same `menu_item` rows, so all three see the identical
+artifact. It cannot favour naive RAG, long-context, or the router. Under D16 —
+the benchmark measures faithfulness to the corpus, not truth about IITK dining —
+gold that reflects these rows is correct *by definition*.
+
+**But it was removed from the lookup category.** Lookup is the control, and its
+gold is an item set. Leaving the artifact in would have made two of ten lookup
+questions partly a test of whether a system reproduces a parse bug, which is not
+what "lookup" measures. `test-lookup-03` and `test-lookup-06` were regenerated
+from clean slots before any system ran. Hall-set categories are untouched: a
+predicate still matches inside a broken fragment (`'(Handi Paneer'` still
+contains `paneer`), so their gold is unaffected.
+
+---
+
+## D31. The benchmark samples DISCRIMINATING questions, not realistic ones
+
+**Recorded as a limitation that belongs in the write-up, not buried.**
+
+The D15 gate rejected **68% of all candidates — 82% for aggregation and
+negation**. For a randomly chosen (slot, ingredient) pair the answer is almost
+always 0, 1, 13 or 14 of 14 halls.
+
+That rejected majority *is what real usage looks like*. A student asking "does
+anyone have chicken tonight" will usually get an answer of "nearly everyone" or
+"nobody", because ingredients in this corpus are near-universal or near-absent —
+the direct consequence of the Phase 1 finding that halls overlap heavily at
+*category* level (84% of lunches have some dal) while barely overlapping at
+*dish* level (Jaccard 0.034).
+
+**So the benchmark deliberately over-samples the narrow band where systems can
+be told apart.** This is correct for *measuring* systems — a question every
+system gets right, or every system gets wrong, carries no information. It is
+wrong for *estimating field accuracy*, and any headline number must be read as
+"accuracy on discriminating questions", never as "accuracy a student would
+experience".
+
+The 68% figure should be quoted in the write-up alongside the results table.
+
+---
+
+## D32. The categories are not orthogonal, deliberately
+
+**Temporal is aggregation plus a relative day.** The underlying SQL is identical
+(`SELECT halls WHERE day=? AND meal=? AND item LIKE ?`); the only difference is
+that the question says "tonight" or "tomorrow" instead of naming the weekday.
+
+This is by design, not an oversight. It isolates **date resolution** as the sole
+independent variable: any gap between a system's aggregation score and its
+temporal score is attributable to handling the relative day, because nothing else
+differs. Making the categories orthogonal would have confounded exactly the
+capability the category exists to measure.
+
+Consequence: temporal and aggregation scores are **not independent evidence**.
+They must not be averaged into an overall figure as though they were two separate
+capabilities, and a system strong on aggregation should be expected to be strong
+on temporal unless date handling specifically fails.
+
+Comparison likewise overlaps aggregation (same predicate, restricted to two named
+halls). Lookup, negation and fuzzy semantic are structurally distinct.
+
+---
+
+## D33. Implicit caching makes per-query cost non-reproducible on this model
+
+**A result about measurement, not about the systems.**
+
+Firing the **identical** 17,339-token long-context prompt four times back to back
+on `gemini-3.6-flash`:
+
+    call     prompt   cached  thinking   gen_ms
+    1         17339        0       210     5352
+    2         17339     8175       126     6547
+    3         17339        0       198    10701
+    4         17339     8175       127     6475
+
+**Gemini cached 8,175 tokens — 47% of the prompt — with no cache object created,
+no cache handle passed, and no way found to opt out.** And it is *intermittent*:
+calls 1 and 3 got nothing, and call 3 followed two consecutive hits, so it is not
+a warm-up effect. The cached figure is byte-identical at 8,175 on both hits,
+which points at a fixed cacheable-prefix block boundary rather than a
+proportional discount.
+
+**Consequences.**
+
+1. **There is no "uncached" column that can honestly be reported.** Any
+   long-context run will have an unpredictable fraction of its prompts partially
+   cached by the provider. A column labelled "uncached" would be false.
+2. **Cost columns are labelled from OBSERVED `cached_content_token_count`, per
+   question, never from intent.** The measured cache-hit rate is reported
+   alongside cost.
+3. **Published per-query cost figures for this model are not reproducible run to
+   run.** Two identical benchmark runs can differ in cost by up to ~47% of the
+   long-context prompt, decided by provider-side state nobody can see or control.
+   This is worth stating as a finding in its own right: it means *any* paper or
+   blog post quoting per-query cost for a cached-prefix workload on this class of
+   API is quoting a number that will not reproduce.
+4. It **strengthens** D28 rather than weakening it. Caching is not a hypothetical
+   rebuttal a sceptic might raise — it is already happening, by default, unasked.
+   The long-context baseline's real cost is therefore lower than a token count
+   implies, which makes it even more important that the router's case rests on
+   accuracy and latency, where D28 already concluded the gaps are architectural.
+
+Latency is unaffected, exactly as D28 predicted: cached calls ran 6547 and
+6475 ms against uncached 5352 and 10701 ms — noise, no systematic gain. The
+tokens are still processed; caching avoids re-billing them, not re-reading them.
+
+---
+
+## D34. CORRECTION to D26/D29: the key IS free tier, and the cap is 20/day
+
+**D26 and D29 stated the key was billing-enabled, on the evidence of a response
+header reading `X-Gemini-Service-Tier: standard`. That reading was wrong.**
+
+A 429 during the Phase 3 run returned the authoritative answer:
+
+    Quota exceeded for metric:
+      generativelanguage.googleapis.com/generate_content_free_tier_requests
+    limit: 20, model: gemini-3.6-flash
+    quotaId: GenerateRequestsPerDayPerProjectPerModel-FreeTier
+    quotaValue: '20'
+
+The quota metric is explicitly `free_tier_requests` and the quota id explicitly
+`FreeTier`. **`X-Gemini-Service-Tier: standard` is not a billing indicator** — it
+appears to name the serving tier (as opposed to a batch or priority lane), not
+the account's billing state. Anyone using that header to infer billing status
+will get it wrong, as I did.
+
+The author's original assumption — free tier — was correct, and my "checked
+rather than assumed" claim in D26 was checking the wrong thing.
+
+### The operational consequence is a hard blocker
+
+**`gemini-3.6-flash` allows 20 requests per day on the free tier.** The Phase 3
+benchmark needs **59 questions x 2 systems = 118 calls** minimum, before the
+fuzzy LLM-judge pass. At 20/day that is **six days**, and Phase 4 adds a third
+system on the same questions.
+
+Probed the alternatives (each model has its own per-model daily quota):
+
+    gemini-3.6-flash           429  quotaValue=20  FreeTier   <- exhausted
+    gemini-3.5-flash-lite      OK
+    gemini-3.1-flash-lite      OK
+    gemini-flash-lite-latest   OK
+
+Flash-Lite models still answer, on separate quota.
+
+### Related finding: a 272-second single call, with zero retries
+
+One long-context call recorded `generation_ms = 272023` with `retries = 0` — a
+single API call taking **4.5 minutes**, not backoff. Earlier identical calls ran
+5–10 s. This occurred as the daily quota neared exhaustion, so the likely cause
+is server-side throttling that stalls rather than returning 429.
+
+**It contaminates the p50 latency column**, which is a headline metric: latency
+measured near a quota boundary reflects quota state, not architecture. Any
+latency figure must therefore come from a run that did not approach the cap, and
+that constraint belongs in the methodology note alongside D33's caching finding.
+
+Together D33 and D34 make one point: **on a free-tier preview model, neither
+cost nor latency is reproducible run to run.** Both are governed by
+provider-side state that is invisible, uncontrollable, and undocumented at the
+API surface.
+
+---
+
+## D35. The results table moves off the pinned model, to `gemini-3.5-flash-lite`
+
+**Superseded pin (D26):** `gemini-3.6-flash`, version `3.6-flash-07-2026`.
+**Active pin:** **`gemini-3.5-flash-lite`, version `3.5-flash-lite-07-2026`**,
+1,048,576 in / 65,536 out. Both recorded; the superseded pin is kept so the
+Phase 2 numbers, which were produced on it, remain interpretable.
+
+`gemini-3.5-flash-lite` is **not** a preview model — `models.list()` shows
+`gemini-3.1-flash-lite-preview` as explicitly preview while `3.5-flash-lite`
+carries no preview marker. It is the newest numbered GA Flash-Lite.
+`gemini-flash-lite-latest` was **rejected**: an alias can drift mid-run, which
+would silently split the table across two models.
+
+### Why the table moved
+
+**1. Free-tier quota exhaustion.** `gemini-3.6-flash` allows **20 requests per
+day** (D34). The table needs 59 questions x 2 systems = 118 calls now, and a
+third system in Phase 4.
+
+**2. A six-day spread was rejected**, for three separate reasons:
+
+  - **A preview model can be deprecated mid-run.** This is not hypothetical:
+    `gemini-2.5-flash` vanished *during this project* (D24), returning 404 for
+    new keys while still appearing in `models.list()`. A table assembled over six
+    days on a preview model risks the model disappearing between rows.
+  - **Latency would be measured at the quota boundary every single day.** D34
+    recorded a single call taking 272 seconds with `retries = 0` as the daily cap
+    approached. p50 latency is a headline metric; measuring it against quota
+    state rather than architecture would make the column meaningless.
+  - **A run spanning days is not internally consistent.** Provider-side state —
+    implicit cache contents (D33), serving capacity, silent model updates — varies
+    across days. Rows generated on different days are not comparable, which is
+    precisely what D26's "rerun the whole table, do not patch it" rule exists to
+    prevent.
+
+**3. Cost was not the driver.** The author costed a full three-system run at ~$4
+and explicitly ruled cost out as a blocker. The move is forced by *quota*, not
+price.
+
+### D29's precondition was met before the move
+
+D29 requires that the Phase 2 zero-hallucination finding be **re-verified**, not
+inherited, if the table moves to a weaker model. Re-ran the seven **D8 acceptance
+questions** — never TEST questions — through `NaiveRAG` on
+`gemini-3.5-flash-lite`, measuring fabrication mechanically rather than by eye:
+
+    invented citations  (an [n] absent from the prompt)          0
+    phantom halls       (a hall CLAIMED that appears in NO
+                         retrieved chunk — asserting about data
+                         the model never saw)                    0
+    missing ANSWER line (structured contract not honoured)       0
+
+    -> no-hallucination property HOLDS on gemini-3.5-flash-lite
+
+So the Phase 2 conclusion — *the baseline's failures are retrieval failures, not
+generation failures* — survives the model change, and the strawman stays fair.
+Had it failed, that would itself have been the headline: baseline fairness
+depending on generator strength.
+
+### Constraints carried into the run
+
+- **All systems on one model string.** Phase 4's router runs on
+  `gemini-3.5-flash-lite` too, or the table is rerun (D26).
+- **If Flash-Lite quota is exhausted mid-run, the run STOPS and reports.** It
+  does not finish on a substitute model. A table split across two models compares
+  models, not architectures.
+- **RPD is not queryable in advance.** The Gemini API exposes a quota limit only
+  in the body of a 429, so headroom cannot be confirmed before spending it. What
+  is known: Flash-Lite answered normally after `3.6-flash` was exhausted, so it
+  draws on separate, unexhausted per-model quota. The run monitors for 429 and
+  halts rather than degrading.
+
+### Latency reporting
+
+p50 per category per system, footnoted as measured in a **single sitting that
+did not approach the quota cap**. Calls above a disclosed threshold are flagged
+as **suspected throttling** and their count reported — but they are **included**
+in p50, not silently dropped. Excluding an inconvenient outlier without saying so
+would be exactly the kind of quiet tuning the integrity rules forbid.
+
+---
+
+## D36. The aggregation result is bounded by gold set size
+
+**Recorded as a limitation, not as a defence of the number.**
+
+Phase 2 established that answering an aggregation question by retrieval needs
+**k=76** for full slot coverage. Phase 3 nonetheless scored naive RAG at
+**F1 0.90 / 50% exact** on aggregation at **k=5**. Those reconcile only one way,
+and the data says which:
+
+    aggregation gold sizes: [2, 2, 2, 2, 3, 3, 3, 3, 4, 5]   mean 2.9
+    negation    gold sizes: [3, 7, 8, 9, 11, 11, 11, 12, 12, 12]   mean 9.6
+
+**Nine of ten aggregation golds name four halls or fewer.** Top-5 retrieval does
+not need to see all 14 halls when the answer is 2–3 of them and they rank near
+the top. Supporting evidence:
+
+    naive_rag aggregation   corr(gold_n, exact) = -0.53
+                            exact when gold <= 4:  5/9
+                            exact when gold >= 5:  0/1
+
+**So the aggregation figure is partly a property of the D15 band, not purely of
+the architecture.** The band admits golds as small as 2, and the corpus pushes
+surviving questions to the small end — ingredients here are near-universal or
+near-absent (D31), so the few that land in-band tend to land near its floor.
+
+**What must NOT be claimed:** that naive RAG "can aggregate". It was measured
+almost entirely on golds of 2–4. A benchmark whose aggregation golds clustered at
+8–10 would very likely show it collapsing, and one data point above gold=4 is far
+too thin to say where that begins.
+
+Negation shows no size effect to explain — naive RAG is at **0% exact at every
+gold size**. Its F1 rises with gold size (+0.66) only because larger gold sets
+make partial credit easier, which is the same artefact the `name-all-14` baseline
+row exposes.
+
+**Fix for a future phase:** stratify aggregation questions by gold size, or
+tighten the band's floor for that category, so the figure is not dominated by
+small golds. Not done now — changing the question set after scores were observed
+is exactly what the integrity rules forbid.
+
+---
+
+## D37. Answer policy differs sharply between systems, and must be reported
+
+Naive RAG abstains on **21 of 59** questions; long-context on **2 of 59**. A
+headline comparison between them is therefore partly a comparison of *willingness
+to answer*, not of architecture.
+
+`results.md` reports both: abstentions scored **incorrect** in the headline
+Accuracy table (consistent with the Phase 1 tagger accounting), plus a
+**precision-when-answering** column over non-abstained questions only.
+
+    system        category         headline   when answering   n_ans  abstain
+    naive_rag     comparison            70%              80%       5        5
+    naive_rag     temporal              30%              50%       6        4
+    naive_rag     fuzzy_semantic         0%               0%       2        7
+    naive_rag     negation               0%               0%       6        4
+    long_context  (all categories)   unchanged within 2pts        57        2
+
+**Where it changes the reading:** naive RAG is meaningfully more accurate when it
+commits than the headline suggests — temporal 30% -> 50%, comparison 70% -> 80%.
+
+**Where it changes nothing:** negation stays 0% either way. Its abstentions hide
+no competence; every answer it committed to was wrong.
+
+**Where it forced a claim to be withdrawn:** the fuzzy-semantic read originally
+said "a keyword list beats both LLM baselines". Naive RAG answered **2 of 9**
+fuzzy questions, so that was substantially "a keyword list beats a system that
+declined to answer". The surviving claim is about long-context only, which
+answered 8 of 9 and still scored 0% exact / F1 0.47 against a keyword list's
+F1 0.954. Corrected in `results.md`.

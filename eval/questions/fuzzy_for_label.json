@@ -1,0 +1,1897 @@
+{
+  "set": "fuzzy_for_label",
+  "scored": false,
+  "note": "Blind labelling set. Contains menu contents only \u2014 no machine proposal, no keywords, no evidence markers.",
+  "n": 10,
+  "questions": [
+    {
+      "id": "label-fuzzy-001",
+      "category": "fuzzy_semantic",
+      "question": "Which halls do a South-Indian style breakfast on Saturday?",
+      "slot": {
+        "day": "Saturday",
+        "meal": "Breakfast"
+      },
+      "as_of": "2026-08-25",
+      "instructions": "Read each hall's items and decide whether that hall satisfies the question. Put the hall names that DO into `label_halls`. Leave `label_halls` as null if you want to skip.",
+      "halls": {
+        "GH 1": {
+          "menu": [
+            "Dosa (Masala",
+            "Onion",
+            "Plain)",
+            "Paneer Dosa (Extra)",
+            "Sambar",
+            "Coconut Chutney",
+            "Tomato Chutney",
+            "Boiled Moong",
+            "Peanuts And Chana"
+          ],
+          "extras": []
+        },
+        "Hall 10": {
+          "menu": [
+            "Poha",
+            "Jalebi",
+            "Curd",
+            "Ratlami Sev",
+            "Bhujiya"
+          ],
+          "extras": []
+        },
+        "Hall 11": {
+          "menu": [
+            "Masala and Onion Dosa",
+            "Sambhar",
+            "Coconut Chutney",
+            "Peanut Chutney",
+            "Tomato Chatney"
+          ],
+          "extras": []
+        },
+        "Hall 12": {
+          "menu": [
+            "Indori Poha",
+            "Jalebi & Curd",
+            "Sattu",
+            "Extra- Aloo Bhujiya"
+          ],
+          "extras": [
+            "Banana Shake"
+          ]
+        },
+        "Hall 13": {
+          "menu": [
+            "Burger",
+            "Bomay Sandwich",
+            "Chutney(Green+Imli)"
+          ],
+          "extras": []
+        },
+        "Hall 14": {
+          "menu": [
+            "Poha",
+            "Jalebi",
+            "Curd Bhujia Namkeen (Mix)"
+          ],
+          "extras": []
+        },
+        "Hall 2": {
+          "menu": [
+            "Poha",
+            "Jalebi",
+            "Aloo Bhujiya",
+            "Curd"
+          ],
+          "extras": []
+        },
+        "Hall 3": {
+          "menu": [
+            "Poha",
+            "Dahi Jalebi",
+            "Sweet Corn"
+          ],
+          "extras": []
+        },
+        "Hall 4": {
+          "menu": [
+            "Dosa (Plain",
+            "Masala",
+            "Onion)",
+            "Sambar",
+            "Nariyal Chutney"
+          ],
+          "extras": []
+        },
+        "Hall 5": {
+          "menu": [
+            "Poha With Jalebi And Curd"
+          ],
+          "extras": [
+            "Aloo Bhujiya Pkt"
+          ]
+        },
+        "Hall 6": {
+          "menu": [
+            "Masala Dosa",
+            "Mysore Masala Dosa",
+            "Sambhar",
+            "Nariyal Chutney",
+            "Red Chutney"
+          ],
+          "extras": []
+        },
+        "Hall 7": {
+          "menu": [
+            "Masala-Dosa",
+            "Onion Dosa",
+            "With Sambhar & Coconut Chutney",
+            "Peanut Chatney"
+          ],
+          "extras": []
+        },
+        "Hall 8": {
+          "menu": [
+            "Dosa",
+            "Spcl Dosa",
+            "Nariyal Chutney",
+            "Sambhar"
+          ],
+          "extras": []
+        },
+        "Hall 9": {
+          "menu": [
+            "Dosa",
+            "Sambhar",
+            "Peanut Chutney",
+            "Kara Chutney"
+          ],
+          "extras": []
+        }
+      },
+      "label_halls": ["GH 1", "Hall 11", "Hall 4", "Hall 6", "Hall 7", "Hall 8", "Hall 9"]
+    },
+    {
+      "id": "label-fuzzy-002",
+      "category": "fuzzy_semantic",
+      "question": "Which halls have a proper dessert at dinner on Monday?",
+      "slot": {
+        "day": "Monday",
+        "meal": "Dinner"
+      },
+      "as_of": "2026-08-25",
+      "instructions": "Read each hall's items and decide whether that hall satisfies the question. Put the hall names that DO into `label_halls`. Leave `label_halls` as null if you want to skip.",
+      "halls": {
+        "GH 1": {
+          "menu": [
+            "Arbi Sabji",
+            "Moong Daal"
+          ],
+          "extras": [
+            "White Sauce Pasta",
+            "Bhel Puri",
+            "Chicken Malai Tikka (Non-Veg)"
+          ]
+        },
+        "Hall 10": {
+          "menu": [
+            "Jeera Rice",
+            "Plain Paratha",
+            "Arhad Dal",
+            "Gulab Jamun",
+            "Dudh Barfi (once a month)"
+          ],
+          "extras": [
+            "Chicken Butter Masala (Non-Veg) (a)",
+            "Pepper Chicken (Non-Veg) (b) (optional prebooking)"
+          ]
+        },
+        "Hall 11": {
+          "menu": [
+            "Matar Musroom",
+            "(Aloo Kachori",
+            "Matar Kachori)",
+            "Veg Moong Dal"
+          ],
+          "extras": [
+            "Chicken Rezala (Non-Veg)",
+            "Chicken Tikka Masala (Non-Veg)",
+            "Lachha Paratha",
+            "Nawabi Paneer",
+            "Crispy Corn"
+          ]
+        },
+        "Hall 12": {
+          "menu": [
+            "Pulao Rice",
+            "Jeera Rice",
+            "Chana Dal (Kaju & Deshi Ghee Tadka)",
+            "Lauki Jeera",
+            "Mint Raita"
+          ],
+          "extras": [
+            "Roasted Chicken (Non-Veg)",
+            "Paneer Tikka (Dry)",
+            "Rabdi Malpua",
+            "Paneer Maharaja"
+          ]
+        },
+        "Hall 13": {
+          "menu": [
+            "Egg Biryani",
+            "Veg Biryani",
+            "Mint Raita",
+            "Salad"
+          ],
+          "extras": [
+            "Paneer Tikka",
+            "Chilli Chicken"
+          ]
+        },
+        "Hall 14": {
+          "menu": [
+            "Kaddu",
+            "Jeera Rice",
+            "Chana Dal Tadka",
+            "Paneer Dosa"
+          ],
+          "extras": [
+            "Tandoori Chicken (Non-Veg)",
+            "Coconut Dry Gulab Jamun"
+          ]
+        },
+        "Hall 2": {
+          "menu": [
+            "Veg Biryani",
+            "Dal Makhni",
+            "Mint Raita",
+            "Salad"
+          ],
+          "extras": [
+            "Paneer Tikka",
+            "Tandoori Chicken (Non-Veg) Rajbhog"
+          ]
+        },
+        "Hall 3": {
+          "menu": [
+            "Dum Aloo",
+            "Malka Dal"
+          ],
+          "extras": [
+            "Papdi Chaat",
+            "Chicken Maharani (Non-Veg)"
+          ]
+        },
+        "Hall 4": {
+          "menu": [
+            "Bhindi Masala",
+            "Arhar Dal",
+            "Sooji Halwa"
+          ],
+          "extras": [
+            "Dabeli",
+            "Mutton Handi (Non-Veg)"
+          ]
+        },
+        "Hall 5": {
+          "menu": [
+            "Govind Gatta Curry",
+            "Black Urad & Chana Dal"
+          ],
+          "extras": [
+            "Kolkatta Biryani",
+            "Paneer Rara",
+            "Cold Rose Milk",
+            "Mini Ras Malai (4-Pc)"
+          ]
+        },
+        "Hall 6": {
+          "menu": [
+            "Aloo Palak Dry",
+            "Moong Dal",
+            "Mirchi Bhajji",
+            "Bhoondi Laddoo"
+          ],
+          "extras": [
+            "Noodles"
+          ]
+        },
+        "Hall 7": {
+          "menu": [
+            "Butter Masoor Dal",
+            "Lauki Kofta",
+            "Mathaa Aloo",
+            "Green-chatney",
+            "Chapati (Plain & Deshi Ghee)",
+            "Plain-Rice"
+          ],
+          "extras": [
+            "Chicken Biryani (Non-Veg)",
+            "Imrati Rabdi",
+            "Garlic-Mushroom"
+          ]
+        },
+        "Hall 8": {
+          "menu": [
+            "Paneer Do Pyaza",
+            "(Chicken Do Pyaza (Non-Veg) - 2pc",
+            "Egg Curry)",
+            "Paratha",
+            "Red Masoor Daal",
+            "Rabdi Jalebi",
+            "Phirni"
+          ],
+          "extras": []
+        },
+        "Hall 9": {
+          "menu": [
+            "Aloo Matar",
+            "Puri (Palak",
+            "Plain)",
+            "Arhar Dal",
+            "Sewai",
+            "Kheer"
+          ],
+          "extras": [
+            "Veg Soup",
+            "Veg Chowmein",
+            "Chicken Fried Rice (Non-Veg)"
+          ]
+        }
+      },
+      "label_halls": ["Hall 10", "Hall 12", "Hall 14", "Hall 4","Hall 5", "Hall 6", "Hall 7", "Hall 8", "Hall 9"]
+    },
+    {
+      "id": "label-fuzzy-003",
+      "category": "fuzzy_semantic",
+      "question": "Which messes have Indo-Chinese food at dinner on Thursday?",
+      "slot": {
+        "day": "Thursday",
+        "meal": "Dinner"
+      },
+      "as_of": "2026-08-25",
+      "instructions": "Read each hall's items and decide whether that hall satisfies the question. Put the hall names that DO into `label_halls`. Leave `label_halls` as null if you want to skip.",
+      "halls": {
+        "GH 1": {
+          "menu": [
+            "Veg Fried Rice",
+            "Veg Manchurian"
+          ],
+          "extras": [
+            "Chilli Paneer",
+            "Chicken Lollipop With Sauce (Non-Veg)"
+          ]
+        },
+        "Hall 10": {
+          "menu": [
+            "Kali Masoor Dal",
+            "Bhindhi Fry",
+            "Ice Cream"
+          ],
+          "extras": [
+            "Tandoori Chicken (a)",
+            "Chicken BBQ Tikka (b) (Non-Veg)",
+            "Dahi Papdi (a)",
+            "Pani Puri (b)"
+          ]
+        },
+        "Hall 11": {
+          "menu": [
+            "Aloo Cabbage Matar Dry",
+            "Chana Dal"
+          ],
+          "extras": [
+            "Chicken Kali Mirch Dry (Non-Veg)",
+            "Fish Tikka (Non-Veg)",
+            "Paneer Butter Masala",
+            "Rabdi"
+          ]
+        },
+        "Hall 12": {
+          "menu": [
+            "Bhindi Ka Bhujiya",
+            "Arhar Dal"
+          ],
+          "extras": [
+            "Boondi Laddu",
+            "Crispy Corn",
+            "Chicken Changezi (Non-Veg)",
+            "Paneer Dosa"
+          ]
+        },
+        "Hall 13": {
+          "menu": [
+            "Punjabi Dum Aloo",
+            "Masoor Dal",
+            "Fried Rice"
+          ],
+          "extras": [
+            "Paneer Tikka Masala",
+            "Malai Sandwich",
+            "Butter Handi Chicken (Non-Veg)"
+          ]
+        },
+        "Hall 14": {
+          "menu": [
+            "Parwal",
+            "Imli Rice",
+            "Friend Fries",
+            "Arhar Dal"
+          ],
+          "extras": [
+            "Chicken Biryani (Non-Veg)",
+            "Methi Malai Paneer",
+            "Litti Choka Kalakand"
+          ]
+        },
+        "Hall 2": {
+          "menu": [
+            "Veg Korma",
+            "Malka Msoor Dal"
+          ],
+          "extras": [
+            "Malai Boondi",
+            "Honey Chilli Potato",
+            "Hyderabadi Chicken Biryani (Non-Veg)"
+          ]
+        },
+        "Hall 3": {
+          "menu": [
+            "Aloo Tamatar Sabji",
+            "Masala Poori"
+          ],
+          "extras": [
+            "Garlic Bread",
+            "Ghee Roast Chicken (Non-Veg)"
+          ]
+        },
+        "Hall 4": {
+          "menu": [
+            "Achaari Karela",
+            "Rajma",
+            "Tikki Chat"
+          ],
+          "extras": [
+            "Paneer Makhani",
+            "Tandoori Paneer Pasta",
+            "Chilli Chicken (Non-Veg)"
+          ]
+        },
+        "Hall 5": {
+          "menu": [
+            "Kashmiri Dum Aloo",
+            "Dal Bukhara",
+            "Rawa Kesari"
+          ],
+          "extras": [
+            "Crispy Corn",
+            "Chilli Chicken Dry (Non-Veg)"
+          ]
+        },
+        "Hall 6": {
+          "menu": [
+            "Aloo Matar Gravy",
+            "Puri",
+            "Palak Puri",
+            "Red Masoor Dal"
+          ],
+          "extras": [
+            "Paneer Momos",
+            "Chicken Momos (Non-Veg)"
+          ]
+        },
+        "Hall 7": {
+          "menu": [
+            "Arhar Dal",
+            "Kadai Paneer",
+            "Chicken Maharaja(Non-Veg)",
+            "Butter Chicken(Non-Veg) (Alternate) Prior Booking in Option",
+            "Tandoor-Roti",
+            "Naan",
+            "Plain Roti",
+            "Veg-Pulao",
+            "Garlic Naan",
+            "French-Fries",
+            "Green Chutney",
+            "Salad",
+            "Vinegar-Pyaaz",
+            "Stuffe Gulab Jamun"
+          ],
+          "extras": []
+        },
+        "Hall 8": {
+          "menu": [
+            "Veg Kofta",
+            "Moong Daal Zeera Pyaaz Pulao"
+          ],
+          "extras": [
+            "Gulabjamun",
+            "Methi Malai Paneer",
+            "Mutton Kosha (Non-Veg)",
+            "Rajasthani Lal Maas (Non-Veg)"
+          ]
+        },
+        "Hall 9": {
+          "menu": [
+            "Pindi Chhola",
+            "Kulcha",
+            "Arhar Dal",
+            "Kachodi",
+            "Imarti Rabri",
+            "Chhola Bhatura",
+            "Kachodi Arhar Dal",
+            "Imarti Rabri"
+          ],
+          "extras": [
+            "Chicken Angara (Non-Veg)",
+            "Samosa Chaat Manchurian Fried Rice",
+            "Kali Masoor Dal"
+          ]
+        }
+      },
+      "label_halls": [
+          "GH 1",
+          "Hall 13",
+          "Hall 2",
+          "Hall 4",
+          "Hall 5",
+          "Hall 6",
+          "Hall 9"
+        ]
+    },
+    {
+      "id": "label-fuzzy-004",
+      "category": "fuzzy_semantic",
+      "question": "Which halls have something deep-fried and snacky at breakfast on Friday?",
+      "slot": {
+        "day": "Friday",
+        "meal": "Breakfast"
+      },
+      "as_of": "2026-08-25",
+      "instructions": "Read each hall's items and decide whether that hall satisfies the question. Put the hall names that DO into `label_halls`. Leave `label_halls` as null if you want to skip.",
+      "halls": {
+        "GH 1": {
+          "menu": [
+            "Sabudana Khichdi",
+            "Green Chutney",
+            "Chocos",
+            "Boiled Moong",
+            "Peanuts And Chana"
+          ],
+          "extras": []
+        },
+        "Hall 10": {
+          "menu": [
+            "Poori (Aata, Maida)",
+            "Halwa",
+            "Matar Ghughni (a)",
+            "Poori (Aata, Maida)",
+            "Halwa",
+            "Aloo Masala (b)"
+          ],
+          "extras": []
+        },
+        "Hall 11": {
+          "menu": [
+            "Sewai Upma",
+            "Nariyal Chutney",
+            "Aloo",
+            "Veg Sandwich",
+            "Green Chutney"
+          ],
+          "extras": []
+        },
+        "Hall 12": {
+          "menu": [
+            "Idli",
+            "Masala Idli",
+            "Wada",
+            "Sambhar",
+            "Coconut Chatni",
+            "Tomato Chatni",
+            "Sattu"
+          ],
+          "extras": [
+            "Banana Shake"
+          ]
+        },
+        "Hall 13": {
+          "menu": [
+            "Poha",
+            "Jalebi",
+            "Aloo Bhujiya",
+            "Curd"
+          ],
+          "extras": []
+        },
+        "Hall 14": {
+          "menu": [
+            "Aloo Sabji",
+            "Poori",
+            "Matar Kachauri",
+            "Halwa",
+            "Chana"
+          ],
+          "extras": []
+        },
+        "Hall 2": {
+          "menu": [
+            "Macroni",
+            "Veg Cutlet",
+            "Green Chutney Altenate: Moong Dal Chilla"
+          ],
+          "extras": []
+        },
+        "Hall 3": {
+          "menu": [
+            "Samosa",
+            "Chole",
+            "Green & Red Chutney"
+          ],
+          "extras": []
+        },
+        "Hall 4": {
+          "menu": [
+            "Paneer Bhurji",
+            "Egg Bhurji",
+            "Roti",
+            "Paratha (Alternate Week)"
+          ],
+          "extras": []
+        },
+        "Hall 5": {
+          "menu": [
+            "Idli",
+            "Masala Idli",
+            "Mendu Vada (2-Pc)",
+            "Sambhar With Coconut Chutney"
+          ],
+          "extras": []
+        },
+        "Hall 6": {
+          "menu": [
+            "Thepla",
+            "Green Chutney",
+            "Uttapam",
+            "Green Chutney"
+          ],
+          "extras": []
+        },
+        "Hall 7": {
+          "menu": [
+            "Paratha {Sattu",
+            "Pyaz Paratha",
+            "Aloo}",
+            "Plain Paratha",
+            "Upma",
+            "Besan-Chilla Alt",
+            "Butter (10 Gm)",
+            "Peanut Butter (2 Spoons)",
+            "Tomato-Sauce",
+            "Green Chatney",
+            "Garlic Chatney",
+            "Aloo Dry Jeera"
+          ],
+          "extras": []
+        },
+        "Hall 8": {
+          "menu": [
+            "Parathas (Aloo, Aloo Pyaaz & Sattu) Ketchup",
+            "Tomato Chutney",
+            "Green Chutney",
+            "Plain Paratha",
+            "Aloo Green Matar Bhujia",
+            "Tomato Ketchup"
+          ],
+          "extras": []
+        },
+        "Hall 9": {
+          "menu": [
+            "Khasta Kachori Chhole Pudina Raita"
+          ],
+          "extras": []
+        }
+      },
+      "label_halls": [
+          "Hall 10",
+          "Hall 14",
+          "Hall 2",
+          "Hall 3",
+          "Hall 5",
+          "Hall 8",
+          "Hall 9"
+        ]
+    },
+    {
+      "id": "label-fuzzy-005",
+      "category": "fuzzy_semantic",
+      "question": "Which halls have a light, non-heavy dinner on Sunday?",
+      "slot": {
+        "day": "Sunday",
+        "meal": "Dinner"
+      },
+      "as_of": "2026-08-25",
+      "instructions": "Read each hall's items and decide whether that hall satisfies the question. Put the hall names that DO into `label_halls`. Leave `label_halls` as null if you want to skip.",
+      "halls": {
+        "GH 1": {
+          "menu": [
+            "Papdi Chaat",
+            "Pani Puri",
+            "Tawa Pulao",
+            "Veg Raita",
+            "Kaddu Sabzi",
+            "Chana Daal Tadka"
+          ],
+          "extras": [
+            "Chicken Biryani (Non-Veg)",
+            "Crispy Corn"
+          ]
+        },
+        "Hall 10": {
+          "menu": [
+            "Tehri (a)",
+            "Khichdi (b)",
+            "Raita",
+            "Pyazko Pakoda",
+            "Arhar Dal"
+          ],
+          "extras": [
+            "Chicken Biryani (TBD) (Non-Veg)",
+            "Mutton Biryani (TBD) (Non-Veg)",
+            "Pyaaz Kachori (a)",
+            "Aloo Tikki Chat (b)",
+            "Jalebi Rabdi"
+          ]
+        },
+        "Hall 11": {
+          "menu": [
+            "Pindi Chole Dry",
+            "Arhar Dal"
+          ],
+          "extras": [
+            "Chicken Biryani (Non-Veg)",
+            "Litti Chokha",
+            "Milk Cake"
+          ]
+        },
+        "Hall 12": {
+          "menu": [
+            "Paneer",
+            "Chicken Korma (Non-Veg)",
+            "Moong Dal",
+            "Garlic Naan",
+            "Tandoori Roti",
+            "Pulao",
+            "White Rasgulla",
+            "Kachumber Salad",
+            "Papad"
+          ],
+          "extras": [
+            "Soya Malai Chaap"
+          ]
+        },
+        "Hall 13": {
+          "menu": [
+            "Kadhal Paneer",
+            "Handi Paneer",
+            "Chicken Paratha (Non-Veg)",
+            "Dal Makhni",
+            "Papad",
+            "Cabbage Salad",
+            "Stuff Gulab Jamun"
+          ],
+          "extras": []
+        },
+        "Hall 14": {
+          "menu": [
+            "Kadhai Paneer",
+            "Paneer Butter Masala",
+            "Chicken Kali Mirch (Non-Veg)",
+            "Arhar Dal",
+            "Pulao",
+            "Butter Naan",
+            "Tandoori Roti",
+            "Gulab Jamun"
+          ],
+          "extras": []
+        },
+        "Hall 2": {
+          "menu": [
+            "Panner Lababdar",
+            "Chicken Curry (Non-Veg)",
+            "Basanti Pulao",
+            "Tandoori Roti",
+            "Garlic Naan",
+            "Missi Roti",
+            "Kuchumber Salad",
+            "Ras Malai",
+            "Gulab Jamun"
+          ],
+          "extras": []
+        },
+        "Hall 3": {
+          "menu": [
+            "Spl. Paneer",
+            "Chicken Curry (Non-Veg)",
+            "Veg. Pulao",
+            "Chana Daal",
+            "Laccha Paratha",
+            "Gulab Jamun",
+            "Papad"
+          ],
+          "extras": []
+        },
+        "Hall 4": {
+          "menu": [
+            "Tawa Paneer",
+            "Kadhai Paneer",
+            "Tandoori Roti",
+            "Tadka Dal",
+            "Roti",
+            "Basanti Pulao",
+            "Matar Pulao",
+            "Veg Cutlet (2 Pc). Sweet: Phirni",
+            "Coconut Barfi",
+            "Ghee Roast Chicken (Non-Veg)",
+            "Chicken Lababdar (Non-Veg)"
+          ],
+          "extras": []
+        },
+        "Hall 5": {
+          "menu": [
+            "Tamatar Pyaz Ka Salan",
+            "Lemon Rice & Tomato Rice",
+            "Panchmel Dal"
+          ],
+          "extras": [
+            "Chicken Reshami Kabab (Non-Veg)",
+            "Paneer Chettinad",
+            "Shahi Tukda"
+          ]
+        },
+        "Hall 6": {
+          "menu": [
+            "Kashmiri Dum Aloo",
+            "Daal Makhni"
+          ],
+          "extras": [
+            "Appe",
+            "Hyderabadi Chicken Biryani (Non-Veg)"
+          ]
+        },
+        "Hall 7": {
+          "menu": [
+            "Paneer Do Pyaza",
+            "Dal Makhani",
+            "Murgh Rogan Josh (Non-Veg) Prior Booking Option",
+            "Tandoori Roti",
+            "Missi Roti",
+            "Plain Roti",
+            "Veg Pulao",
+            "Sweet Corn",
+            "Angoori Gulab-Jamun With Ice-Cream (1 Scoop)",
+            "Moong Dal Halwa",
+            "Vinegar-Pyaaz"
+          ],
+          "extras": []
+        },
+        "Hall 8": {
+          "menu": [
+            "Malai Kofta",
+            "Lachha Paratha",
+            "Arhar Daal"
+          ],
+          "extras": [
+            "Dry Fruit Laddu",
+            "Fruit Custard",
+            "Dahi Vada",
+            "Honey Chilli Potato",
+            "Chicken Biryani (Non-Veg) + Salan"
+          ]
+        },
+        "Hall 9": {
+          "menu": [
+            "Paneer Butter Masala",
+            "Kadal Chicken (Non-Veg)",
+            "Masoor Dal",
+            "Bagara Rice",
+            "Missi Roti",
+            "Butter Naan",
+            "Fruit Custard"
+          ],
+          "extras": []
+        }
+      },
+      "label_halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 12",
+          "Hall 13",
+          "Hall 2",
+          "Hall 8",
+          "Hall 9"
+        ]
+    },
+    {
+      "id": "label-fuzzy-006",
+      "category": "fuzzy_semantic",
+      "question": "Which halls are doing street-food style items at dinner on Tuesday?",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Dinner"
+      },
+      "as_of": "2026-08-25",
+      "instructions": "Read each hall's items and decide whether that hall satisfies the question. Put the hall names that DO into `label_halls`. Leave `label_halls` as null if you want to skip.",
+      "halls": {
+        "GH 1": {
+          "menu": [
+            "Shimla Soyabean",
+            "Mix Daal"
+          ],
+          "extras": [
+            "Roasted Chicken (Non-Veg)",
+            "Paneer Pulao"
+          ]
+        },
+        "Hall 10": {
+          "menu": [
+            "Kulcha",
+            "Chole",
+            "Veg Dal"
+          ],
+          "extras": [
+            "Kerala Style Chicken Curry (Non-Veg)",
+            "Boiled Chicken (Non-Veg)",
+            "Paneer Pasanda",
+            "Kesar Milk"
+          ]
+        },
+        "Hall 11": {
+          "menu": [
+            "Aloo Baigan Light Gravy",
+            "Mix Dal"
+          ],
+          "extras": [
+            "Fish Tikka (Non-Veg)",
+            "Aloo Tikki Chaat",
+            "Chenna"
+          ]
+        },
+        "Hall 12": {
+          "menu": [
+            "Chhola",
+            "Kulcha",
+            "Bhatura",
+            "Laccha Pyaz",
+            "Fruit Custard",
+            "Fried Chilies",
+            "French Fries"
+          ],
+          "extras": [
+            "Kabab Roll (Non-Veg)",
+            "Mushroom Masala",
+            "Chicken Fried Rice (Non-Veg)"
+          ]
+        },
+        "Hall 13": {
+          "menu": [
+            "Aloo-matar tamatar",
+            "Chana Dal Tadka",
+            "Fruit Custurd"
+          ],
+          "extras": [
+            "Paneer Kathi Roll",
+            "Moong Halwa"
+          ]
+        },
+        "Hall 14": {
+          "menu": [
+            "Aloo Matar",
+            "Puri (Palak, Plain, Maida)",
+            "White Matar Dal",
+            "Sewai"
+          ],
+          "extras": [
+            "Honey Chilli Potato",
+            "Paneer Roll",
+            "Chicken Kalimirch (Non-Veg)"
+          ]
+        },
+        "Hall 2": {
+          "menu": [
+            "Dum Aloo",
+            "Panchmel Dal"
+          ],
+          "extras": [
+            "Paneer Kathi Roll",
+            "Rabdi Malpua",
+            "Egg Curry"
+          ]
+        },
+        "Hall 3": {
+          "menu": [
+            "Chole",
+            "Bhature",
+            "Fruit Custard",
+            "Sewai",
+            "Rice Kheer"
+          ],
+          "extras": [
+            "Sahi Lassi"
+          ]
+        },
+        "Hall 4": {
+          "menu": [
+            "Ghugni",
+            "Jeera Rice",
+            "Kundru Masala"
+          ],
+          "extras": [
+            "Pani Puri"
+          ]
+        },
+        "Hall 5": {
+          "menu": [
+            "Nargisi Kofta Curry",
+            "Red Masoor Dal",
+            "Fruit Custard"
+          ],
+          "extras": [
+            "Hakka Noodles+Paneer Chilli (2Pc) Combo",
+            "Aloo Tikki"
+          ]
+        },
+        "Hall 6": {
+          "menu": [
+            "Tawa Paneer",
+            "Malai Methi Paneer",
+            "Naan",
+            "Missi Roti",
+            "Tandoori Roti",
+            "Mix Dal (Arhar, Chana, Masoor)",
+            "Matar Pulao",
+            "Fruit Custard",
+            "Ice Cream",
+            "Aloo Fries"
+          ],
+          "extras": []
+        },
+        "Hall 7": {
+          "menu": [
+            "Urad-Dal Chhilka",
+            "Kaddu-Jeera Plain",
+            "Aloo Matar Tamatar",
+            "Mix Vegetable",
+            "Poori (Aata, Palak, Dal Kachori)",
+            "Lemon Rice",
+            "Rice-Kheer",
+            "Seviyan(Alternate Week)",
+            "Chapati (Plain & Deshi Ghee)",
+            "Plain-Rice",
+            "Tamatar Chutney"
+          ],
+          "extras": []
+        },
+        "Hall 8": {
+          "menu": [
+            "Pindi Chola",
+            "Bhatura",
+            "Poori (Aata & Maida) Kheer",
+            "Suji Ka Halwa Tomato Fried Rice",
+            "Chana Daal"
+          ],
+          "extras": [
+            "Mushroom Masala",
+            "Chicken Stew With Veggies (Non-Veg)"
+          ]
+        },
+        "Hall 9": {
+          "menu": [
+            "Chilli Shimla",
+            "Kali Masoor Dal",
+            "Kundru Fry"
+          ],
+          "extras": [
+            "Honey Chilli Potato",
+            "Paneer Dosa"
+          ]
+        }
+      },
+      "label_halls": null
+    },
+    {
+      "id": "label-fuzzy-007",
+      "category": "fuzzy_semantic",
+      "question": "Which halls have a protein-heavy breakfast on Wednesday?",
+      "slot": {
+        "day": "Wednesday",
+        "meal": "Breakfast"
+      },
+      "as_of": "2026-08-25",
+      "instructions": "Read each hall's items and decide whether that hall satisfies the question. Put the hall names that DO into `label_halls`. Leave `label_halls` as null if you want to skip.",
+      "halls": {
+        "GH 1": {
+          "menu": [
+            "Bombay Sandwich",
+            "Boiled Moong",
+            "Peanuts And Chana"
+          ],
+          "extras": []
+        },
+        "Hall 10": {
+          "menu": [
+            "Aloo-Pyaaz Paratha",
+            "Dal Paratha",
+            "Satto Paratha",
+            "Chutney",
+            "Curd",
+            "Butter"
+          ],
+          "extras": []
+        },
+        "Hall 11": {
+          "menu": [
+            "Uttapam",
+            "Sambhar",
+            "Coconut Chutney",
+            "Vada Pav",
+            "Green Chutney"
+          ],
+          "extras": []
+        },
+        "Hall 12": {
+          "menu": [
+            "Uttapam",
+            "Sambhar",
+            "Coconut Chatney",
+            "Sattu"
+          ],
+          "extras": [
+            "Banana Shake"
+          ]
+        },
+        "Hall 13": {
+          "menu": [
+            "Idli",
+            "Masala Idli",
+            "Sambhar",
+            "Coconut Chutney",
+            "Ginger Chutney"
+          ],
+          "extras": []
+        },
+        "Hall 14": {
+          "menu": [
+            "Paratha (Aloo, Pyaz)",
+            "Green Chutney Sauce"
+          ],
+          "extras": []
+        },
+        "Hall 2": {
+          "menu": [
+            "Idli",
+            "Masala Idli",
+            "Sambhar",
+            "Coconut Chutney",
+            "Ginger Chutney Alternate: Uttapam",
+            "Sambar",
+            "Coconut Chutney"
+          ],
+          "extras": []
+        },
+        "Hall 3": {
+          "menu": [
+            "Idli",
+            "Idli Fry",
+            "Sambhar",
+            "Nariyal Chutney",
+            "Imli Chutney"
+          ],
+          "extras": []
+        },
+        "Hall 4": {
+          "menu": [
+            "Uttapam",
+            "Sambar",
+            "Nariyal Chutney",
+            "Tomato Chutney"
+          ],
+          "extras": []
+        },
+        "Hall 5": {
+          "menu": [
+            "Veg Uttapam",
+            "Punugulu",
+            "Coconut Chutney",
+            "Tomato Chutney",
+            "Sambhar"
+          ],
+          "extras": []
+        },
+        "Hall 6": {
+          "menu": [
+            "Chana",
+            "Atta Puri",
+            "Halwa"
+          ],
+          "extras": []
+        },
+        "Hall 7": {
+          "menu": [
+            "Masala Idli",
+            "Idli",
+            "Vada",
+            "Sambhar",
+            "Coconut Chutney",
+            "Tomato Chutney",
+            "Chholakhasta",
+            "Aloo Jeera Sabji (Optional)"
+          ],
+          "extras": []
+        },
+        "Hall 8": {
+          "menu": [
+            "(Idli-Vada",
+            "Sewai Upma)",
+            "Sambhar",
+            "Nariyal Chutney",
+            "Moongfali Chutney"
+          ],
+          "extras": []
+        },
+        "Hall 9": {
+          "menu": [
+            "Halwa Chana Puri",
+            "Aloo Matar Sabji",
+            "Besan Chilla",
+            "Pyaz Hari",
+            "Mirch Pakoda Green Chutney"
+          ],
+          "extras": []
+        }
+      },
+      "label_halls": [
+          "GH 1",
+          "Hall 12",
+          "Hall 10",
+          "Hall 6",
+          "Hall 9"
+        ]
+    },
+    {
+      "id": "label-fuzzy-008",
+      "category": "fuzzy_semantic",
+      "question": "Which halls have a Western or continental option at dinner on Friday?",
+      "slot": {
+        "day": "Friday",
+        "meal": "Dinner"
+      },
+      "as_of": "2026-08-25",
+      "instructions": "Read each hall's items and decide whether that hall satisfies the question. Put the hall names that DO into `label_halls`. Leave `label_halls` as null if you want to skip.",
+      "halls": {
+        "GH 1": {
+          "menu": [
+            "Matar Paneer",
+            "Arhar Daal",
+            "Puri (Atta, Maida)",
+            "Chhole Bhature",
+            "Makhana Kheer",
+            "Khiri"
+          ],
+          "extras": [
+            "Chilli Cheese Toast",
+            "Mutton Jhol (Non-Veg)"
+          ]
+        },
+        "Hall 10": {
+          "menu": [
+            "Basanti Pulao",
+            "Tandoori Roti (Aata, Maida)",
+            "Mixed Dal",
+            "Tossed Salad",
+            "Hall-X Special Jamun (a)",
+            "Angoori Gulab Jamun (b)",
+            "Paneer Lapeta (a)",
+            "Paneer Methi Malai (b)",
+            "Chicken Kasha (a)",
+            "Chicken Kalimirch Gravy (b) (Non-Veg, optional prebooking)"
+          ],
+          "extras": []
+        },
+        "Hall 11": {
+          "menu": [
+            "Chhole Kulche",
+            "Chhole Bahture",
+            "Arhar Dal",
+            "Kheer",
+            "Sewai"
+          ],
+          "extras": [
+            "Mutton Bhuna Masala (Non-Veg)",
+            "Mutton Biryani (Non-Veg)",
+            "Hakka Noodles",
+            "Raj Kachori"
+          ]
+        },
+        "Hall 12": {
+          "menu": [
+            "Bhandara Sabji",
+            "Lal Masoor Dal",
+            "Aata Puri",
+            "Maida Puri",
+            "Sewai",
+            "Kheer"
+          ],
+          "extras": [
+            "Egg Roll (Non-Veg)",
+            "Paneer Korma",
+            "Chandrakala",
+            "Chicken Biryani (Non-Veg)",
+            "Honey Chilli Potato"
+          ]
+        },
+        "Hall 13": {
+          "menu": [
+            "Black Chana Masala",
+            "Mix Dal",
+            "French Fries"
+          ],
+          "extras": [
+            "Paneer Dosa",
+            "Chicken Changezi (Non-Veg)"
+          ]
+        },
+        "Hall 14": {
+          "menu": [
+            "Veg Kofta",
+            "Chana Dal Fry",
+            "Chowmin"
+          ],
+          "extras": [
+            "Mutton Korma (Non-Veg)",
+            "Bread Malai Sandwich",
+            "Paneer Do Pyaza",
+            "Golgaape"
+          ]
+        },
+        "Hall 2": {
+          "menu": [
+            "Amritsari Chhole",
+            "Stuffd Kulche",
+            "Custard"
+          ],
+          "extras": [
+            "Veg & Chicken Momos (Non-Veg)"
+          ]
+        },
+        "Hall 3": {
+          "menu": [
+            "Soyabean Sabzi",
+            "Arhar Dal Tadka"
+          ],
+          "extras": [
+            "Kathi Roll (Non-Veg)",
+            "Egg Curry (Non-Veg)"
+          ]
+        },
+        "Hall 4": {
+          "menu": [
+            "Vegetable Khichdi",
+            "Papad",
+            "Soyabean Sabzi (Dry)",
+            "Sewai Kheer"
+          ],
+          "extras": [
+            "Paneer Biryani",
+            "Chicken Biryani (Non-Veg)",
+            "Salan"
+          ]
+        },
+        "Hall 5": {
+          "menu": [
+            "Soya Chaap Gravy",
+            "Arhar Moong Dal (Dhaba Style)"
+          ],
+          "extras": [
+            "Chicken Yakhni Pulav (Non-Veg)",
+            "Paneer Tikka",
+            "Malai Chum-Chum"
+          ]
+        },
+        "Hall 6": {
+          "menu": [
+            "Chhole Bhature",
+            "Kulche",
+            "Egg Curry (1 Pc)",
+            "Meetha Samosa",
+            "Gulab Jamun"
+          ],
+          "extras": [
+            "Chicken Lollipop (Non-Veg)"
+          ]
+        },
+        "Hall 7": {
+          "menu": [
+            "Moongdaal",
+            "Bhatura-Chhola",
+            "Kulcha",
+            "Pindi-Chana",
+            "Prime Chips",
+            "Fruit raita",
+            "Chapati",
+            "Plain Rice",
+            "Aloo Jeera"
+          ],
+          "extras": [
+            "Mutton Biryani(Non-Veg)",
+            "Maalpua (Cooked In Deshi Ghee)",
+            "Hara Bhara Kabab"
+          ]
+        },
+        "Hall 8": {
+          "menu": [
+            "Paneer Qurooma",
+            "Chicken Mumtaz (Non-Veg) (2 Pcs) Veg Fried Rice",
+            "Arhar Dal Fry",
+            "Missi Roti",
+            "French Fries (One Time)",
+            "Salad (Extra Corn)",
+            "(Gulab Jamun",
+            "Moong Dal Halwa)",
+            "Ice Cream"
+          ],
+          "extras": []
+        },
+        "Hall 9": {
+          "menu": [
+            "Manchurian Fried Rice",
+            "Kai Masoor Dal"
+          ],
+          "extras": [
+            "Litti Chokha",
+            "Paneer Butter Masala",
+            "Chicken Biryani (Non-Veg)",
+            "Rasmalai",
+            "Rajbhog"
+          ]
+        }
+      },
+      "label_halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 13",
+          "Hall 8"
+        ]
+    },
+    {
+      "id": "label-fuzzy-009",
+      "category": "fuzzy_semantic",
+      "question": "Which halls have a rich North-Indian gravy dish at lunch on Sunday?",
+      "slot": {
+        "day": "Sunday",
+        "meal": "Lunch"
+      },
+      "as_of": "2026-08-25",
+      "instructions": "Read each hall's items and decide whether that hall satisfies the question. Put the hall names that DO into `label_halls`. Leave `label_halls` as null if you want to skip.",
+      "halls": {
+        "GH 1": {
+          "menu": [
+            "Handi Paneer",
+            "Hyderabadi Chicken (Non-Veg) (1 Pc) (Any 1)",
+            "Chana Daal",
+            "Ice Cream (One Scoop)",
+            "Papad"
+          ],
+          "extras": []
+        },
+        "Hall 10": {
+          "menu": [
+            "Paratha (Paneer, Mixed-veg, Aloo)",
+            "Chole (a)",
+            "Matar Ghughni (b)",
+            "Veg Dal"
+          ],
+          "extras": [
+            "Hall-X Special Sea Food (a)",
+            "Mutton Rogan Josh (b) (Non-Veg)",
+            "Shahi Paneer",
+            "Ras Malai"
+          ]
+        },
+        "Hall 11": {
+          "menu": [
+            "Green Chutney",
+            "Chana Dal",
+            "Aloo Green Matar Sabzi",
+            "Lassi"
+          ],
+          "extras": [
+            "Fish (Non-Veg)",
+            "Mutton (Non-Veg)",
+            "Chicken (Non-Veg)",
+            "Paneer Do Pyaja",
+            "Gulab Jamun"
+          ]
+        },
+        "Hall 12": {
+          "menu": [
+            "Veg Kofta",
+            "Arhar Dal",
+            "Tadka",
+            "Chanch",
+            "Fried Chilies",
+            "Neebu Pani",
+            "Rasna",
+            "Roohafza"
+          ],
+          "extras": [
+            "Ras Malai",
+            "Chilli Mushroom",
+            "Pani Puri"
+          ]
+        },
+        "Hall 13": {
+          "menu": [
+            "Rajma",
+            "Aloo+Capsicum+Matar",
+            "Fryems",
+            "Lemon Rice",
+            "Aam Pana"
+          ],
+          "extras": [
+            "Hakka Noodles",
+            "Egg Curry"
+          ]
+        },
+        "Hall 14": {
+          "menu": [
+            "Rajma",
+            "Jeera Rice",
+            "Aloo Baingan"
+          ],
+          "extras": [
+            "Egg Biryani",
+            "Aloo Posto",
+            "Ras Malai"
+          ]
+        },
+        "Hall 2": {
+          "menu": [
+            "Jeera Rice",
+            "Aloo Parwal",
+            "Rajma"
+          ],
+          "extras": [
+            "Chilli Panner",
+            "Chilli Chicken (Non-Veg)",
+            "Cheese Cigar Roll"
+          ]
+        },
+        "Hall 3": {
+          "menu": [
+            "Rajma",
+            "Aloo Bhurji"
+          ],
+          "extras": [
+            "Cheese Fries",
+            "Chicken Biryani (Non-Veg)"
+          ]
+        },
+        "Hall 4": {
+          "menu": [
+            "Arbi",
+            "Kaccha Kela Sabji (Dry)",
+            "Fried Rice",
+            "Laal Masoor Dal",
+            "Fruit",
+            "Buttermilk"
+          ],
+          "extras": [
+            "Malai Methi Paneer",
+            "Bengali Fish Curry (Non-Veg)"
+          ]
+        },
+        "Hall 5": {
+          "menu": [
+            "Paneer+Pyaz Paratha (2pc)",
+            "Aloo Paratha",
+            "White Matar Masala",
+            "Raita",
+            "Curd",
+            "Assorted Sharbat"
+          ],
+          "extras": [
+            "Chicken Korma (Non-Veg)",
+            "Honey Chilli Potato",
+            "Chocolate Milk Barfi"
+          ]
+        },
+        "Hall 6": {
+          "menu": [
+            "Handi Paneer",
+            "Paneer Lababdar",
+            "Chicken Curry (Non-Veg)",
+            "Chicken Kali Mirch (Non-Veg)",
+            "Veg Biryani",
+            "Veg Fried Rice With Pudina Chutney",
+            "Rajasthani Daal",
+            "Mix-Fruit Raita",
+            "Sattu Drink"
+          ],
+          "extras": []
+        },
+        "Hall 7": {
+          "menu": [
+            "Chana Dal",
+            "Chana Masala",
+            "Paratha (Aloo Pyaaz Mix, Mix Paratha, Plain, Paneer Paratha (1 Pc))",
+            "Fruits",
+            "Curd",
+            "Jeera Chach",
+            "Green-Chatney",
+            "Chapati (Plain & Deshi Ghee)",
+            "Plain-Rice"
+          ],
+          "extras": [
+            "Mutton Curry(Non-Veg)"
+          ]
+        },
+        "Hall 8": {
+          "menu": [
+            "Paratha [Panner (2 Pcs), Aloo And Mixveg] Chole",
+            "Hare Dhaniye Chutney",
+            "Zeera Rice And Lassi"
+          ],
+          "extras": [
+            "Shahi Tukda",
+            "Munchurian Masala Corn",
+            "Special"
+          ]
+        },
+        "Hall 9": {
+          "menu": [
+            "Sem Fry",
+            "Lauki Chana",
+            "Rajma",
+            "Fryums",
+            "Curd",
+            "Fruits",
+            "Curd Rice",
+            "Mohabbat Ka Sharbat"
+          ],
+          "extras": [
+            "Egg Biryani",
+            "Fish Finger (Non-Veg)",
+            "Paneer Do Pyaza"
+          ]
+        }
+      },
+      "label_halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 12",
+          "Hall 4",
+          "Hall 5",
+          "Hall 6",
+          "Hall 8",
+          "Hall 9"
+        ]
+    },
+    {
+      "id": "label-fuzzy-010",
+      "category": "fuzzy_semantic",
+      "question": "Which halls have proper comfort-food carbs at lunch on Thursday?",
+      "slot": {
+        "day": "Thursday",
+        "meal": "Lunch"
+      },
+      "as_of": "2026-08-25",
+      "instructions": "Read each hall's items and decide whether that hall satisfies the question. Put the hall names that DO into `label_halls`. Leave `label_halls` as null if you want to skip.",
+      "halls": {
+        "GH 1": {
+          "menu": [
+            "Rajma",
+            "Gajar",
+            "Bean",
+            "Matar Sabji",
+            "Boondi Raita",
+            "Rasam",
+            "Curd",
+            "Fruit",
+            "Dahi Kebab",
+            "Shikanji"
+          ],
+          "extras": [
+            "Honey Chilli Potato",
+            "Chicken Keema Dosa (Non-Veg)"
+          ]
+        },
+        "Hall 10": {
+          "menu": [
+            "Veg Biryani",
+            "Urad-Chana Dal",
+            "Boondi Raita",
+            "Salan",
+            "Moong Halwa"
+          ],
+          "extras": [
+            "Fish Finger (a)",
+            "Fish Tikka (b) (Non-Veg)"
+          ]
+        },
+        "Hall 11": {
+          "menu": [
+            "Black Chana Gravy",
+            "Sabut Masoor Dal",
+            "Veg Biryani",
+            "Vegetable Raita",
+            "Lemon Water Masala"
+          ],
+          "extras": [
+            "Fish Finger (Non-Veg)",
+            "Shahi Paneer",
+            "Boondi Rabdi"
+          ]
+        },
+        "Hall 12": {
+          "menu": [
+            "Pyaz Palak Kadhi Pakoda",
+            "Aloo Jeera",
+            "Frymes",
+            "Fruit Raita",
+            "Fried Chilies",
+            "Neebu Pani",
+            "Rasna",
+            "Roohafza"
+          ],
+          "extras": [
+            "Chilli Chicken (Non-Veg)",
+            "Paneer Tikka Masala",
+            "Khoya Gujiya"
+          ]
+        },
+        "Hall 13": {
+          "menu": [
+            "Paneer Paratha",
+            "Aloo Paratha",
+            "Mix-Veg Paratha",
+            "White Matar",
+            "Chutney",
+            "Lassi"
+          ],
+          "extras": [
+            "Shahi Tukda"
+          ]
+        },
+        "Hall 14": {
+          "menu": [
+            "Amritsari Chola",
+            "Bhatura",
+            "Custard"
+          ],
+          "extras": [
+            "Fish Curry (Non-Veg)"
+          ]
+        },
+        "Hall 2": {
+          "menu": [
+            "Kadhi Pakoda",
+            "Papad",
+            "Jeera Aloo"
+          ],
+          "extras": [
+            "Chicken Nuggets (Non-Veg)",
+            "Pyaz Kachori",
+            "Coconut Ladoo"
+          ]
+        },
+        "Hall 3": {
+          "menu": [
+            "Dal Makhani",
+            "Veg Biryani",
+            "French Fries",
+            "Mix Raita",
+            "Rasna"
+          ],
+          "extras": [
+            "Kfc Chicken (Non-Veg)"
+          ]
+        },
+        "Hall 4": {
+          "menu": [
+            "Kadhi Pakoda",
+            "Boondi Kadhi",
+            "Jeera Aloo",
+            "Achaari Aloo",
+            "Kali Massor Dal",
+            "Fruit",
+            "Nimbu Pani"
+          ],
+          "extras": [
+            "Paneer Pasanda",
+            "Amritsari Chicken Curry (Non-Veg)"
+          ]
+        },
+        "Hall 5": {
+          "menu": [
+            "Chholey-Bhature",
+            "Aloo Bhujiya",
+            "Laccha Pyaaz",
+            "Fried Chillies",
+            "Curd",
+            "Rose Lassi"
+          ],
+          "extras": [
+            "Chicken Lahori (Non-Veg)",
+            "Paneer Angara",
+            "Dry Fruit Laddu"
+          ]
+        },
+        "Hall 6": {
+          "menu": [
+            "Razama",
+            "Kathal Dry",
+            "Curd",
+            "Fruit",
+            "Pudina-Coriander Nimbu Paani"
+          ],
+          "extras": [
+            "Kathi Roll"
+          ]
+        },
+        "Hall 7": {
+          "menu": [
+            "Pakodi-Kadhi",
+            "Aloo Baigan",
+            "Mix-Veg Moong Daal",
+            "Green-Chatney",
+            "Fruits",
+            "Curd",
+            "Lassi",
+            "Roasted Papad",
+            "Chapati (Plain & Deshi Ghee)",
+            "Plain-Rice"
+          ],
+          "extras": [
+            "Jeera Fish(Non-Veg)",
+            "Coconut Laddu"
+          ]
+        },
+        "Hall 8": {
+          "menu": [
+            "Kaddu Chana",
+            "Mix Daal"
+          ],
+          "extras": [
+            "Boondi Laddu",
+            "Veg Kabab Paratha",
+            "Chettinad Chicken (Non-Veg)",
+            "Pallipalayam Chicken (Non-Veg)"
+          ]
+        },
+        "Hall 9": {
+          "menu": [
+            "French Fries",
+            "Rajma",
+            "Curd",
+            "Fruits",
+            "Bundi Raita",
+            "Nimbu Pani (Kadhi Masala)"
+          ],
+          "extras": [
+            "Chicken Fry (Non-Veg)",
+            "Spring Roll"
+          ]
+        }
+      },
+      "label_halls": [
+          "Hall 10",
+          "Hall 11",
+          "Hall 13",
+          "Hall 3",
+          "Hall 5",
+          "Hall 8"
+        ]
+    }
+  ]
+}

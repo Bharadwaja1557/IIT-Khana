@@ -1,0 +1,48 @@
+{
+  "_comment": "DEV SET — Phase 3 B1. 12 questions, 2 per category. This set is used ONLY for debugging the harness, the grader, and prompt fixes. It is NEVER scored in the results table and NEVER reported as a result. Written BEFORE any TEST question was generated. Do not merge with test.json.",
+  "set": "dev",
+  "scored": false,
+  "questions": [
+    {"id": "dev-lookup-1", "category": "lookup",
+     "q": "What's for dinner at Hall 12 on Wednesday?",
+     "as_of": "2026-08-25"},
+    {"id": "dev-lookup-2", "category": "lookup",
+     "q": "What is served for breakfast at Hall 3 on Sunday?",
+     "as_of": "2026-08-25"},
+
+    {"id": "dev-comparison-1", "category": "comparison",
+     "q": "Is Friday lunch better at Hall 5 or Hall 4 if I want paneer?",
+     "as_of": "2026-08-25"},
+    {"id": "dev-comparison-2", "category": "comparison",
+     "q": "For Monday dinner, does Hall 2 or Hall 9 have more non-veg options?",
+     "as_of": "2026-08-25"},
+
+    {"id": "dev-aggregation-1", "category": "aggregation",
+     "q": "How many halls serve paneer at dinner on Tuesday?",
+     "as_of": "2026-08-25"},
+    {"id": "dev-aggregation-2", "category": "aggregation",
+     "q": "Which halls serve idli at breakfast on Saturday?",
+     "as_of": "2026-08-25"},
+
+    {"id": "dev-negation-1", "category": "negation",
+     "q": "Which halls do NOT serve chicken at dinner on Tuesday?",
+     "as_of": "2026-08-25"},
+    {"id": "dev-negation-2", "category": "negation",
+     "q": "Which halls have no paneer at lunch on Thursday?",
+     "as_of": "2026-08-25"},
+
+    {"id": "dev-temporal-1", "category": "temporal",
+     "q": "Which mess has chicken for dinner tonight?",
+     "as_of": "2026-08-25"},
+    {"id": "dev-temporal-2", "category": "temporal",
+     "q": "Which halls are serving paneer for dinner tomorrow?",
+     "as_of": "2026-08-25"},
+
+    {"id": "dev-fuzzy-1", "category": "fuzzy_semantic",
+     "q": "Which halls do a South-Indian style breakfast on Sunday?",
+     "as_of": "2026-08-25"},
+    {"id": "dev-fuzzy-2", "category": "fuzzy_semantic",
+     "q": "Which halls have something deep-fried and snacky at Saturday dinner?",
+     "as_of": "2026-08-25"}
+  ]
+}

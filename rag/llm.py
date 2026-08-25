@@ -44,6 +44,10 @@ class LLMResult:
     # never silently folded into the answer's token count. Gemini 3.x thinks by
     # default: a bare "reply OK" cost 1 answer token and 116 thinking tokens.
     thinking_tokens: int = 0
+    # Cached input tokens, for the D28 caching confound. Read from the API,
+    # never assumed: the 'uncached' cost column must be labelled from what we
+    # observe, not from what we intended.
+    cached_tokens: int = 0
     retries: int = 0
 
 
@@ -142,6 +146,7 @@ class GeminiLLM(LLM):
             prompt_tokens=um.prompt_token_count or 0,
             completion_tokens=um.candidates_token_count or 0,
             thinking_tokens=getattr(um, "thoughts_token_count", 0) or 0,
+            cached_tokens=getattr(um, "cached_content_token_count", 0) or 0,
             model=self.model,
             latency_ms=latency_ms,
             retries=retries,

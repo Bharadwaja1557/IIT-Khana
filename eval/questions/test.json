@@ -1,0 +1,2736 @@
+{
+  "set": "test",
+  "scored": true,
+  "seed": 20260825,
+  "as_of": "2026-08-25",
+  "n": 50,
+  "questions": [
+    {
+      "id": "test-lookup-01",
+      "category": "lookup",
+      "q": "What is Hall 2 serving at lunch on Thursday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Thursday",
+        "meal": "Lunch",
+        "hall": "Hall 2"
+      },
+      "predicate": {
+        "kind": "slot_items"
+      },
+      "gold": {
+        "type": "item_set",
+        "items": [
+          "Kadhi Pakoda",
+          "Papad",
+          "Jeera Aloo",
+          "Chicken Nuggets (Non-Veg)",
+          "Pyaz Kachori",
+          "Coconut Ladoo"
+        ],
+        "base": [
+          "Kadhi Pakoda",
+          "Papad",
+          "Jeera Aloo"
+        ],
+        "extras": [
+          "Chicken Nuggets (Non-Veg)",
+          "Pyaz Kachori",
+          "Coconut Ladoo"
+        ],
+        "n": 6,
+        "distractors": [
+          "Achaari Aloo",
+          "Aloo Baigan",
+          "Aloo Bhujiya",
+          "Aloo Jeera",
+          "Aloo Paratha",
+          "Amritsari Chicken Curry (Non-Veg)",
+          "Amritsari Chola",
+          "Bean",
+          "Bhatura",
+          "Black Chana Gravy",
+          "Boondi Kadhi",
+          "Boondi Laddu",
+          "Boondi Rabdi",
+          "Boondi Raita",
+          "Bundi Raita",
+          "Chapati (Plain & Deshi Ghee)",
+          "Chettinad Chicken (Non-Veg)",
+          "Chholey-Bhature",
+          "Chicken Fry (Non-Veg)",
+          "Chicken Keema Dosa (Non-Veg)",
+          "Chicken Lahori (Non-Veg)",
+          "Chilli Chicken (Non-Veg)",
+          "Chutney",
+          "Coconut Laddu",
+          "Curd",
+          "Custard",
+          "Dahi Kebab",
+          "Dal Makhani",
+          "Dry Fruit Laddu",
+          "Fish Curry (Non-Veg)",
+          "Fish Finger (Non-Veg)",
+          "Fish Finger (a)",
+          "Fish Tikka (b) (Non-Veg)",
+          "French Fries",
+          "Fried Chilies",
+          "Fried Chillies",
+          "Fruit",
+          "Fruit Raita",
+          "Fruits",
+          "Frymes",
+          "Gajar",
+          "Green-Chatney",
+          "Honey Chilli Potato",
+          "Jeera Fish(Non-Veg)",
+          "Kaddu Chana",
+          "Kali Massor Dal",
+          "Kathal Dry",
+          "Kathi Roll",
+          "Kfc Chicken (Non-Veg)",
+          "Khoya Gujiya",
+          "Laccha Pyaaz",
+          "Lassi",
+          "Lemon Water Masala",
+          "Matar Sabji",
+          "Mix Daal",
+          "Mix Raita",
+          "Mix-Veg Moong Daal",
+          "Mix-Veg Paratha",
+          "Moong Halwa",
+          "Neebu Pani",
+          "Nimbu Pani",
+          "Nimbu Pani (Kadhi Masala)",
+          "Pakodi-Kadhi",
+          "Pallipalayam Chicken (Non-Veg)",
+          "Paneer Angara",
+          "Paneer Paratha",
+          "Paneer Pasanda",
+          "Paneer Tikka Masala",
+          "Plain-Rice",
+          "Pudina-Coriander Nimbu Paani",
+          "Pyaz Palak Kadhi Pakoda",
+          "Rajma",
+          "Rasam",
+          "Rasna",
+          "Razama",
+          "Roasted Papad",
+          "Roohafza",
+          "Rose Lassi",
+          "Sabut Masoor Dal",
+          "Salan",
+          "Shahi Paneer",
+          "Shahi Tukda",
+          "Shikanji",
+          "Spring Roll",
+          "Urad-Chana Dal",
+          "Veg Biryani",
+          "Veg Kabab Paratha",
+          "Vegetable Raita",
+          "White Matar"
+        ]
+      },
+      "sql": "SELECT m.item_raw, m.is_extra\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE h.name = ? AND m.day_of_week = ? AND m.meal = ?\n ORDER BY m.is_extra, m.position",
+      "sql_params": [
+        "Hall 2",
+        "Thursday",
+        "Lunch"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "n_items": 6,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-lookup-02",
+      "category": "lookup",
+      "q": "Show me the Monday breakfast menu for Hall 13.",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Monday",
+        "meal": "Breakfast",
+        "hall": "Hall 13"
+      },
+      "predicate": {
+        "kind": "slot_items"
+      },
+      "gold": {
+        "type": "item_set",
+        "items": [
+          "Utappam",
+          "Coconut Chutney",
+          "Sambhar"
+        ],
+        "base": [
+          "Utappam",
+          "Coconut Chutney",
+          "Sambhar"
+        ],
+        "extras": [],
+        "n": 3,
+        "distractors": [
+          "Ajwain Puri",
+          "Aloo Green Matar Sabzi",
+          "Aloo Matar",
+          "Aloo Pyaz Paratha",
+          "Aloo Sabji",
+          "Aloo Sandwich",
+          "Banana Shake",
+          "Besan And Moong Dal Chila",
+          "Boiled Moong And Chana",
+          "Bombay-style Sandwich",
+          "Chana",
+          "Chocos",
+          "Chutney",
+          "Chutney Alternate: Kachori",
+          "Cutlet",
+          "Dahi",
+          "Fry Idli",
+          "Green Chutney",
+          "Green Chutney Alternate: Bread Pakora",
+          "Green Peas Puri",
+          "Halwa",
+          "Idli",
+          "Ketchup",
+          "Khasta Kachori Sabzi Andimlii Chuntey",
+          "Lehsun Tamatar Chatni",
+          "Masala Idli",
+          "Nariyal Chutney",
+          "Pasta",
+          "Pav Bhaji",
+          "Pav Bhaji (a)",
+          "Puri",
+          "Red Chutney",
+          "Sambar",
+          "Samosa",
+          "Sattu",
+          "Sauce",
+          "Suji",
+          "Tamatar",
+          "Thepla With Garlic Chutney",
+          "Tomato Chutney",
+          "Tomato Ketchup",
+          "Vada",
+          "Vada (max 2)",
+          "Vada Pav",
+          "Veg Cutlet (2-Pc)",
+          "Veg Macroni",
+          "Veg Sandwich",
+          "Veg-Mayo Sandwich (b)"
+        ]
+      },
+      "sql": "SELECT m.item_raw, m.is_extra\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE h.name = ? AND m.day_of_week = ? AND m.meal = ?\n ORDER BY m.is_extra, m.position",
+      "sql_params": [
+        "Hall 13",
+        "Monday",
+        "Breakfast"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "n_items": 3,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-lookup-03",
+      "category": "lookup",
+      "q": "Show me the Thursday dinner menu for Hall 7.",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Thursday",
+        "meal": "Dinner",
+        "hall": "Hall 7"
+      },
+      "predicate": {
+        "kind": "slot_items"
+      },
+      "gold": {
+        "type": "item_set",
+        "items": [
+          "Arhar Dal",
+          "Kadai Paneer",
+          "Chicken Maharaja(Non-Veg)",
+          "Butter Chicken(Non-Veg) (Alternate) Prior Booking in Option",
+          "Tandoor-Roti",
+          "Naan",
+          "Plain Roti",
+          "Veg-Pulao",
+          "Garlic Naan",
+          "French-Fries",
+          "Green Chutney",
+          "Salad",
+          "Vinegar-Pyaaz",
+          "Stuffe Gulab Jamun"
+        ],
+        "base": [
+          "Arhar Dal",
+          "Kadai Paneer",
+          "Chicken Maharaja(Non-Veg)",
+          "Butter Chicken(Non-Veg) (Alternate) Prior Booking in Option",
+          "Tandoor-Roti",
+          "Naan",
+          "Plain Roti",
+          "Veg-Pulao",
+          "Garlic Naan",
+          "French-Fries",
+          "Green Chutney",
+          "Salad",
+          "Vinegar-Pyaaz",
+          "Stuffe Gulab Jamun"
+        ],
+        "extras": [],
+        "n": 14,
+        "distractors": [
+          "Achaari Karela",
+          "Aloo Cabbage Matar Dry",
+          "Aloo Matar Gravy",
+          "Aloo Tamatar Sabji",
+          "Bhindhi Fry",
+          "Bhindi Ka Bhujiya",
+          "Boondi Laddu",
+          "Butter Handi Chicken (Non-Veg)",
+          "Chana Dal",
+          "Chhola Bhatura",
+          "Chicken Angara (Non-Veg)",
+          "Chicken BBQ Tikka (b) (Non-Veg)",
+          "Chicken Biryani (Non-Veg)",
+          "Chicken Changezi (Non-Veg)",
+          "Chicken Kali Mirch Dry (Non-Veg)",
+          "Chicken Lollipop With Sauce (Non-Veg)",
+          "Chicken Momos (Non-Veg)",
+          "Chilli Chicken (Non-Veg)",
+          "Chilli Chicken Dry (Non-Veg)",
+          "Chilli Paneer",
+          "Crispy Corn",
+          "Dahi Papdi (a)",
+          "Dal Bukhara",
+          "Fish Tikka (Non-Veg)",
+          "Fried Rice",
+          "Friend Fries",
+          "Garlic Bread",
+          "Ghee Roast Chicken (Non-Veg)",
+          "Gulabjamun",
+          "Honey Chilli Potato",
+          "Hyderabadi Chicken Biryani (Non-Veg)",
+          "Ice Cream",
+          "Imarti Rabri",
+          "Imli Rice",
+          "Kachodi",
+          "Kachodi Arhar Dal",
+          "Kali Masoor Dal",
+          "Kashmiri Dum Aloo",
+          "Kulcha",
+          "Litti Choka Kalakand",
+          "Malai Boondi",
+          "Malai Sandwich",
+          "Malka Msoor Dal",
+          "Masala Poori",
+          "Masoor Dal",
+          "Methi Malai Paneer",
+          "Moong Daal Zeera Pyaaz Pulao",
+          "Mutton Kosha (Non-Veg)",
+          "Palak Puri",
+          "Paneer Butter Masala",
+          "Paneer Dosa",
+          "Paneer Makhani",
+          "Paneer Momos",
+          "Paneer Tikka Masala",
+          "Pani Puri (b)",
+          "Parwal",
+          "Pindi Chhola",
+          "Punjabi Dum Aloo",
+          "Puri",
+          "Rabdi",
+          "Rajasthani Lal Maas (Non-Veg)",
+          "Rajma",
+          "Rawa Kesari",
+          "Red Masoor Dal",
+          "Samosa Chaat Manchurian Fried Rice",
+          "Tandoori Chicken (a)",
+          "Tandoori Paneer Pasta",
+          "Tikki Chat",
+          "Veg Fried Rice",
+          "Veg Kofta",
+          "Veg Korma",
+          "Veg Manchurian"
+        ]
+      },
+      "sql": "SELECT m.item_raw, m.is_extra\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE h.name = ? AND m.day_of_week = ? AND m.meal = ?\n ORDER BY m.is_extra, m.position",
+      "sql_params": [
+        "Hall 7",
+        "Thursday",
+        "Dinner"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "n_items": 14,
+        "passed": true
+      },
+      "notes": "replaces a slot containing Phase 1 splitter artifacts \u2014 see DECISIONS.md D30"
+    },
+    {
+      "id": "test-lookup-04",
+      "category": "lookup",
+      "q": "What's for breakfast at Hall 4 on Friday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Friday",
+        "meal": "Breakfast",
+        "hall": "Hall 4"
+      },
+      "predicate": {
+        "kind": "slot_items"
+      },
+      "gold": {
+        "type": "item_set",
+        "items": [
+          "Paneer Bhurji",
+          "Egg Bhurji",
+          "Roti",
+          "Paratha (Alternate Week)"
+        ],
+        "base": [
+          "Paneer Bhurji",
+          "Egg Bhurji",
+          "Roti",
+          "Paratha (Alternate Week)"
+        ],
+        "extras": [],
+        "n": 4,
+        "distractors": [
+          "Aloo",
+          "Aloo Bhujiya",
+          "Aloo Dry Jeera",
+          "Aloo Green Matar Bhujia",
+          "Aloo Masala (b)",
+          "Aloo Sabji",
+          "Aloo}",
+          "Banana Shake",
+          "Besan-Chilla Alt",
+          "Boiled Moong",
+          "Butter (10 Gm)",
+          "Chana",
+          "Chocos",
+          "Chole",
+          "Coconut Chatni",
+          "Curd",
+          "Garlic Chatney",
+          "Green & Red Chutney",
+          "Green Chatney",
+          "Green Chutney",
+          "Green Chutney Altenate: Moong Dal Chilla",
+          "Halwa",
+          "Idli",
+          "Jalebi",
+          "Khasta Kachori Chhole Pudina Raita",
+          "Macroni",
+          "Masala Idli",
+          "Matar Ghughni (a)",
+          "Matar Kachauri",
+          "Mendu Vada (2-Pc)",
+          "Nariyal Chutney",
+          "Paratha {Sattu",
+          "Parathas (Aloo, Aloo Pyaaz & Sattu) Ketchup",
+          "Peanut Butter (2 Spoons)",
+          "Peanuts And Chana",
+          "Plain Paratha",
+          "Poha",
+          "Poori",
+          "Poori (Aata, Maida)",
+          "Pyaz Paratha",
+          "Sabudana Khichdi",
+          "Sambhar",
+          "Sambhar With Coconut Chutney",
+          "Samosa",
+          "Sattu",
+          "Sewai Upma",
+          "Thepla",
+          "Tomato Chatni",
+          "Tomato Chutney",
+          "Tomato Ketchup",
+          "Tomato-Sauce",
+          "Upma",
+          "Uttapam",
+          "Veg Cutlet",
+          "Veg Sandwich",
+          "Wada"
+        ]
+      },
+      "sql": "SELECT m.item_raw, m.is_extra\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE h.name = ? AND m.day_of_week = ? AND m.meal = ?\n ORDER BY m.is_extra, m.position",
+      "sql_params": [
+        "Hall 4",
+        "Friday",
+        "Breakfast"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "n_items": 4,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-lookup-05",
+      "category": "lookup",
+      "q": "What's on the menu at Hall 2, Monday breakfast?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Monday",
+        "meal": "Breakfast",
+        "hall": "Hall 2"
+      },
+      "predicate": {
+        "kind": "slot_items"
+      },
+      "gold": {
+        "type": "item_set",
+        "items": [
+          "Samosa",
+          "Chutney Alternate: Kachori",
+          "Aloo Sabji",
+          "Chutney"
+        ],
+        "base": [
+          "Samosa",
+          "Chutney Alternate: Kachori",
+          "Aloo Sabji",
+          "Chutney"
+        ],
+        "extras": [],
+        "n": 4,
+        "distractors": [
+          "Ajwain Puri",
+          "Aloo Green Matar Sabzi",
+          "Aloo Matar",
+          "Aloo Pyaz Paratha",
+          "Aloo Sandwich",
+          "Banana Shake",
+          "Besan And Moong Dal Chila",
+          "Boiled Moong And Chana",
+          "Bombay-style Sandwich",
+          "Chana",
+          "Chocos",
+          "Coconut Chutney",
+          "Cutlet",
+          "Dahi",
+          "Fry Idli",
+          "Green Chutney",
+          "Green Chutney Alternate: Bread Pakora",
+          "Green Peas Puri",
+          "Halwa",
+          "Idli",
+          "Ketchup",
+          "Khasta Kachori Sabzi Andimlii Chuntey",
+          "Lehsun Tamatar Chatni",
+          "Masala Idli",
+          "Nariyal Chutney",
+          "Pasta",
+          "Pav Bhaji",
+          "Pav Bhaji (a)",
+          "Puri",
+          "Red Chutney",
+          "Sambar",
+          "Sambhar",
+          "Sattu",
+          "Sauce",
+          "Suji",
+          "Tamatar",
+          "Thepla With Garlic Chutney",
+          "Tomato Chutney",
+          "Tomato Ketchup",
+          "Utappam",
+          "Vada",
+          "Vada (max 2)",
+          "Vada Pav",
+          "Veg Cutlet (2-Pc)",
+          "Veg Macroni",
+          "Veg Sandwich",
+          "Veg-Mayo Sandwich (b)"
+        ]
+      },
+      "sql": "SELECT m.item_raw, m.is_extra\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE h.name = ? AND m.day_of_week = ? AND m.meal = ?\n ORDER BY m.is_extra, m.position",
+      "sql_params": [
+        "Hall 2",
+        "Monday",
+        "Breakfast"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "n_items": 4,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-lookup-06",
+      "category": "lookup",
+      "q": "What's on the menu at GH 1, Wednesday dinner?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Wednesday",
+        "meal": "Dinner",
+        "hall": "GH 1"
+      },
+      "predicate": {
+        "kind": "slot_items"
+      },
+      "gold": {
+        "type": "item_set",
+        "items": [
+          "Veg Pulao",
+          "Arhar Daal Tadka",
+          "Naan (Plain, Butter, Garlic)",
+          "Tandoori Roti",
+          "Missi Roti",
+          "Stuffed Vegetables",
+          "Mumtaz Paneer",
+          "Paneer Lababdar",
+          "Chicken Kalimirch (Non-Veg)",
+          "Chicken Ghee Roast (Non-Veg)",
+          "Malai Cham Cham",
+          "Rasmalai"
+        ],
+        "base": [
+          "Veg Pulao",
+          "Arhar Daal Tadka",
+          "Naan (Plain, Butter, Garlic)",
+          "Tandoori Roti",
+          "Missi Roti",
+          "Stuffed Vegetables",
+          "Mumtaz Paneer",
+          "Paneer Lababdar",
+          "Chicken Kalimirch (Non-Veg)",
+          "Chicken Ghee Roast (Non-Veg)",
+          "Malai Cham Cham",
+          "Rasmalai"
+        ],
+        "extras": [],
+        "n": 12,
+        "distractors": [
+          "(Handi Paneer",
+          "Aloo Parwal Dry",
+          "Aloo Parwal Gravy",
+          "Aloo Tamatar",
+          "Arbi Dry And Kali Masoor Daal",
+          "Arbi Masala",
+          "Basanti Pulao",
+          "Basanti Pulav",
+          "Besan Barfi",
+          "Besan Halwa",
+          "Butter Chicken",
+          "Butter Chicken (Non-Veg)",
+          "Chana Dal",
+          "Chapati (Plain & Deshi Ghee)",
+          "Chicken Chaap (b) (Non-Veg)",
+          "Chicken Kali Mirch(Non-Veg)",
+          "Chicken Korma (Non-Veg)",
+          "Chicken Roasted(Non-Veg)",
+          "Corn Salad",
+          "Dahi Puri",
+          "Dal Tadka",
+          "Egg Curry",
+          "Fried Papad",
+          "Fruit Custard",
+          "Garlic Naan",
+          "Handi Paneer",
+          "Honey Chilly Potato",
+          "Hyderabadi Chicken (Non-Veg) (2 Pcs.)",
+          "Ice Cream",
+          "Imli Rice",
+          "Jeera Rice",
+          "KFC Fried Chicken (Non-Veg)",
+          "Kadhai Paneer",
+          "Kaju Katli",
+          "Kheer (b)",
+          "Lachcha Paratha",
+          "Lassi",
+          "Litti Chokha",
+          "Mango Juice",
+          "Matar Kachori",
+          "Matar Paneer",
+          "Matar Paneer)",
+          "Matar Pulao",
+          "Methi Paratha",
+          "Milk-Cake",
+          "Mix Dal",
+          "Mixi Roti. Sweet: Chicken Masala (Non-Veg)",
+          "Moong Dal Halwa",
+          "Mughlai Chicken (a)",
+          "Mughlai Dal",
+          "Mutton Biryani (Non-Veg) + Salan",
+          "Mutton Rogan Josh (Non-Veg)",
+          "Mysore Pak",
+          "Panchratan Dal",
+          "Paneer Kathi Roll",
+          "Paneer Pasannada",
+          "Pani Puri",
+          "Paratha",
+          "Plain Paratha",
+          "Plain Rice",
+          "Plain-Rice",
+          "Poori (Aata, Maida)",
+          "Red Masoor Dal",
+          "Salad",
+          "Sewai (a)",
+          "Shahi Paneer",
+          "Soya Chaap Gravy",
+          "Special : Matar Paneer Masala",
+          "Special Chicken (Non-Veg)",
+          "Spl. Paneer",
+          "Tandori Roti",
+          "Triangle Paratha",
+          "Vegetable Pulao",
+          "White Rongli Dal",
+          "White Sauce Pasta"
+        ]
+      },
+      "sql": "SELECT m.item_raw, m.is_extra\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE h.name = ? AND m.day_of_week = ? AND m.meal = ?\n ORDER BY m.is_extra, m.position",
+      "sql_params": [
+        "GH 1",
+        "Wednesday",
+        "Dinner"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "n_items": 12,
+        "passed": true
+      },
+      "notes": "replaces a slot containing Phase 1 splitter artifacts \u2014 see DECISIONS.md D30"
+    },
+    {
+      "id": "test-lookup-07",
+      "category": "lookup",
+      "q": "What's for breakfast at Hall 9 on Thursday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Thursday",
+        "meal": "Breakfast",
+        "hall": "Hall 9"
+      },
+      "predicate": {
+        "kind": "slot_items"
+      },
+      "gold": {
+        "type": "item_set",
+        "items": [
+          "Uttapam",
+          "Sambhar",
+          "Nariyal Chutney",
+          "Punugulu Nariyal Chutney",
+          "Kara Chutney"
+        ],
+        "base": [
+          "Uttapam",
+          "Sambhar",
+          "Nariyal Chutney",
+          "Punugulu Nariyal Chutney",
+          "Kara Chutney"
+        ],
+        "extras": [],
+        "n": 5,
+        "distractors": [
+          "Ajwain Poori",
+          "Aloo Bhujiya",
+          "Aloo-Pyaz Paratha",
+          "Banana Shake",
+          "Besan & Moong Dal Chilla",
+          "Besan Chilla",
+          "Boiled Moong",
+          "Bombay Sandwich",
+          "Coconut Chutney",
+          "Cornflakes",
+          "Curd",
+          "Fried Chillies",
+          "Ghati Chutney",
+          "Ginger Garlic Chutney (a)",
+          "Green",
+          "Green Chatni",
+          "Green Chutney",
+          "Green Chutney Alternate: Vada Pav",
+          "Halwa",
+          "Idli",
+          "Ketchup",
+          "Lehsun Chutney",
+          "Macaroni",
+          "Macroni",
+          "Masala Idli",
+          "Matar (Yellow) Sabzi",
+          "Nariyal Chutney (b)",
+          "Paneer Cutlet",
+          "Pasta",
+          "Pav Bhaji",
+          "Peanut Chutney",
+          "Peanuts And Chana",
+          "Plain Paratha",
+          "Red Chutney",
+          "Roti",
+          "Sambar",
+          "Sattu",
+          "Stuffed Idli",
+          "Tamatar",
+          "Tomato Chatney",
+          "Tomato Chutney",
+          "Upma",
+          "Uthappam",
+          "Uthappam With Sambhar & Coconut-Chutney",
+          "Veg Cutlet"
+        ]
+      },
+      "sql": "SELECT m.item_raw, m.is_extra\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE h.name = ? AND m.day_of_week = ? AND m.meal = ?\n ORDER BY m.is_extra, m.position",
+      "sql_params": [
+        "Hall 9",
+        "Thursday",
+        "Breakfast"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "n_items": 5,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-lookup-08",
+      "category": "lookup",
+      "q": "Show me the Tuesday lunch menu for Hall 3.",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Lunch",
+        "hall": "Hall 3"
+      },
+      "predicate": {
+        "kind": "slot_items"
+      },
+      "gold": {
+        "type": "item_set",
+        "items": [
+          "Bhindi",
+          "Chana Dal",
+          "Boondi Laddu",
+          "Nimbu Pani",
+          "Paneer Tikka Cheese Roll"
+        ],
+        "base": [
+          "Bhindi",
+          "Chana Dal",
+          "Boondi Laddu",
+          "Nimbu Pani"
+        ],
+        "extras": [
+          "Paneer Tikka Cheese Roll"
+        ],
+        "n": 5,
+        "distractors": [
+          "Aloo Chat",
+          "Aloo Jeera",
+          "Aloo Matar Ki Sabji",
+          "Aloo Parwal",
+          "Aloo Parwal Dry",
+          "Aloo Posto",
+          "Arhar Dal",
+          "Assorted Sharbat",
+          "Barfi",
+          "Bhindi Do Pyaza",
+          "Boondi Ladoo",
+          "Boondi Raita",
+          "Buttermilk",
+          "Chaach",
+          "Chaat",
+          "Chapati (Plain & Deshi Ghee)",
+          "Chicken Chettinad (b) (Non-Veg)",
+          "Chicken Fried Rice (Non-Veg)",
+          "Chicken Kosha (Non-Veg)",
+          "Chicken Lollypop (a)",
+          "Chilli Chicken (Non-Veg)",
+          "Chilli Paneer",
+          "Chola Bhatura",
+          "Coconut Laddu",
+          "Curd",
+          "Curd Rice",
+          "Dahi Papdi Chat",
+          "Dahi Vada",
+          "Dal Makhni",
+          "Doodh Barfi",
+          "Dooodh Barfi",
+          "Egg Biryani (Non-Veg)",
+          "Egg Curry",
+          "Egg Curry (Non-Veg)",
+          "Egg Lapeta",
+          "Egg Roll",
+          "French Fries",
+          "Fried Chilies",
+          "Fruit",
+          "Fruits",
+          "Frym Chips",
+          "Ghujhiya",
+          "Jaljeera",
+          "Jeera Aloo",
+          "Jeera Chach",
+          "Jeera Lauki",
+          "Jeera Rice",
+          "Kaadi Pakoda",
+          "Kadhi Pakoda",
+          "Kathal",
+          "Larki Chana",
+          "Lassi",
+          "Lauki",
+          "Malka Daal",
+          "Masoor Daal",
+          "Masoor Dal",
+          "Methi Malai Chicken (Non-Veg)",
+          "Moong Dal Chhach",
+          "Neebu Pani",
+          "Paneer Khurchan",
+          "Paneer Kurchan",
+          "Paneer Lababdar",
+          "Paneer Tikka",
+          "Paneer Tikka Masala",
+          "Papad",
+          "Pepper Chicken (Non-Veg)",
+          "Pindi Chola Kulcha",
+          "Plain & Ajwain Poori",
+          "Plain-Rice",
+          "Punjabi Dum Aloo",
+          "Raj Bhog",
+          "Rajma",
+          "Rasna",
+          "Roohafza",
+          "Seasonal Fruit",
+          "Sev Tamatar",
+          "Shukto",
+          "Spring Roll",
+          "Tamatr Pyaz Sabji",
+          "Tomato Kaju Paneer",
+          "Tomato Rice Curd",
+          "Veg Kofta",
+          "Veg Sukto"
+        ]
+      },
+      "sql": "SELECT m.item_raw, m.is_extra\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE h.name = ? AND m.day_of_week = ? AND m.meal = ?\n ORDER BY m.is_extra, m.position",
+      "sql_params": [
+        "Hall 3",
+        "Tuesday",
+        "Lunch"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "n_items": 5,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-lookup-09",
+      "category": "lookup",
+      "q": "What is Hall 8 serving at lunch on Sunday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Sunday",
+        "meal": "Lunch",
+        "hall": "Hall 8"
+      },
+      "predicate": {
+        "kind": "slot_items"
+      },
+      "gold": {
+        "type": "item_set",
+        "items": [
+          "Paratha [Panner (2 Pcs), Aloo And Mixveg] Chole",
+          "Hare Dhaniye Chutney",
+          "Zeera Rice And Lassi",
+          "Shahi Tukda",
+          "Munchurian Masala Corn",
+          "Special"
+        ],
+        "base": [
+          "Paratha [Panner (2 Pcs), Aloo And Mixveg] Chole",
+          "Hare Dhaniye Chutney",
+          "Zeera Rice And Lassi"
+        ],
+        "extras": [
+          "Shahi Tukda",
+          "Munchurian Masala Corn",
+          "Special"
+        ],
+        "n": 6,
+        "distractors": [
+          "Aam Pana",
+          "Aloo Baingan",
+          "Aloo Bhurji",
+          "Aloo Green Matar Sabzi",
+          "Aloo Paratha",
+          "Aloo Parwal",
+          "Aloo Posto",
+          "Aloo+Capsicum+Matar",
+          "Arbi",
+          "Arhar Dal",
+          "Assorted Sharbat",
+          "Bengali Fish Curry (Non-Veg)",
+          "Buttermilk",
+          "Chana Daal",
+          "Chana Dal",
+          "Chana Masala",
+          "Chanch",
+          "Chapati (Plain & Deshi Ghee)",
+          "Cheese Cigar Roll",
+          "Cheese Fries",
+          "Chicken (Non-Veg)",
+          "Chicken Biryani (Non-Veg)",
+          "Chicken Curry (Non-Veg)",
+          "Chicken Kali Mirch (Non-Veg)",
+          "Chicken Korma (Non-Veg)",
+          "Chilli Chicken (Non-Veg)",
+          "Chilli Mushroom",
+          "Chilli Panner",
+          "Chocolate Milk Barfi",
+          "Chole (a)",
+          "Curd",
+          "Curd Rice",
+          "Egg Biryani",
+          "Egg Curry",
+          "Fish (Non-Veg)",
+          "Fish Finger (Non-Veg)",
+          "Fried Chilies",
+          "Fried Rice",
+          "Fruit",
+          "Fruits",
+          "Fryems",
+          "Fryums",
+          "Green Chutney",
+          "Green-Chatney",
+          "Gulab Jamun",
+          "Hakka Noodles",
+          "Hall-X Special Sea Food (a)",
+          "Handi Paneer",
+          "Honey Chilli Potato",
+          "Hyderabadi Chicken (Non-Veg) (1 Pc) (Any 1)",
+          "Ice Cream (One Scoop)",
+          "Jeera Chach",
+          "Jeera Rice",
+          "Kaccha Kela Sabji (Dry)",
+          "Laal Masoor Dal",
+          "Lassi",
+          "Lauki Chana",
+          "Lemon Rice",
+          "Malai Methi Paneer",
+          "Matar Ghughni (b)",
+          "Mix-Fruit Raita",
+          "Mohabbat Ka Sharbat",
+          "Mutton (Non-Veg)",
+          "Mutton Curry(Non-Veg)",
+          "Mutton Rogan Josh (b) (Non-Veg)",
+          "Neebu Pani",
+          "Paneer Do Pyaja",
+          "Paneer Do Pyaza",
+          "Paneer Lababdar",
+          "Paneer+Pyaz Paratha (2pc)",
+          "Pani Puri",
+          "Papad",
+          "Paratha (Aloo Pyaaz Mix, Mix Paratha, Plain, Paneer Paratha (1 Pc))",
+          "Paratha (Paneer, Mixed-veg, Aloo)",
+          "Plain-Rice",
+          "Raita",
+          "Rajasthani Daal",
+          "Rajma",
+          "Ras Malai",
+          "Rasna",
+          "Roohafza",
+          "Sattu Drink",
+          "Sem Fry",
+          "Shahi Paneer",
+          "Tadka",
+          "Veg Biryani",
+          "Veg Dal",
+          "Veg Fried Rice With Pudina Chutney",
+          "Veg Kofta",
+          "White Matar Masala"
+        ]
+      },
+      "sql": "SELECT m.item_raw, m.is_extra\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE h.name = ? AND m.day_of_week = ? AND m.meal = ?\n ORDER BY m.is_extra, m.position",
+      "sql_params": [
+        "Hall 8",
+        "Sunday",
+        "Lunch"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "n_items": 6,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-lookup-10",
+      "category": "lookup",
+      "q": "What's for dinner at Hall 7 on Saturday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Saturday",
+        "meal": "Dinner",
+        "hall": "Hall 7"
+      },
+      "predicate": {
+        "kind": "slot_items"
+      },
+      "gold": {
+        "type": "item_set",
+        "items": [
+          "Palak Ord Dal",
+          "Mix-Veg",
+          "Chapati (Plain & Deshi Ghee)",
+          "Plain-Rice",
+          "Chicken Kassa(Non-Veg)",
+          "Chicken Afghani(Non-Veg)",
+          "Litti Chokha",
+          "Boondi Rabdi"
+        ],
+        "base": [
+          "Palak Ord Dal",
+          "Mix-Veg",
+          "Chapati (Plain & Deshi Ghee)",
+          "Plain-Rice"
+        ],
+        "extras": [
+          "Chicken Kassa(Non-Veg)",
+          "Chicken Afghani(Non-Veg)",
+          "Litti Chokha",
+          "Boondi Rabdi"
+        ],
+        "n": 8,
+        "distractors": [
+          "Aloo Bharta",
+          "Aloo Bhindi",
+          "Angoori Rabdi",
+          "Arhad Dal Palak",
+          "Arhar Daal",
+          "Arhar Dal",
+          "Boiled Chicken (Non-Veg)",
+          "Boondi Rabdi (b)",
+          "Butter Chicken (Non-Veg)",
+          "Chana Daal",
+          "Chicken 65 (Non-Veg)",
+          "Chicken Biryani (Non-Veg)",
+          "Chicken Fried (Non-Veg)",
+          "Chicken Kali Mirch",
+          "Chicken Kalimirch (Non-Veg)",
+          "Chicken Malai Tikka (Non-Veg)",
+          "Chicken Masala (Non-Veg) (3 pcs.)",
+          "Chicken Stir Fry (Non-Veg)",
+          "Chilli Chicken (Non-Veg)",
+          "Chilli Chowmein",
+          "Chilli Paneer Mushroom",
+          "Dahi K Sholey",
+          "Dal Makhni",
+          "Fish Fry (Non-Veg)",
+          "French Fries",
+          "Fried Rice",
+          "Fruit Custard (a)",
+          "Fry Papad",
+          "Grilled Pizza Sandwich",
+          "Gulab Jamun",
+          "Hakka Veg Chowmein",
+          "Kala Chana Curry",
+          "Kali Mirch Chicken Tandoori (Non-Veg) Tandoori Chicken (Non-Veg)",
+          "Kathal",
+          "Kathi Roll",
+          "Kheer",
+          "Kurkuri Bhindi",
+          "Lauki Jeera",
+          "Manchurian",
+          "Manchurian Gravy",
+          "Methi Malai Matar",
+          "Methi Paneer",
+          "Milk Cake",
+          "Missi Roti",
+          "Mix Dal",
+          "Mix Veg",
+          "Mixed-veg Sabji",
+          "Moong Dal Tadka",
+          "Mustard Sauce",
+          "Naan",
+          "Noodles",
+          "Panchratan Dal",
+          "Paneer 65",
+          "Paneer Kathi Roll",
+          "Paneer Kolhapuri",
+          "Paneer Paratha",
+          "Paneer Tikka Masala",
+          "Papad",
+          "Peda",
+          "Pindi Chhole",
+          "Plain Naan",
+          "Poori",
+          "Raj Kachori",
+          "Russian Salad",
+          "Sabudana Papad",
+          "Sahi Paneer",
+          "Samosa Chaat",
+          "Sewai Kheer",
+          "Soyabean-Masoor Pulao",
+          "Special : Paneer Lababdaar",
+          "Tandoori Roti",
+          "Tehri",
+          "Urad Daal Tadka",
+          "Veg Fried Rice",
+          "Veg Jalferzi",
+          "Veg Kofte",
+          "Veg Kolhapuri",
+          "Vegetable Pulav",
+          "Vegetgable Pulav",
+          "White Rasgulla",
+          "White Sos Pasta"
+        ]
+      },
+      "sql": "SELECT m.item_raw, m.is_extra\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE h.name = ? AND m.day_of_week = ? AND m.meal = ?\n ORDER BY m.is_extra, m.position",
+      "sql_params": [
+        "Hall 7",
+        "Saturday",
+        "Dinner"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "n_items": 8,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-comparison-01",
+      "category": "comparison",
+      "q": "I want paneer at lunch on Friday \u2014 Hall 6 or Hall 12?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Friday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "paneer",
+        "candidates": [
+          "Hall 6",
+          "Hall 12"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 12"
+        ],
+        "n": 1
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n   AND h.name IN (?, ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Friday",
+        "Lunch",
+        "%paneer%",
+        "Hall 6",
+        "Hall 12"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "differ": true,
+        "passed": true
+      },
+      "notes": "exactly one of the two named halls serves it"
+    },
+    {
+      "id": "test-comparison-02",
+      "category": "comparison",
+      "q": "I want uttapam at breakfast on Tuesday \u2014 GH 1 or Hall 4?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Breakfast"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "uttapam",
+        "candidates": [
+          "GH 1",
+          "Hall 4"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1"
+        ],
+        "n": 1
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n   AND h.name IN (?, ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Tuesday",
+        "Breakfast",
+        "%uttapam%",
+        "GH 1",
+        "Hall 4"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "differ": true,
+        "passed": true
+      },
+      "notes": "exactly one of the two named halls serves it"
+    },
+    {
+      "id": "test-comparison-03",
+      "category": "comparison",
+      "q": "Which of Hall 13 or Hall 7 has fish on the Wednesday lunch menu?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Wednesday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "fish",
+        "candidates": [
+          "Hall 13",
+          "Hall 7"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 7"
+        ],
+        "n": 1
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n   AND h.name IN (?, ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Wednesday",
+        "Lunch",
+        "%fish%",
+        "Hall 13",
+        "Hall 7"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "differ": true,
+        "passed": true
+      },
+      "notes": "exactly one of the two named halls serves it"
+    },
+    {
+      "id": "test-comparison-04",
+      "category": "comparison",
+      "q": "Which of Hall 13 or Hall 3 has egg on the Sunday lunch menu?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Sunday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "egg",
+        "candidates": [
+          "Hall 13",
+          "Hall 3"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 13"
+        ],
+        "n": 1
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n   AND h.name IN (?, ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Sunday",
+        "Lunch",
+        "%egg%",
+        "Hall 13",
+        "Hall 3"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "differ": true,
+        "passed": true
+      },
+      "notes": "exactly one of the two named halls serves it"
+    },
+    {
+      "id": "test-comparison-05",
+      "category": "comparison",
+      "q": "For dinner on Friday, does Hall 7 or Hall 6 have gulab jamun?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Friday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "gulab jamun",
+        "candidates": [
+          "Hall 7",
+          "Hall 6"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 6"
+        ],
+        "n": 1
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n   AND h.name IN (?, ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Friday",
+        "Dinner",
+        "%gulab jamun%",
+        "Hall 7",
+        "Hall 6"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "differ": true,
+        "passed": true
+      },
+      "notes": "exactly one of the two named halls serves it"
+    },
+    {
+      "id": "test-comparison-06",
+      "category": "comparison",
+      "q": "For dinner on Friday, does Hall 12 or Hall 14 have kofta?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Friday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "kofta",
+        "candidates": [
+          "Hall 12",
+          "Hall 14"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 14"
+        ],
+        "n": 1
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n   AND h.name IN (?, ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Friday",
+        "Dinner",
+        "%kofta%",
+        "Hall 12",
+        "Hall 14"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "differ": true,
+        "passed": true
+      },
+      "notes": "exactly one of the two named halls serves it"
+    },
+    {
+      "id": "test-comparison-07",
+      "category": "comparison",
+      "q": "For lunch on Friday, does GH 1 or Hall 6 have biryani?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Friday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "biryani",
+        "candidates": [
+          "GH 1",
+          "Hall 6"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 6"
+        ],
+        "n": 1
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n   AND h.name IN (?, ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Friday",
+        "Lunch",
+        "%biryani%",
+        "GH 1",
+        "Hall 6"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "differ": true,
+        "passed": true
+      },
+      "notes": "exactly one of the two named halls serves it"
+    },
+    {
+      "id": "test-comparison-08",
+      "category": "comparison",
+      "q": "Which of Hall 10 or GH 1 has kofta on the Tuesday lunch menu?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "kofta",
+        "candidates": [
+          "Hall 10",
+          "GH 1"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 10"
+        ],
+        "n": 1
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n   AND h.name IN (?, ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Tuesday",
+        "Lunch",
+        "%kofta%",
+        "Hall 10",
+        "GH 1"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "differ": true,
+        "passed": true
+      },
+      "notes": "exactly one of the two named halls serves it"
+    },
+    {
+      "id": "test-comparison-09",
+      "category": "comparison",
+      "q": "I want french fries at dinner on Tuesday \u2014 Hall 12 or Hall 6?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "french fries",
+        "candidates": [
+          "Hall 12",
+          "Hall 6"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 12"
+        ],
+        "n": 1
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n   AND h.name IN (?, ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Tuesday",
+        "Dinner",
+        "%french fries%",
+        "Hall 12",
+        "Hall 6"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "differ": true,
+        "passed": true
+      },
+      "notes": "exactly one of the two named halls serves it"
+    },
+    {
+      "id": "test-comparison-10",
+      "category": "comparison",
+      "q": "Between Hall 6 and Hall 7, which serves ice cream at dinner on Tuesday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "ice cream",
+        "candidates": [
+          "Hall 6",
+          "Hall 7"
+        ]
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 6"
+        ],
+        "n": 1
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n   AND h.name IN (?, ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Tuesday",
+        "Dinner",
+        "%ice cream%",
+        "Hall 6",
+        "Hall 7"
+      ],
+      "gate": {
+        "rule": "substitute-for-D15",
+        "differ": true,
+        "passed": true
+      },
+      "notes": "exactly one of the two named halls serves it"
+    },
+    {
+      "id": "test-aggregation-01",
+      "category": "aggregation",
+      "q": "Who's got kheer for dinner on Saturday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Saturday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "kheer"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 13",
+          "Hall 14"
+        ],
+        "n": 2
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Saturday",
+        "Dinner",
+        "%kheer%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 2,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-aggregation-02",
+      "category": "aggregation",
+      "q": "On Tuesday, which messes are serving chicken at dinner?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "chicken"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 12",
+          "Hall 14",
+          "Hall 8"
+        ],
+        "n": 5
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Tuesday",
+        "Dinner",
+        "%chicken%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 5,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-aggregation-03",
+      "category": "aggregation",
+      "q": "On Thursday, which messes are serving tikka at dinner?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Thursday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "tikka"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 10",
+          "Hall 11",
+          "Hall 13"
+        ],
+        "n": 3
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Thursday",
+        "Dinner",
+        "%tikka%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 3,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-aggregation-04",
+      "category": "aggregation",
+      "q": "On Saturday, which messes are serving fish at lunch?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Saturday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "fish"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 10",
+          "Hall 14"
+        ],
+        "n": 2
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Saturday",
+        "Lunch",
+        "%fish%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 2,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-aggregation-05",
+      "category": "aggregation",
+      "q": "Who's got sambhar for breakfast on Thursday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Thursday",
+        "meal": "Breakfast"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "sambhar"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 14",
+          "Hall 7",
+          "Hall 9"
+        ],
+        "n": 3
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Thursday",
+        "Breakfast",
+        "%sambhar%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 3,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-aggregation-06",
+      "category": "aggregation",
+      "q": "Which halls serve rajma at lunch on Tuesday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "rajma"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 7",
+          "Hall 8"
+        ],
+        "n": 2
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Tuesday",
+        "Lunch",
+        "%rajma%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 2,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-aggregation-07",
+      "category": "aggregation",
+      "q": "List the halls with halwa on the Saturday lunch menu.",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Saturday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "halwa"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 12",
+          "Hall 8"
+        ],
+        "n": 2
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Saturday",
+        "Lunch",
+        "%halwa%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 2,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-aggregation-08",
+      "category": "aggregation",
+      "q": "Which halls serve pakoda at lunch on Tuesday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "pakoda"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 13",
+          "Hall 5",
+          "Hall 9"
+        ],
+        "n": 3
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Tuesday",
+        "Lunch",
+        "%pakoda%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 3,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-aggregation-09",
+      "category": "aggregation",
+      "q": "List the halls with gulab jamun on the Friday dinner menu.",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Friday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "gulab jamun"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 10",
+          "Hall 6",
+          "Hall 8"
+        ],
+        "n": 3
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Friday",
+        "Dinner",
+        "%gulab jamun%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 3,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-aggregation-10",
+      "category": "aggregation",
+      "q": "On Friday, which messes are serving mutton at dinner?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Friday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "mutton"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 11",
+          "Hall 14",
+          "Hall 7"
+        ],
+        "n": 4
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Friday",
+        "Dinner",
+        "%mutton%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 4,
+        "passed": true
+      },
+      "notes": ""
+    },
+    {
+      "id": "test-negation-01",
+      "category": "negation",
+      "q": "Which halls do NOT serve egg at lunch on Friday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Friday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "not_like",
+        "value": "egg"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 11",
+          "Hall 13",
+          "Hall 2",
+          "Hall 3",
+          "Hall 4",
+          "Hall 5",
+          "Hall 7",
+          "Hall 8",
+          "Hall 9"
+        ],
+        "n": 11
+      },
+      "sql": "SELECT h.name FROM hall h\n WHERE h.id NOT IN (\n   SELECT m.hall_id FROM menu_item m\n    WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Friday",
+        "Lunch",
+        "%egg%"
+      ],
+      "gate": {
+        "rule": "D15+D14",
+        "n_halls": 11,
+        "n_serving": 3,
+        "passed": true
+      },
+      "notes": "D14 group-2 predicate only"
+    },
+    {
+      "id": "test-negation-02",
+      "category": "negation",
+      "q": "If I want to avoid idli at breakfast on Wednesday, which halls work?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Wednesday",
+        "meal": "Breakfast"
+      },
+      "predicate": {
+        "kind": "not_like",
+        "value": "idli"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 11",
+          "Hall 12",
+          "Hall 14",
+          "Hall 4",
+          "Hall 5",
+          "Hall 6",
+          "Hall 9"
+        ],
+        "n": 9
+      },
+      "sql": "SELECT h.name FROM hall h\n WHERE h.id NOT IN (\n   SELECT m.hall_id FROM menu_item m\n    WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Wednesday",
+        "Breakfast",
+        "%idli%"
+      ],
+      "gate": {
+        "rule": "D15+D14",
+        "n_halls": 9,
+        "n_serving": 5,
+        "passed": true
+      },
+      "notes": "D14 group-2 predicate only"
+    },
+    {
+      "id": "test-negation-03",
+      "category": "negation",
+      "q": "On Saturday, which halls are missing pasta from the lunch menu?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Saturday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "not_like",
+        "value": "pasta"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 11",
+          "Hall 12",
+          "Hall 13",
+          "Hall 14",
+          "Hall 4",
+          "Hall 5",
+          "Hall 6",
+          "Hall 7",
+          "Hall 8",
+          "Hall 9"
+        ],
+        "n": 12
+      },
+      "sql": "SELECT h.name FROM hall h\n WHERE h.id NOT IN (\n   SELECT m.hall_id FROM menu_item m\n    WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Saturday",
+        "Lunch",
+        "%pasta%"
+      ],
+      "gate": {
+        "rule": "D15+D14",
+        "n_halls": 12,
+        "n_serving": 2,
+        "passed": true
+      },
+      "notes": "D14 group-2 predicate only"
+    },
+    {
+      "id": "test-negation-04",
+      "category": "negation",
+      "q": "Which halls do NOT serve pakoda at lunch on Thursday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Thursday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "not_like",
+        "value": "pakoda"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 11",
+          "Hall 13",
+          "Hall 14",
+          "Hall 3",
+          "Hall 5",
+          "Hall 6",
+          "Hall 7",
+          "Hall 8",
+          "Hall 9"
+        ],
+        "n": 11
+      },
+      "sql": "SELECT h.name FROM hall h\n WHERE h.id NOT IN (\n   SELECT m.hall_id FROM menu_item m\n    WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Thursday",
+        "Lunch",
+        "%pakoda%"
+      ],
+      "gate": {
+        "rule": "D15+D14",
+        "n_halls": 11,
+        "n_serving": 3,
+        "passed": true
+      },
+      "notes": "D14 group-2 predicate only"
+    },
+    {
+      "id": "test-negation-05",
+      "category": "negation",
+      "q": "Which messes have no biryani for lunch on Friday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Friday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "not_like",
+        "value": "biryani"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 11",
+          "Hall 12",
+          "Hall 13",
+          "Hall 2",
+          "Hall 3",
+          "Hall 4",
+          "Hall 5",
+          "Hall 7",
+          "Hall 8"
+        ],
+        "n": 11
+      },
+      "sql": "SELECT h.name FROM hall h\n WHERE h.id NOT IN (\n   SELECT m.hall_id FROM menu_item m\n    WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Friday",
+        "Lunch",
+        "%biryani%"
+      ],
+      "gate": {
+        "rule": "D15+D14",
+        "n_halls": 11,
+        "n_serving": 3,
+        "passed": true
+      },
+      "notes": "D14 group-2 predicate only"
+    },
+    {
+      "id": "test-negation-06",
+      "category": "negation",
+      "q": "If I want to avoid paneer at dinner on Monday, which halls work?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Monday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "not_like",
+        "value": "paneer"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 3",
+          "Hall 4",
+          "Hall 6",
+          "Hall 7",
+          "Hall 9"
+        ],
+        "n": 7
+      },
+      "sql": "SELECT h.name FROM hall h\n WHERE h.id NOT IN (\n   SELECT m.hall_id FROM menu_item m\n    WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Monday",
+        "Dinner",
+        "%paneer%"
+      ],
+      "gate": {
+        "rule": "D15+D14",
+        "n_halls": 7,
+        "n_serving": 7,
+        "passed": true
+      },
+      "notes": "D14 group-2 predicate only"
+    },
+    {
+      "id": "test-negation-07",
+      "category": "negation",
+      "q": "Which halls do NOT serve paneer at dinner on Wednesday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Wednesday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "not_like",
+        "value": "paneer"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 10",
+          "Hall 6",
+          "Hall 7"
+        ],
+        "n": 3
+      },
+      "sql": "SELECT h.name FROM hall h\n WHERE h.id NOT IN (\n   SELECT m.hall_id FROM menu_item m\n    WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Wednesday",
+        "Dinner",
+        "%paneer%"
+      ],
+      "gate": {
+        "rule": "D15+D14",
+        "n_halls": 3,
+        "n_serving": 11,
+        "passed": true
+      },
+      "notes": "D14 group-2 predicate only"
+    },
+    {
+      "id": "test-negation-08",
+      "category": "negation",
+      "q": "Which messes have no vada for lunch on Wednesday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Wednesday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "not_like",
+        "value": "vada"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 11",
+          "Hall 12",
+          "Hall 13",
+          "Hall 14",
+          "Hall 2",
+          "Hall 3",
+          "Hall 4",
+          "Hall 5",
+          "Hall 6",
+          "Hall 8"
+        ],
+        "n": 12
+      },
+      "sql": "SELECT h.name FROM hall h\n WHERE h.id NOT IN (\n   SELECT m.hall_id FROM menu_item m\n    WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Wednesday",
+        "Lunch",
+        "%vada%"
+      ],
+      "gate": {
+        "rule": "D15+D14",
+        "n_halls": 12,
+        "n_serving": 2,
+        "passed": true
+      },
+      "notes": "D14 group-2 predicate only"
+    },
+    {
+      "id": "test-negation-09",
+      "category": "negation",
+      "q": "Which halls skip uttapam for breakfast on Thursday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Thursday",
+        "meal": "Breakfast"
+      },
+      "predicate": {
+        "kind": "not_like",
+        "value": "uttapam"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 11",
+          "Hall 12",
+          "Hall 13",
+          "Hall 14",
+          "Hall 2",
+          "Hall 3",
+          "Hall 4",
+          "Hall 5",
+          "Hall 6",
+          "Hall 7",
+          "Hall 8"
+        ],
+        "n": 12
+      },
+      "sql": "SELECT h.name FROM hall h\n WHERE h.id NOT IN (\n   SELECT m.hall_id FROM menu_item m\n    WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Thursday",
+        "Breakfast",
+        "%uttapam%"
+      ],
+      "gate": {
+        "rule": "D15+D14",
+        "n_halls": 12,
+        "n_serving": 2,
+        "passed": true
+      },
+      "notes": "D14 group-2 predicate only"
+    },
+    {
+      "id": "test-negation-10",
+      "category": "negation",
+      "q": "Which messes have no chicken for lunch on Monday?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Monday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "not_like",
+        "value": "chicken"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 10",
+          "Hall 14",
+          "Hall 3",
+          "Hall 5",
+          "Hall 7",
+          "Hall 8",
+          "Hall 9"
+        ],
+        "n": 8
+      },
+      "sql": "SELECT h.name FROM hall h\n WHERE h.id NOT IN (\n   SELECT m.hall_id FROM menu_item m\n    WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?)\n ORDER BY h.name",
+      "sql_params": [
+        "Monday",
+        "Lunch",
+        "%chicken%"
+      ],
+      "gate": {
+        "rule": "D15+D14",
+        "n_halls": 8,
+        "n_serving": 6,
+        "passed": true
+      },
+      "notes": "D14 group-2 predicate only"
+    },
+    {
+      "id": "test-temporal-01",
+      "category": "temporal",
+      "q": "Is anyone doing vada for breakfast tomorrow?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Wednesday",
+        "meal": "Breakfast"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "vada"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 11",
+          "Hall 7",
+          "Hall 8"
+        ],
+        "n": 3
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Wednesday",
+        "Breakfast",
+        "%vada%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 3,
+        "passed": true
+      },
+      "notes": "relative day must resolve to Wednesday Breakfast given as_of=2026-08-25"
+    },
+    {
+      "id": "test-temporal-02",
+      "category": "temporal",
+      "q": "Which messes are serving kadhi at lunch today?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "kadhi"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 13",
+          "Hall 9"
+        ],
+        "n": 2
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Tuesday",
+        "Lunch",
+        "%kadhi%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 2,
+        "passed": true
+      },
+      "notes": "relative day must resolve to Tuesday Lunch given as_of=2026-08-25"
+    },
+    {
+      "id": "test-temporal-03",
+      "category": "temporal",
+      "q": "Which messes are serving tikka at lunch today?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Lunch"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "tikka"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 14",
+          "Hall 3",
+          "Hall 8"
+        ],
+        "n": 4
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Tuesday",
+        "Lunch",
+        "%tikka%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 4,
+        "passed": true
+      },
+      "notes": "relative day must resolve to Tuesday Lunch given as_of=2026-08-25"
+    },
+    {
+      "id": "test-temporal-04",
+      "category": "temporal",
+      "q": "Which halls have pulao tonight at dinner?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "pulao"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 6"
+        ],
+        "n": 2
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Tuesday",
+        "Dinner",
+        "%pulao%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 2,
+        "passed": true
+      },
+      "notes": "relative day must resolve to Tuesday Dinner given as_of=2026-08-25"
+    },
+    {
+      "id": "test-temporal-05",
+      "category": "temporal",
+      "q": "Which halls have chole for dinner tonight?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "chole"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 10",
+          "Hall 3"
+        ],
+        "n": 2
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Tuesday",
+        "Dinner",
+        "%chole%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 2,
+        "passed": true
+      },
+      "notes": "relative day must resolve to Tuesday Dinner given as_of=2026-08-25"
+    },
+    {
+      "id": "test-temporal-06",
+      "category": "temporal",
+      "q": "Who has mutton for dinner tomorrow?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Wednesday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "mutton"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 12",
+          "Hall 5",
+          "Hall 8"
+        ],
+        "n": 3
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Wednesday",
+        "Dinner",
+        "%mutton%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 3,
+        "passed": true
+      },
+      "notes": "relative day must resolve to Wednesday Dinner given as_of=2026-08-25"
+    },
+    {
+      "id": "test-temporal-07",
+      "category": "temporal",
+      "q": "Is anyone doing sambhar for breakfast tomorrow?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Wednesday",
+        "meal": "Breakfast"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "sambhar"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 11",
+          "Hall 12",
+          "Hall 13",
+          "Hall 2",
+          "Hall 3",
+          "Hall 5",
+          "Hall 7",
+          "Hall 8"
+        ],
+        "n": 8
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Wednesday",
+        "Breakfast",
+        "%sambhar%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 8,
+        "passed": true
+      },
+      "notes": "relative day must resolve to Wednesday Breakfast given as_of=2026-08-25"
+    },
+    {
+      "id": "test-temporal-08",
+      "category": "temporal",
+      "q": "Who has paneer for dinner tomorrow?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Wednesday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "paneer"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "GH 1",
+          "Hall 11",
+          "Hall 12",
+          "Hall 13",
+          "Hall 14",
+          "Hall 2",
+          "Hall 3",
+          "Hall 4",
+          "Hall 5",
+          "Hall 8",
+          "Hall 9"
+        ],
+        "n": 11
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Wednesday",
+        "Dinner",
+        "%paneer%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 11,
+        "passed": true
+      },
+      "notes": "relative day must resolve to Wednesday Dinner given as_of=2026-08-25"
+    },
+    {
+      "id": "test-temporal-09",
+      "category": "temporal",
+      "q": "Which halls have mushroom tonight at dinner?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "mushroom"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 12",
+          "Hall 8"
+        ],
+        "n": 2
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Tuesday",
+        "Dinner",
+        "%mushroom%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 2,
+        "passed": true
+      },
+      "notes": "relative day must resolve to Tuesday Dinner given as_of=2026-08-25"
+    },
+    {
+      "id": "test-temporal-10",
+      "category": "temporal",
+      "q": "Which halls have halwa tonight at dinner?",
+      "as_of": "2026-08-25",
+      "slot": {
+        "day": "Tuesday",
+        "meal": "Dinner"
+      },
+      "predicate": {
+        "kind": "like",
+        "value": "halwa"
+      },
+      "gold": {
+        "type": "hall_set",
+        "halls": [
+          "Hall 13",
+          "Hall 8"
+        ],
+        "n": 2
+      },
+      "sql": "SELECT DISTINCT h.name\n  FROM menu_item m JOIN hall h ON h.id = m.hall_id\n WHERE m.day_of_week = ? AND m.meal = ? AND LOWER(m.item_raw) LIKE ?\n ORDER BY h.name",
+      "sql_params": [
+        "Tuesday",
+        "Dinner",
+        "%halwa%"
+      ],
+      "gate": {
+        "rule": "D15",
+        "n_halls": 2,
+        "passed": true
+      },
+      "notes": "relative day must resolve to Tuesday Dinner given as_of=2026-08-25"
+    }
+  ],
+  "patched": {
+    "ruling": "RULING 3 \u2014 parse-artifact lookup slots replaced",
+    "replaced": [
+      "test-lookup-03",
+      "test-lookup-06"
+    ],
+    "parser_fixed": false,
+    "see": "DECISIONS.md D30"
+  }
+}
